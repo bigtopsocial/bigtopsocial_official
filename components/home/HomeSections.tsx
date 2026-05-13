@@ -42,126 +42,131 @@ const clientLogos = [
 export function HomeSections() {
   return (
     <>
-      <section className="relative box-border flex min-h-[100svh] flex-col overflow-hidden pt-[76px] sm:pt-[84px] lg:pt-[88px]">
-        <div className="pointer-events-none absolute inset-0">
-          <video
-            className="absolute inset-0 h-full w-full object-cover object-center "
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden
-          >
-            <source src="/herovideo2.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/15" />
-        </div>
-
-        <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
-          <Container className="relative text-center">
-          <Reveal>
-            <Stars />
-            <p className="mt-3 text-sm text-foreground/80">
-              5.0 rating · Helped over 100+ businesses
-            </p>
-            <h1 className="mt-10 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
-              Elevating brands
-            </h1>
-            <h1 className="mt-1 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
-              Forward, Faster
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
-              We help ambitious brands scale with performance marketing, creative
-              strategy, and conversion-focused campaigns.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm font-semibold text-background transition hover:bg-foreground/90"
-            >
-              Book a Consultation
-            </Link>
-          </Reveal>
-
-          <Reveal delay={0.08} className="mt-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/80">
-              Trusted by startups, scaleups & global brands
-            </p>
-<div className="mt-10 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-  <div
-    className="flex items-center gap-8 px-6"
-    style={{
-      width: 'max-content',
-      animation: 'scroll-right 25s linear infinite'
-    }}
-  >
-    {[...clientLogos, ...clientLogos].map((logo, idx) => (
-      <div
-        key={`${logo}-${idx}`}
-        className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
-      >
-        <img
-          src={logo}
-          alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
-          className="h-20 w-auto object-contain"
-        />
-      </div>
-    ))}
+      <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-[76px] sm:pt-[84px] lg:pt-[88px]">
+  <div className="pointer-events-none absolute inset-0">
+    <video
+      className="absolute inset-0 h-full w-full object-cover object-center"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-hidden
+    >
+      <source src="/herovideo2.mp4" type="video/mp4" />
+    </video>
+    <div className="absolute inset-0 bg-black/15" />
   </div>
-</div>
-          </Reveal>
-        </Container>
-        </div>
 
-
-      </section>
-
-      <section className="relative py-20 sm:py-24">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/0 via-black/10 to-black/90" />
-        <Container>
-          <Reveal>
-            <Link
-              href="/about"
-          className="relative bottom-6 left-1/2 z-40 inline-flex -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80"
+  <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
+    <Container className="relative text-center">
+      <Reveal>
+        <Stars />
+        <p className="mt-3 text-sm text-foreground/80">
+          5.0 rating · Helped over 100+ businesses
+        </p>
+        <h1 className="mt-10 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
+          Elevating brands
+        </h1>
+        <h1 className="mt-1 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
+          Forward, Faster
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
+          We help ambitious brands scale with performance marketing, creative
+          strategy, and conversion-focused campaigns.
+        </p>
+        <Link
+          href="/contact"
+          className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm font-semibold text-background transition hover:bg-foreground/90"
         >
-          About
+          Book a Consultation
         </Link>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-              About
-            </p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              We make brands memorable
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              We blend strategy & creativity to help brands grow, connect, & stand
-              out with content that drives real engagement.
-            </p>
-          </Reveal>
+      </Reveal>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            {stats.map((s, idx) => (
-              <Reveal key={s.numeral} delay={idx * 0.05}>
-                <div className="flex h-full flex-col justify-between rounded-card border border-white/[0.08] bg-surface-elevated/80 p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="text-sm text-foreground">{s.numeral}</span>
-                    <span className="text-right text-xs text-muted">{s.label}</span>
-                  </div>
-                  <div className="mt-10 flex items-end gap-1">
-                    <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                      {s.value}
-                    </span>
-                    <span className="pb-1 text-lg font-semibold text-muted">
-                      {s.suffix}
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
+      <Reveal delay={0.08} className="mt-14">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/80">
+          Trusted by startups, scaleups & global brands
+        </p>
+        <div className="mt-10 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+          <div
+            className="flex items-center gap-8 px-6"
+            style={{
+              width: 'max-content',
+              animation: 'scroll-right 25s linear infinite'
+            }}
+          >
+            {[...clientLogos, ...clientLogos].map((logo, idx) => (
+              <div
+                key={`${logo}-${idx}`}
+                className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
+              >
+                <img
+                  src={logo}
+                  alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
+                  className="h-20 w-auto object-contain"
+                />
+              </div>
             ))}
           </div>
-        </Container>
-      </section>
+        </div>
+      </Reveal>
+    </Container>
+  </div>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+  {/* ✅ BLEND: fades hero into black below */}
+  <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
+</section>
+
+<section className="relative py-20 sm:py-24">
+  {/* ✅ BLEND: reinforces the black at the very top of this section */}
+  <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
+
+  <Container>
+    <Reveal>
+      <Link
+        href="/about"
+        className="relative bottom-6 left-1/2 z-40 inline-flex -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80"
+      >
+        About
+      </Link>
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+        About
+      </p>
+      <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        We make brands memorable
+      </h2>
+      <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+        We blend strategy & creativity to help brands grow, connect, & stand
+        out with content that drives real engagement.
+      </p>
+    </Reveal>
+
+    <div className="mt-12 grid gap-4 sm:grid-cols-2">
+      {stats.map((s, idx) => (
+        <Reveal key={s.numeral} delay={idx * 0.05}>
+          <div className="flex h-full flex-col justify-between rounded-card border border-white/[0.08] bg-surface-elevated/80 p-6 sm:p-7">
+            <div className="flex items-start justify-between gap-4">
+              <span className="text-sm text-foreground">{s.numeral}</span>
+              <span className="text-right text-xs text-muted">{s.label}</span>
+            </div>
+            <div className="mt-10 flex items-end gap-1">
+              <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                {s.value}
+              </span>
+              <span className="pb-1 text-lg font-semibold text-muted">
+                {s.suffix}
+              </span>
+            </div>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </Container>
+</section>
+
+      <section className="relative py-20 sm:py-24">
+
+
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -202,7 +207,7 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -247,7 +252,7 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -277,7 +282,7 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -334,7 +339,7 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -368,7 +373,7 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
@@ -394,45 +399,48 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
-        <Container>
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-              Blog and News
-            </p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Insights, Ideas, and Perspectives
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Have questions? Our FAQ section has you covered with quick answers to the
-              most common inquiries.
-            </p>
-          </Reveal>
+<section className="relative py-20 sm:py-24">
+  <Container>
+    <Reveal>
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+        Blog and News
+      </p>
+      <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        Insights, Ideas, and Perspectives
+      </h2>
+      <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+        Have questions? Our FAQ section has you covered with quick answers to the
+        most common inquiries.
+      </p>
+    </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {homeBlogTeasers.map((b, idx) => {
-              const meta = blogListing.find((x) => x.slug === b.slug);
-              return (
-                <Reveal key={b.slug} delay={idx * 0.06}>
-                  <Link
-                    href={`/blog/${b.slug}`}
-                    className="group block rounded-card border border-white/[0.08] bg-surface/50 p-6 transition hover:border-white/20"
-                  >
-                    <h3 className="text-base font-semibold text-foreground group-hover:text-foreground/90">
-                      {b.title}
-                    </h3>
-                    {meta && (
-                      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">
-                        {meta.category}
-                      </p>
-                    )}
-                  </Link>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+      {homeBlogTeasers.map((b, idx) => {
+        const meta = blogListing.find((x) => x.slug === b.slug);
+        return (
+          <Reveal key={b.slug} delay={idx * 0.06}>
+            <Link
+              href={`/blog/${b.slug}`}
+              className="group block rounded-card border border-white/[0.08] bg-surface/50 p-6 transition hover:border-white/20"
+            >
+              <h3 className="text-base font-semibold text-foreground group-hover:text-foreground/90">
+                {b.title}
+              </h3>
+              {meta && (
+                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">
+                  {meta.category}
+                </p>
+              )}
+            </Link>
+          </Reveal>
+        );
+      })}
+    </div>
+  </Container>
+
+{/* ✅ BLEND: fades into footer below */}
+<div className="pointer-events-none absolute bottom-0 left-0 h-64 w-full bg-gradient-to-b from-transparent to-[#000]" />
+</section>
 
     </>
   );

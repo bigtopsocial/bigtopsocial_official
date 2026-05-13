@@ -15,7 +15,7 @@ export function FooterSubscribeForm() {
           type="email"
           required
           placeholder="Enter Your Email...."
-          className="h-12 w-full rounded-full border border-white/10 bg-surface px-5 text-sm text-foreground outline-none ring-accent/40 placeholder:text-muted focus:border-accent/50 focus:ring-2"
+          className="h-12 w-full rounded-full border border-white/25 bg-transparent px-5 text-sm text-foreground outline-none ring-accent/40 placeholder:text-muted focus:border-accent/50 focus:ring-2"
         />
         <button
           type="submit"

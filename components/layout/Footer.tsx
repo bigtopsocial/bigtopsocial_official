@@ -12,8 +12,25 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-black pb-10 pt-16 text-sm text-muted">
-      <Container>
+    <footer className="relative overflow-hidden pb-10 pt-20 text-sm text-white/90">
+
+  {/* ✅ BLEND: fades previous section into footer video */}
+<div className="pointer-events-none absolute top-0 left-0 z-10 h-64 w-full bg-gradient-to-b from-[#000] via-[#000]/80 to-transparent" />
+
+      <div className="pointer-events-none absolute inset-0">
+        <video
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-85"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        >
+          <source src="/herovideo2.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <Container className="relative z-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <FooterSubscribeForm />
@@ -89,7 +106,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/[0.06] pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/[0.06] pt-8 text-xs text-white/90 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             <a
               href="https://framer.link/clariv-studio"
@@ -116,7 +133,7 @@ export function Footer() {
             href="https://www.framer.com/"
             target="_blank"
             rel="noreferrer"
-            className="max-w-md text-[11px] leading-snug text-muted transition hover:text-foreground/80"
+            className="max-w-md text-[11px] leading-snug text-white/90 transition hover:text-foreground/80"
           >
             Create a free website with Framer, the website builder loved by
             startups, designers and agencies.
