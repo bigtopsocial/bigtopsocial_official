@@ -182,7 +182,7 @@ export function HomeSections() {
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, idx) => (
               <Reveal key={step.title} delay={idx * 0.06}>
-                <div className="rounded-card p-px neon-card">
+                <div className="rounded-card p-px neon-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.05]">
                   <div className="h-full rounded-[inherit] bg-surface/60 p-6">
                     <h3 className="text-lg font-semibold text-foreground">
                       {step.title}
@@ -270,74 +270,21 @@ export function HomeSections() {
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="h-full rounded-card border border-white/[0.08] bg-blue p-6">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {svc.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{svc.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-20 sm:py-24">
-        <Container>
-          <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-              Pricing
-            </p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Simple Pricing. Serious Results.
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Our plans give you exactly what you need — nothing more, nothing less —
-              to grow with confidence.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {pricingPlans.map((plan, idx) => (
-              <Reveal key={plan.name} delay={idx * 0.06}>
-                <div className="flex h-full flex-col rounded-card border border-white/[0.08] bg-surface/60 p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-                    {plan.tierLabel}
-                  </p>
-                  <h3 className="mt-4 text-xl font-semibold text-foreground">
-                    {plan.name}
-                  </h3>
-                  <div className="mt-6 flex items-end gap-2">
-                    <span className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                      {plan.price}
-                    </span>
-                    <span className="pb-1 text-sm font-medium text-muted">
-                      / Month
-                    </span>
+                <div className="rounded-card p-px neon-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
+                  <div className="h-full rounded-[inherit] bg-blue p-6">
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {svc.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">{svc.body}</p>
                   </div>
-                  <p className="mt-5 text-sm leading-relaxed text-muted">
-                    {plan.description}
-                  </p>
-                  <ul className="mt-6 space-y-3 text-sm text-foreground/90">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact"
-                    className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-foreground px-8 text-sm font-semibold text-background transition hover:bg-foreground/90"
-                  >
-                    Get Started
-                  </Link>
                 </div>
               </Reveal>
             ))}
           </div>
         </Container>
       </section>
+
+
 
       <section className="py-20 sm:py-24">
         <Container>
@@ -419,19 +366,21 @@ export function HomeSections() {
         const meta = blogListing.find((x) => x.slug === b.slug);
         return (
           <Reveal key={b.slug} delay={idx * 0.06}>
-            <Link
-              href={`/blog/${b.slug}`}
-              className="group block rounded-card border border-white/[0.08] bg-surface/50 p-6 transition hover:border-white/20"
-            >
-              <h3 className="text-base font-semibold text-foreground group-hover:text-foreground/90">
-                {b.title}
-              </h3>
-              {meta && (
-                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">
-                  {meta.category}
-                </p>
-              )}
-            </Link>
+            <div className="rounded-card p-px neon-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
+              <Link
+                href={`/blog/${b.slug}`}
+                className="group block h-full rounded-[inherit] bg-surface/50 p-6"
+              >
+                <h3 className="text-base font-semibold text-foreground group-hover:text-foreground/90">
+                  {b.title}
+                </h3>
+                {meta && (
+                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">
+                    {meta.category}
+                  </p>
+                )}
+              </Link>
+            </div>
           </Reveal>
         );
       })}
