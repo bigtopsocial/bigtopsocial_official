@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
@@ -8,6 +9,18 @@ import { stats, testimonials } from "@/lib/content/home";
 
 export const metadata: Metadata = {
   title: "About Us",
+};
+
+const aboutCardGlow = {
+  backgroundColor: "rgba(18, 18, 18, 0.72)",
+  borderRadius: 12,
+  glowRadius: 34,
+  edgeSensitivity: 18,
+  glowColor: "220 85 48",
+  glowIntensity: 0.9,
+  coneSpread: 22,
+  fillOpacity: 0.16,
+  colors: ["#071a3d", "#0f2f68", "#1d4ed8"],
 };
 
 export default function AboutPage() {
@@ -45,20 +58,25 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
             {stats.map((s, idx) => (
               <Reveal key={s.numeral} delay={idx * 0.05}>
-                <div className="flex h-full flex-col justify-between rounded-card border border-white/[0.08] bg-surface-elevated/80 p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="text-sm text-foreground">{s.numeral}</span>
-                    <span className="text-right text-xs text-muted">{s.label}</span>
+                <BorderGlow
+                  {...aboutCardGlow}
+                  className="h-full transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.02]"
+                >
+                  <div className="flex h-full flex-col justify-between p-6 sm:p-7">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="text-sm text-foreground">{s.numeral}</span>
+                      <span className="text-right text-xs text-muted">{s.label}</span>
+                    </div>
+                    <div className="mt-10 flex items-end gap-1">
+                      <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                        {s.value}
+                      </span>
+                      <span className="pb-1 text-lg font-semibold text-muted">
+                        {s.suffix}
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-10 flex items-end gap-1">
-                    <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                      {s.value}
-                    </span>
-                    <span className="pb-1 text-lg font-semibold text-muted">
-                      {s.suffix}
-                    </span>
-                  </div>
-                </div>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>
@@ -131,15 +149,17 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {testimonials.map((t, idx) => (
               <Reveal key={t.name} delay={idx * 0.04}>
-                <figure className="h-full rounded-card border border-white/[0.08] bg-surface/50 p-6">
-                  <blockquote className="text-sm leading-relaxed text-foreground/90">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption className="mt-5 text-sm">
-                    <div className="font-semibold text-foreground">{t.name}</div>
-                    <div className="text-muted">{t.role}</div>
-                  </figcaption>
-                </figure>
+                <BorderGlow {...aboutCardGlow} className="h-full">
+                  <figure className="h-full p-6">
+                    <blockquote className="text-sm leading-relaxed text-foreground/90">
+                      {t.quote}
+                    </blockquote>
+                    <figcaption className="mt-5 text-sm">
+                      <div className="font-semibold text-foreground">{t.name}</div>
+                      <div className="text-muted">{t.role}</div>
+                    </figcaption>
+                  </figure>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>
@@ -184,10 +204,12 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {aboutTeam.map((m, idx) => (
               <Reveal key={m.name} delay={idx * 0.04}>
-                <div className="rounded-card border border-white/[0.08] bg-surface/50 p-6">
-                  <h3 className="text-lg font-semibold text-foreground">{m.name}</h3>
-                  <p className="mt-2 text-sm text-muted">{m.role}</p>
-                </div>
+                <BorderGlow {...aboutCardGlow} className="h-full">
+                  <div className="h-full p-6">
+                    <h3 className="text-lg font-semibold text-foreground">{m.name}</h3>
+                    <p className="mt-2 text-sm text-muted">{m.role}</p>
+                  </div>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>

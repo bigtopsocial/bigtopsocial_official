@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
@@ -38,6 +39,18 @@ const clientLogos = [
   "/clients-logos/nisargs.png",
   "/clients-logos/swadesi drp.png",
 ];
+
+const homeCardGlow = {
+  backgroundColor: "rgba(18, 18, 18, 0.72)",
+  borderRadius: 12,
+  glowRadius: 34,
+  edgeSensitivity: 18,
+  glowColor: "220 85 48",
+  glowIntensity: 0.9,
+  coneSpread: 22,
+  fillOpacity: 0.16,
+  colors: ["#071a3d", "#40bbff", "#ffffff"],
+};
 
 export function HomeSections() {
   return (
@@ -125,7 +138,7 @@ export function HomeSections() {
     <Reveal>
       <Link
         href="/about"
-        className="relative bottom-6 left-1/2 z-40 inline-flex -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80"
+        className="absolute bottom-6 left-1/2 z-40 inline-flex -translate-x-1/2 rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80"
       >
         About
       </Link>
@@ -144,20 +157,25 @@ export function HomeSections() {
     <div className="mt-12 grid gap-4 sm:grid-cols-2">
       {stats.map((s, idx) => (
         <Reveal key={s.numeral} delay={idx * 0.05}>
-          <div className="flex h-full flex-col justify-between rounded-card border border-white/[0.08] bg-surface-elevated/80 p-6 sm:p-7">
-            <div className="flex items-start justify-between gap-4">
-              <span className="text-sm text-foreground">{s.numeral}</span>
-              <span className="text-right text-xs text-muted">{s.label}</span>
+          <BorderGlow
+            {...homeCardGlow}
+            className="h-full transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.02]"
+          >
+            <div className="flex h-full flex-col justify-between p-6 sm:p-7">
+              <div className="flex items-start justify-between gap-4">
+                <span className="text-sm text-foreground">{s.numeral}</span>
+                <span className="text-right text-xs text-muted">{s.label}</span>
+              </div>
+              <div className="mt-10 flex items-end gap-1">
+                <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                  {s.value}
+                </span>
+                <span className="pb-1 text-lg font-semibold text-muted">
+                  {s.suffix}
+                </span>
+              </div>
             </div>
-            <div className="mt-10 flex items-end gap-1">
-              <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                {s.value}
-              </span>
-              <span className="pb-1 text-lg font-semibold text-muted">
-                {s.suffix}
-              </span>
-            </div>
-          </div>
+          </BorderGlow>
         </Reveal>
       ))}
     </div>
@@ -182,8 +200,11 @@ export function HomeSections() {
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, idx) => (
               <Reveal key={step.title} delay={idx * 0.06}>
-                <div className="rounded-card p-px neon-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.05]">
-                  <div className="h-full rounded-[inherit] bg-surface/60 p-6">
+                <BorderGlow
+                  {...homeCardGlow}
+                  className="h-full transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.05]"
+                >
+                  <div className="h-full p-6">
                     <h3 className="text-lg font-semibold text-foreground">
                       {step.title}
                     </h3>
@@ -191,7 +212,7 @@ export function HomeSections() {
                       {step.body}
                     </p>
                   </div>
-                </div>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>
@@ -270,14 +291,17 @@ export function HomeSections() {
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="rounded-card p-px neon-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
-                  <div className="h-full rounded-[inherit] bg-blue p-6">
+                <BorderGlow
+                  {...homeCardGlow}
+                  className="h-full transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]"
+                >
+                  <div className="h-full p-6">
                     <h3 className="text-lg font-semibold text-foreground">
                       {svc.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted">{svc.body}</p>
                   </div>
-                </div>
+                </BorderGlow>
               </Reveal>
             ))}
           </div>
