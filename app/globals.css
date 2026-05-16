@@ -50,6 +50,23 @@ body {
   }
 }
 
+@keyframes reels-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.reels-track {
+  contain: layout paint style;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 .neon-card {
   position: relative;
   overflow: hidden;

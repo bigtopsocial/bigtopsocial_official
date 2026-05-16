@@ -4,6 +4,8 @@ import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
+import { ReelsCarousel } from "@/components/home/ReelsCarousel";
+import { PostStageSlider } from "@/components/home/PostStageSlider";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { blogListing } from "@/lib/content/blog";
 import {
@@ -131,7 +133,7 @@ export function HomeSections() {
   <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
 </section>
 
-<section className="relative py-20 sm:py-24">
+<section className="relative bg-[#050505] py-20 sm:py-24">
   {/* ✅ BLEND: reinforces the black at the very top of this section */}
   <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
 
@@ -180,30 +182,29 @@ export function HomeSections() {
       </p>
     </Reveal>
 
-    <div className="mt-12 grid gap-4 sm:grid-cols-2">
+    <div className="mt-12 w-full overflow-x-hidden lg:overflow-visible">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:min-w-[920px] lg:grid-cols-4">
       {stats.map((s, idx) => (
         <Reveal key={s.numeral} delay={idx * 0.05}>
-          <BorderGlow
-            {...homeCardGlow}
-            className="h-full transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.02]"
-          >
-            <div className="flex h-full flex-col justify-between p-6 sm:p-7">
+          <div className="aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 p-6 backdrop-blur-xl sm:p-7">
+            <div className="flex h-full flex-col justify-between">
               <div className="flex items-start justify-between gap-4">
-                <span className="text-sm text-foreground">{s.numeral}</span>
-                <span className="text-right text-xs text-muted">{s.label}</span>
+                <span className="text-sm text-foreground/95">{s.numeral}</span>
+                <span className="text-right text-xs text-foreground/60">{s.label}</span>
               </div>
               <div className="mt-10 flex items-end gap-1">
                 <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
                   {s.value}
                 </span>
-                <span className="pb-1 text-lg font-semibold text-muted">
+                <span className="pb-1 text-lg font-semibold text-foreground/70">
                   {s.suffix}
                 </span>
               </div>
             </div>
-          </BorderGlow>
+          </div>
         </Reveal>
       ))}
+      </div>
     </div>
   </Container>
 </section>
@@ -289,6 +290,10 @@ export function HomeSections() {
         </Container>
       </section>
 
+      <ReelsCarousel />
+
+      <PostStageSlider />
+
       <section className="py-20 sm:py-24">
         <Container>
           <div className="grid gap-10  lg:items-start">
@@ -364,7 +369,7 @@ export function HomeSections() {
                   className="mx-auto aspect-square w-full max-w-[300px] rounded-[25px]"
                 >
                   <figure className="relative flex h-full flex-col overflow-hidden rounded-[inherit] p-6">
-                    {t.bgImage ? (
+                    {"bgImage" in t ? (
                       <Image
                         src={t.bgImage}
                         alt={`${t.name} testimonial background`}
