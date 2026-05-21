@@ -101,7 +101,7 @@ export function HomeSections() {
                   className="flex items-center gap-8 px-6"
                   style={{
                     width: 'max-content',
-                    animation: 'scroll-right 10s linear infinite'
+                    animation: 'scroll-right 32s linear infinite'
                   }}
                 >
                   {[...clientLogos, ...clientLogos].map((logo, idx) => (
