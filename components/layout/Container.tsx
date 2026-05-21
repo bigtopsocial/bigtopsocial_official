@@ -9,7 +9,7 @@ export function Container({
 }) {
   return (
     <div
-      className={["mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8", className]
+      className={["mx-auto w-[92%] max-w-[1440px]", className]
         .filter(Boolean)
         .join(" ")}
     >

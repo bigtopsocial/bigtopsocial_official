@@ -138,6 +138,35 @@ body {
   z-index: 1;
 }
 
+/* How We Work — editorial timeline */
+.how-we-work-timeline {
+  --timeline-left: minmax(160px, 1fr);
+  --timeline-center: 48px;
+  --timeline-right: minmax(0, 2.25fr);
+}
+
+.how-we-work-step {
+  padding-bottom: clamp(5rem, 12vw, 9rem);
+}
+
+.how-we-work-step:last-child {
+  padding-bottom: 0;
+}
+
+.how-we-work-step__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .how-we-work-step__grid {
+    grid-template-columns: var(--timeline-left) var(--timeline-center) var(--timeline-right);
+    column-gap: 0;
+  }
+}
+
 @keyframes neon-border-glow {
   0% {
     background-position: 0% 50%;

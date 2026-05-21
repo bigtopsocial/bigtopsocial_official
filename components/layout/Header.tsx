@@ -42,7 +42,7 @@ export function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 bg-transparent border-white/[0.06] backdrop-blur-xl transition-transform duration-300 ease-out ${visible ? "translate-y-0" : "-translate-y-full"}`}>
-      <div className="mx-auto flex h-[72px] max-w-content items-center justify-between px-5 sm:h-[80px] sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[72px] w-[92%] max-w-[1440px] items-center justify-between sm:h-[80px]">
         <Link href="/" className="flex items-center text-foreground">
           <span className="text-xl font-semibold tracking-[0.05em] uppercase text-white">
             BIGTOPSOCIAL

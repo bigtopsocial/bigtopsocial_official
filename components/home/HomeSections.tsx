@@ -5,6 +5,7 @@ import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
+import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
 import { ReelsCarousel } from "@/components/home/ReelsCarousel";
 import { PostStageSlider } from "@/components/home/PostStageSlider";
 import { WobbleCard } from "@/components/ui/wobble-card";
@@ -12,7 +13,6 @@ import { blogListing } from "@/lib/content/blog";
 import {
   homeBlogTeasers,
   pricingPlans,
-  processSteps,
   services,
   stats,
   testimonials,
@@ -60,89 +60,89 @@ export function HomeSections() {
   return (
     <>
       <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-[76px] sm:pt-[84px] lg:pt-[88px]">
-  <div className="pointer-events-none absolute inset-0">
-    <video
-      className="absolute inset-0 h-full w-full object-cover object-center"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-hidden
-    >
-      <source src="/herovideo2.mp4" type="video/mp4" />
-    </video>
-    <div className="absolute inset-0 bg-black/15" />
-  </div>
-
-  <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
-    <Container className="relative text-center">
-      <Reveal>
-        <Stars />
-        <p className="mt-3 text-sm text-foreground/80">
-          5.0 rating · Helped over 100+ businesses
-        </p>
-        <h1 className="mt-10 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
-          Elevating brands
-        </h1>
-        <h1 className="mt-1 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
-          Forward, Faster
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
-          We help ambitious brands scale with performance marketing, creative
-          strategy, and conversion-focused campaigns.
-        </p>
-        <Link
-          href="/contact"
-          className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm text-background transition hover:bg-foreground/90"
-        >
-          Book a Consultation
-        </Link>
-      </Reveal>
-
-      <Reveal delay={0.08} className="mt-14">
-        <p className="text-xs tracking-[0.28em] text-white/80">
-          Trusted by startups, scaleups & global brands
-        </p>
-        <div className="mt-10 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-          <div
-            className="flex items-center gap-8 px-6"
-            style={{
-              width: 'max-content',
-              animation: 'scroll-right 25s linear infinite'
-            }}
+        <div className="pointer-events-none absolute inset-0">
+          <video
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden
           >
-            {[...clientLogos, ...clientLogos].map((logo, idx) => (
-              <div
-                key={`${logo}-${idx}`}
-                className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
-              >
-                <img
-                  src={logo}
-                  alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
-                  className="h-20 w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
+            <source src="/herovideo2.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/15" />
         </div>
-      </Reveal>
-    </Container>
-  </div>
 
-  {/* ✅ BLEND: fades hero into black below */}
-  <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
-</section>
+        <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
+          <Container className="relative text-center">
+            <Reveal>
+              <Stars />
+              <p className="mt-3 text-sm text-foreground/80">
+                5.0 rating · Helped over 100+ businesses
+              </p>
+              <h1 className="mt-10 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+                Elevating brands
+              </h1>
+              <h1 className="mt-1 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+                Forward, Faster
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
+                We help ambitious brands scale with performance marketing, creative
+                strategy, and conversion-focused campaigns.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm text-background transition hover:bg-foreground/90"
+              >
+                Book a Consultation
+              </Link>
+            </Reveal>
 
-<section className="relative bg-[#050505] py-20 sm:py-24">
-  {/* ✅ BLEND: reinforces the black at the very top of this section */}
-  <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
+            <Reveal delay={0.08} className="mt-14">
+              <p className="text-xs tracking-[0.28em] text-white/80">
+                Trusted by startups, scaleups & global brands
+              </p>
+              <div className="mt-10 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+                <div
+                  className="flex items-center gap-8 px-6"
+                  style={{
+                    width: 'max-content',
+                    animation: 'scroll-right 25s linear infinite'
+                  }}
+                >
+                  {[...clientLogos, ...clientLogos].map((logo, idx) => (
+                    <div
+                      key={`${logo}-${idx}`}
+                      className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
+                    >
+                      <img
+                        src={logo}
+                        alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
+                        className="h-20 w-auto object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </Container>
+        </div>
 
-  <Container>
-    <Reveal>
-<Link
-  href="/about"
-  className="
+        {/* ✅ BLEND: fades hero into black below */}
+        <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
+      </section>
+
+      <section className="relative bg-[#050505] py-20 sm:py-24">
+        {/* ✅ BLEND: reinforces the black at the very top of this section */}
+        <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
+
+        <Container>
+          <Reveal>
+            <Link
+              href="/about"
+              className="
   mb-10
     relative -top-10 left-1/2 z-40
     inline-flex -translate-x-1/2
@@ -169,44 +169,44 @@ export function HomeSections() {
     before:to-transparent
     before:content-['']
   "
->
-  About
-</Link>
-      <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl text-center mx-auto">
-        We make brands memorable
-      </h2>
-      <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted text-center mx-auto">
-        We blend strategy & creativity to help brands grow, connect, & stand
-        out with content that drives real engagement.
-      </p>
-    </Reveal>
+            >
+              About
+            </Link>
+            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl text-center mx-auto">
+              We make brands memorable
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted text-center mx-auto">
+              We blend strategy & creativity to help brands grow, connect, & stand
+              out with content that drives real engagement.
+            </p>
+          </Reveal>
 
-    <div className="mt-12 w-full overflow-x-hidden lg:overflow-visible">
-      <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:min-w-[920px] lg:grid-cols-4">
-      {stats.map((s, idx) => (
-        <Reveal key={s.numeral} delay={idx * 0.05}>
-          <div className="aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 p-6 backdrop-blur-xl sm:p-7">
-            <div className="flex h-full flex-col justify-between">
-              <div className="flex items-start justify-between gap-4">
-                <span className="text-sm text-foreground/95">{s.numeral}</span>
-                <span className="text-right text-xs text-foreground/60">{s.label}</span>
-              </div>
-              <div className="mt-10 flex items-end gap-1">
-                <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                  {s.value}
-                </span>
-                <span className="pb-1 text-lg font-semibold text-foreground/70">
-                  {s.suffix}
-                </span>
-              </div>
+          <div className="mt-12 w-full overflow-x-hidden lg:overflow-visible">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:min-w-[920px] lg:grid-cols-4">
+              {stats.map((s, idx) => (
+                <Reveal key={s.numeral} delay={idx * 0.05}>
+                  <div className="aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 p-6 backdrop-blur-xl sm:p-7">
+                    <div className="flex h-full flex-col justify-between">
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-sm text-foreground/95">{s.numeral}</span>
+                        <span className="text-right text-xs text-foreground/60">{s.label}</span>
+                      </div>
+                      <div className="mt-10 flex items-end gap-1">
+                        <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                          {s.value}
+                        </span>
+                        <span className="pb-1 text-lg font-semibold text-foreground/70">
+                          {s.suffix}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
-        </Reveal>
-      ))}
-      </div>
-    </div>
-  </Container>
-</section>
+        </Container>
+      </section>
 
       <section className="py-20 sm:py-24">
         <Container>
@@ -227,18 +227,6 @@ export function HomeSections() {
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
                 <div className="group relative overflow-hidden aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
-                  {"bgImage" in svc && svc.bgImage ? (
-                    <>
-                      <Image
-                        src={svc.bgImage}
-                        alt={svc.title}
-                        fill
-                        className="object-cover opacity-20 transition-opacity duration-500 group-hover:opacity-35"
-                        sizes="(max-width: 768px) 100vw, 300px"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                    </>
-                  ) : null}
                   <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-7">
                     <h3 className="text-lg text-foreground">
                       {svc.title}
@@ -254,143 +242,191 @@ export function HomeSections() {
         </Container>
       </section>
 
-<section className="relative py-20 sm:py-24">
-      <Container>
-          <Reveal className="text-center flex flex-col items-center">
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-              How We Work?
-            </div>
-            <h2 className="mt-10 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto">
-              Our proven growth process
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              We blend strategy, creativity, and data to design campaigns that grab
-              attention, foster engagement, and drive tangible results.
-            </p>
-          </Reveal>
-
-          {/* Master SVG definitions for premium gradients */}
-          <svg className="absolute w-0 h-0 invisible">
-            <defs>
-              <linearGradient id="arrow-grad-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.15)" />
-                <stop offset="40%" stopColor="rgba(255, 255, 255, 0.45)" />
-                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.95)" />
-              </linearGradient>
-              <linearGradient id="arrow-grad-vert" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.15)" />
-                <stop offset="40%" stopColor="rgba(255, 255, 255, 0.45)" />
-                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.95)" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-16 lg:gap-y-16">
-            {processSteps.map((step, idx) => (
-              <Reveal key={step.title} delay={idx * 0.06} className="relative">
-                <div className="group relative overflow-hidden aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 p-6 backdrop-blur-xl sm:p-7 transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
-                  <div className="flex h-full flex-col justify-between">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="text-xs font-semibold tracking-wider text-foreground/40 font-mono">
-                        0{idx + 1}
-                      </span>
-                    </div>
-                    <div className="mt-auto">
-                      <h3 className="text-base font-medium text-foreground sm:text-lg">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-xs leading-relaxed text-white/60">
-                        {step.body}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Horizontal Arrow (Desktop only) */}
-                {idx < 3 && (
-                  <div className="pointer-events-none absolute left-full top-1/2 -translate-y-1/2 w-16 lg:w-[64px] hidden lg:flex items-center justify-center z-20">
-                    <svg className="w-12 h-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.35)] transition-all duration-500 group-hover:scale-x-110 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]" viewBox="0 0 48 24" fill="url(#arrow-grad-horiz)">
-                      <path d="M0 10h36v-4l8 6-8 6v-4H0z" />
-                    </svg>
-                  </div>
-                )}
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-10">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
-            >
-              Book an Appointment
-            </Link>
-          </Reveal>
-        </Container>
-      </section>
+      <HowWeWorkTimeline />
 
       <ReelsCarousel />
 
       <PostStageSlider />
 
       <section className="py-24 sm:py-32">
-        <Container>
-          <div className="flex justify-center text-center">
-            <Reveal className="max-w-2xl flex flex-col items-center">
-              <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-                Portfolio
-              </div>
-              <h2 className="mt-10 text-4xl tracking-tight text-foreground sm:text-5xl mx-auto">
-                The selected projects
-              </h2>
-              <p className="mx-auto mt-5 text-lg leading-relaxed text-muted">
-                Discover our selected projects, highlighting partnerships with
-                forward-thinking clients in various sectors.
-              </p>
-            </Reveal>
-          </div>
+  <Container>
+    {/* Heading */}
+    <div className="flex justify-center text-center">
+      <Reveal className="max-w-2xl flex flex-col items-center">
+        <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+          Portfolio
+        </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
-            {projectTeasers.slice(0, 3).map((p, idx) => {
-              // Make every 3rd item span full width to create an asymmetric editorial feel
-              const isLarge = idx % 3 === 0;
+        <h2 className="mt-10 text-4xl tracking-tight text-foreground sm:text-5xl">
+          The selected projects
+        </h2>
 
-              return (
-                <Reveal 
-                  key={p.slug} 
-                  delay={idx * 0.05}
-                  className={isLarge ? "sm:col-span-2" : ""}
-                >
-                  <Link 
-                    href={`/project/${p.slug}`} 
-                    className="group flex h-full flex-col overflow-hidden rounded-[20px] bg-[#111111] transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:scale-[1.02]"
-                  >
-                    <div className={`relative w-full overflow-hidden ${isLarge ? "aspect-[4/3] sm:aspect-[21/9]" : "aspect-[4/3]"}`}>
-                      <Image
-                        src={p.image}
-                        alt={p.alt}
-                        fill
-                        className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:scale-[1.05]"
-                        sizes={isLarge ? "100vw" : "(max-width: 640px) 100vw, 50vw"}
-                      />
-                    </div>
-                    
-                    {/* Text Block Below Image */}
-                    <div className="flex flex-1 items-center justify-between p-6 sm:px-8 sm:py-6">
-                      <h3 className="text-[17px] tracking-tight text-white">
-                        {p.title}
-                      </h3>
-                      <p className="text-[13px] text-white/60">
+        <p className="mt-5 text-lg leading-relaxed text-muted">
+          Discover our selected projects, highlighting partnerships with
+          forward-thinking clients in various sectors.
+        </p>
+      </Reveal>
+    </div>
+
+    {/* Bento Grid */}
+    <div className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[320px]">
+      {projectTeasers.slice(0, 5).map((p, idx) => {
+        // Bento Layout Pattern
+        const layouts = [
+          "lg:col-span-8 lg:row-span-2", // hero
+          "lg:col-span-4", // small
+          "lg:col-span-4 lg:row-span-2", // tall
+          "lg:col-span-4", // small
+          "lg:col-span-8", // wide
+        ];
+
+        return (
+          <Reveal
+            key={p.slug}
+            delay={idx * 0.05}
+            className={layouts[idx]}
+          >
+            <Link
+              href={`/project/${p.slug}`}
+              className="
+                group
+                relative
+                flex
+                h-full
+                overflow-hidden
+                rounded-[28px]
+                border
+                border-white/10
+                bg-gradient-to-b
+                from-white/[0.05]
+                to-white/[0.02]
+                backdrop-blur-xl
+                transition-all
+                duration-500
+                will-change-transform
+                hover:-translate-y-1
+                hover:border-white/20
+              "
+            >
+              {/* Image */}
+              <div className="relative h-full w-full overflow-hidden">
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  fill
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-700
+                    ease-out
+                    group-hover:scale-[1.03]
+                  "
+                  sizes="100vw"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                {/* Top Tags */}
+                <div className="absolute left-5 top-5 z-20 flex gap-2">
+                  <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-wide text-white backdrop-blur-md">
+                    SaaS
+                  </span>
+
+                  <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-wide text-white backdrop-blur-md">
+                    Branding
+                  </span>
+                </div>
+
+                {/* Bottom Content */}
+                <div className="absolute bottom-0 left-0 z-20 w-full p-6 sm:p-8">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <p className="mb-3 text-sm text-white/60">
                         {p.year}
                       </p>
+
+                      <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
+                        {p.title}
+                      </h3>
+
+                      <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
+                        Building immersive digital experiences with scalable
+                        modern architecture and refined visual systems.
+                      </p>
                     </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
+
+                    {/* Arrow */}
+                    <div
+                      className="
+                        flex
+                        h-12
+                        w-12
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-white/10
+                        bg-white/10
+                        text-white
+                        backdrop-blur-md
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                      "
+                    >
+                      →
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </Reveal>
+        );
+      })}
+
+      {/* Stats Card */}
+      <Reveal className="lg:col-span-4">
+        <div
+          className="
+            relative
+            flex
+            h-full
+            flex-col
+            justify-between
+            overflow-hidden
+            rounded-[28px]
+            border
+            border-white/10
+            bg-gradient-to-b
+            from-white/[0.05]
+            to-white/[0.02]
+            p-8
+            backdrop-blur-xl
+          "
+        >
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-white/50">
+              Projects Delivered
+            </p>
+
+            <h3 className="mt-6 text-6xl font-semibold tracking-tight text-white">
+              48+
+            </h3>
           </div>
-        </Container>
-      </section>
+
+          <p className="max-w-xs text-sm leading-relaxed text-white/70">
+            Helping startups and brands craft scalable, high-performing digital
+            products with modern user experiences.
+          </p>
+
+          {/* Ambient Glow */}
+          <div className="absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-sky-500/20 blur-3xl" />
+        </div>
+      </Reveal>
+    </div>
+  </Container>
+</section>
 
       <section className="py-20 sm:py-24">
         <Container>
@@ -408,62 +444,101 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
-            {testimonials.map((t, idx) => (
-              <Reveal key={t.name} delay={idx * 0.04}>
-                <div className="group relative overflow-hidden aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
-                  <figure className="relative flex h-full flex-col p-6 sm:p-7">
-                    {"bgImage" in t && t.bgImage ? (
-                      <>
-                        <Image
-                          src={t.bgImage}
-                          alt={`${t.name} testimonial background`}
-                          fill
-                          className="object-cover opacity-20 transition-opacity duration-500 group-hover:opacity-35"
-                          sizes="(max-width: 768px) 100vw, 300px"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-transparent" />
-                      </>
-                    ) : null}
-                    <blockquote className="relative z-10 text-sm leading-relaxed text-foreground [text-shadow:0_2px_10px_rgba(0,0,0,0.7)]">
-                      "{t.quote}"
-                    </blockquote>
-                    <figcaption className="relative z-10 mt-auto pt-6 text-left text-sm [text-shadow:0_2px_10px_rgba(0,0,0,0.7)]">
-                      <div className="text-foreground font-semibold">{t.name}</div>
-                      <div className="text-foreground/80 text-xs mt-0.5">{t.role}</div>
-                    </figcaption>
-                  </figure>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </Container>
+
+        <div className="relative mt-16 flex flex-col gap-6 overflow-hidden py-10">
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 z-30 w-24 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
+              maskImage:
+                "linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-30 w-24 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
+              maskImage:
+                "linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
+            }}
+            aria-hidden
+          />
+
+          {/* Row 1 - scrolling left */}
+          <div className="flex w-max" style={{ animation: 'reels-marquee 150s linear infinite' }}>
+             <div className="flex gap-6 px-3">
+               {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
+                  <div key={`row1-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-[#161618] p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
+                    <div className="flex gap-1 text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="flex-1 text-[15px] leading-relaxed text-white/90">
+                      "{t.quote}"
+                    </p>
+                    <div className="mt-2 flex items-center gap-3">
+                      {t.bgImage ? (
+                        <Image src={t.bgImage} alt={t.name} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+                      ) : (
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-sm font-bold text-white">
+                          {t.name.charAt(0)}
+                        </div>
+                      )}
+                      <div className="flex flex-col">
+                        <span className="text-sm font-semibold text-white">{t.name}</span>
+                        <span className="text-xs text-white/50">{t.role}</span>
+                      </div>
+                    </div>
+                  </div>
+               ))}
+             </div>
+          </div>
+          
+          {/* Row 2 - scrolling right */}
+          <div className="flex w-max" style={{ animation: 'scroll-right 160s linear infinite' }}>
+             <div className="flex gap-6 px-3">
+               {[...testimonials, ...testimonials, ...testimonials, ...testimonials].reverse().map((t, idx) => (
+                  <div key={`row2-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-[#161618] p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
+                    <div className="flex gap-1 text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="flex-1 text-[15px] leading-relaxed text-white/90">
+                      "{t.quote}"
+                    </p>
+                    <div className="mt-2 flex items-center gap-3">
+                      {t.bgImage ? (
+                        <Image src={t.bgImage} alt={t.name} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+                      ) : (
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-sm font-bold text-white">
+                          {t.name.charAt(0)}
+                        </div>
+                      )}
+                      <div className="flex flex-col">
+                        <span className="text-sm font-semibold text-white">{t.name}</span>
+                        <span className="text-xs text-white/50">{t.role}</span>
+                      </div>
+                    </div>
+                  </div>
+               ))}
+             </div>
+          </div>
+        </div>
       </section>
 
-      {/* Brands Grid Section */}
-      <section className="relative overflow-hidden py-28 sm:py-36 bg-[#030303]">
-        {/* 1. Vintage CSS Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem] pointer-events-none" />
-        
-        {/* 2. Warm Amber Vintage Radial Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255, 255, 255, 0.08)_0%,transparent_70%)] pointer-events-none" />
-        
-        {/* 3. Cinema Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(3,3,3,0.85)_100%)] pointer-events-none" />
-        
-        {/* 4. Film Grain/Noise Overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.035] pointer-events-none" 
-          style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")` 
-          }} 
-        />
-
-        {/* 5. Edge Blending Gradients */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#030303] via-[#030303]/90 to-transparent pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#030303] via-[#030303]/90 to-transparent pointer-events-none z-10" />
-
-        <Container className="relative z-10">
+      {/* Brands / Partners Section */}
+      <section className="py-28 sm:py-36">
+        <Container>
           <Reveal className="text-center flex flex-col items-center">
             <div className="mb-20 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
               Partners
@@ -477,12 +552,12 @@ export function HomeSections() {
           </Reveal>
 
           {/* Clean Floating Grid Layout */}
-          <div className="mt-20 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-x-8 gap-y-12 sm:gap-y-16 items-center justify-center">
+          <div className="mt-20 mb-20 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-x-8 gap-y-12 sm:gap-y-16 items-center justify-center">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
               return (
-                <Reveal 
-                  key={logoPath} 
+                <Reveal
+                  key={logoPath}
                   delay={idx * 0.02}
                   className="flex items-center justify-center p-4 transition-all duration-300"
                 >
@@ -505,22 +580,22 @@ export function HomeSections() {
       <section className="py-20 sm:py-24">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-              FAQ
-            </div>
-            <h2 className="mt-10 text-4xl tracking-tight text-foreground sm:text-5xl">
-              Everything you’re wondering
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Have questions? Find clear, concise answers to the most common inquiries
-              below.
-            </p>
-          </Reveal>
+            <Reveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+                FAQ
+              </div>
+              <h2 className="mt-10 text-4xl tracking-tight text-foreground sm:text-5xl">
+                Everything you’re wondering
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+                Have questions? Find clear, concise answers to the most common inquiries
+                below.
+              </p>
+            </Reveal>
 
-          <Reveal className="lg:ml-auto lg:w-full lg:max-w-4xl">
-            <FaqAccordion />
-          </Reveal>
+            <Reveal className="lg:ml-auto lg:w-full lg:max-w-4xl">
+              <FaqAccordion />
+            </Reveal>
           </div>
         </Container>
         <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-full bg-gradient-to-b from-transparent to-[#000]" />
