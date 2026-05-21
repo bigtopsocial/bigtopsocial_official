@@ -11,6 +11,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         muted: "var(--muted)",
+        card: "var(--card)",
         surface: "var(--surface)",
         "surface-elevated": "var(--surface-elevated)",
         accent: "var(--accent)",

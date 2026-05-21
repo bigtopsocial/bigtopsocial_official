@@ -16,7 +16,7 @@ export function FaqAccordion() {
   const shouldAnimate = isHydrated && !reduce;
 
   return (
-    <div className="divide-y divide-white/[0.08] rounded-card border border-white/[0.08] bg-surface/40">
+    <div className="divide-y divide-white/[0.08] rounded-card border border-white/[0.08] bg-card">
       {faqItems.map((item, i) => {
         const isOpen = open === i;
         return (

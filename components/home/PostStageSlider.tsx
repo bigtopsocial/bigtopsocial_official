@@ -135,7 +135,7 @@ function StageCard({
       }}
       onClick={onClick}
     >
-      <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0b0b0b] shadow-[0_30px_80px_rgba(0,0,0,0.55)] pointer-events-none">
+      <div className="overflow-hidden rounded-[30px] border border-white/10 bg-card shadow-[0_30px_80px_rgba(0,0,0,0.55)] pointer-events-none">
         <div className="relative aspect-[4/5]">
           {card.type === "Image" ? (
             <Image

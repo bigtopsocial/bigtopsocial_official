@@ -15,30 +15,41 @@
 */
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ffffff;
   --muted: #888888;
   --foreground-soft: #cccccc;
-  --surface: #121212;
-  --surface-elevated: #171717;
+  --card: #BFB6A40D;
+  --surface: #BFB6A40D;
+  --surface-elevated: #BFB6A40D;
   --border-subtle: #262626;
   --accent: #ff8c33;
   --accent-soft: rgba(255, 140, 51, 0.35);
 }
 
-html {
-  scroll-behavior: smooth;
+html.lenis {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 @keyframes scroll-right {
@@ -77,7 +88,7 @@ body {
   overflow: hidden;
   border-radius: 20px;
 
-  background: rgba(0, 0, 0, 0.65);
+  background: #BFB6A40D;
 
 
  box-shadow:
@@ -136,35 +147,6 @@ body {
 .neon-card > * {
   position: relative;
   z-index: 1;
-}
-
-/* How We Work — editorial timeline */
-.how-we-work-timeline {
-  --timeline-left: minmax(160px, 1fr);
-  --timeline-center: 48px;
-  --timeline-right: minmax(0, 2.25fr);
-}
-
-.how-we-work-step {
-  padding-bottom: clamp(5rem, 12vw, 9rem);
-}
-
-.how-we-work-step:last-child {
-  padding-bottom: 0;
-}
-
-.how-we-work-step__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  align-items: start;
-}
-
-@media (min-width: 1024px) {
-  .how-we-work-step__grid {
-    grid-template-columns: var(--timeline-left) var(--timeline-center) var(--timeline-right);
-    column-gap: 0;
-  }
 }
 
 @keyframes neon-border-glow {

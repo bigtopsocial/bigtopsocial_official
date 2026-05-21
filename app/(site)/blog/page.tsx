@@ -33,7 +33,7 @@ export default function BlogIndexPage() {
             <Reveal key={post.slug} delay={idx * 0.05}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block rounded-card border border-white/[0.08] bg-surface/50 p-6 transition hover:border-white/20"
+                className="group block rounded-card border border-white/[0.08] bg-card p-6 transition hover:border-white/20"
               >
                 <h2 className="text-lg font-semibold text-foreground group-hover:text-foreground/90">
                   {post.title}

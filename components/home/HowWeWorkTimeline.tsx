@@ -1,192 +1,599 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  useLayoutEffect,
+  useRef,
+  useState,
+  type MutableRefObject,
+} from "react";
+
 import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
 import { processSteps } from "@/lib/content/home";
 
-function StepIcon({ index }: { index: number }) {
-  const icons = [
-    <svg key="0" viewBox="0 0 48 40" fill="none" className="h-10 w-12" aria-hidden>
-      <rect x="4" y="6" width="32" height="28" rx="3" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
-      <path d="M10 14h18M10 20h14M10 26h10" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M36 28l6-4v8l-6-4z" fill="#a855f7" />
-    </svg>,
-    <svg key="1" viewBox="0 0 48 40" fill="none" className="h-10 w-12" aria-hidden>
-      <rect x="6" y="8" width="30" height="24" rx="2" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
-      <path d="M6 8h30M6 32h30" stroke="#3b82f6" strokeWidth="1.5" />
-      <circle cx="6" cy="8" r="2.5" fill="#3b82f6" />
-      <circle cx="36" cy="8" r="2.5" fill="#3b82f6" />
-      <circle cx="6" cy="32" r="2.5" fill="#3b82f6" />
-      <circle cx="36" cy="32" r="2.5" fill="#3b82f6" />
-    </svg>,
-    <svg key="2" viewBox="0 0 48 40" fill="none" className="h-10 w-12" aria-hidden>
-      <rect x="4" y="6" width="14" height="14" rx="2" fill="#a855f7" fillOpacity="0.5" />
-      <rect x="20" y="6" width="14" height="14" rx="2" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
-      <rect x="4" y="22" width="14" height="12" rx="2" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
-      <rect x="20" y="22" width="14" height="12" rx="2" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
-    </svg>,
-    <svg key="3" viewBox="0 0 48 40" fill="none" className="h-10 w-12" aria-hidden>
-      <rect x="4" y="10" width="28" height="4" rx="1" fill="#3b82f6" fillOpacity="0.7" />
-      <rect x="4" y="18" width="22" height="4" rx="1" fill="#ef4444" fillOpacity="0.7" />
-      <rect x="4" y="26" width="18" height="4" rx="1" fill="currentColor" fillOpacity="0.2" />
-      <path d="M36 12l4 2-4 2M36 20l4 2-4 2M36 28l4 2-4 2" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>,
-  ];
+gsap.registerPlugin(ScrollTrigger);
 
-  return <div className="text-foreground/60">{icons[index]}</div>;
+const CARD_GAP_PX = 20;
+const CARD_HEIGHT_PX = 345;
+
+const PIN_START_OFFSET = 88;
+
+const POST_PANEL_WIDTH_PX = 530;
+const POST_PANEL_HEIGHT_PX = 535;
+
+const easeOutCubic = (t: number) =>
+  1 - Math.pow(1 - t, 3);
+
+function CardIcon({ index }: { index: number }) {
+  const className = "h-5 w-5 text-white/90";
+
+  switch (index) {
+    case 0:
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
+          <circle cx="11" cy="11" r="6" />
+          <path d="M16 16l5 5" strokeLinecap="round" />
+        </svg>
+      );
+
+    case 1:
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
+          <path
+            d="M4 7h16M4 12h16M4 17h10"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+
+    case 2:
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
+          <path
+            d="M12 4l8 4-8 4-8-4 8-4z"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4 12l8 4 8-4M4 16l8 4 8-4"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+
+    default:
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
+          <path
+            d="M4 18V8M9 18V5M14 18v-7M19 18V10"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+  }
 }
 
-function TimelineMarker({ color }: { color: string }) {
+function ProcessCard({
+  step,
+  index,
+  distance,
+  cardRef,
+  showMobileImage = true,
+  compact = false,
+}: {
+  step: (typeof processSteps)[number];
+  index: number;
+  distance: number;
+  cardRef?: (el: HTMLElement | null) => void;
+  showMobileImage?: boolean;
+  compact?: boolean;
+}) {
+  const normalizedDistance = Math.min(distance, 3);
+
+  const scale = 1 - normalizedDistance * 0.08;
+
+  const opacity = 1 - normalizedDistance * 0.22;
+
+  const translateX = normalizedDistance * -22;
+
+  const rotateY = normalizedDistance * 5;
+
+  const blur = normalizedDistance * 0.8;
+
   return (
-    <div
-      className="relative z-10 h-2.5 w-2.5 rotate-45 rounded-[1px] ring-4 ring-[#050505]"
-      style={{ backgroundColor: color }}
-      aria-hidden
-    />
+    <article
+      ref={cardRef}
+      className={[
+        "process-card relative flex shrink-0 flex-col justify-between rounded-[24px] border p-6 sm:p-10",
+        compact ? "" : "min-h-[280px]",
+        distance === 0
+          ? "border-white/[0.12] bg-[#BFB6A40D]"
+          : "border-white/[0.05] bg-[#BFB6A40D]",
+      ].join(" ")}
+      style={{
+        height: compact ? CARD_HEIGHT_PX : undefined,
+
+        transform: `
+          translate3d(${translateX}px,0,0)
+          scale(${scale})
+          rotateY(${rotateY}deg)
+        `,
+
+        opacity: Math.max(opacity, 0.15),
+
+        filter: `blur(${blur}px)`,
+
+        zIndex: 20 - normalizedDistance,
+
+        transformStyle: "preserve-3d",
+
+        willChange:
+          "transform, opacity, filter",
+
+        backfaceVisibility: "hidden",
+
+        transition:
+          "transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 700ms ease, border-color 700ms ease, filter 700ms ease",
+      }}
+    >
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-black/50">
+        <CardIcon index={index} />
+      </div>
+
+      <div
+        className={[
+          "max-w-md",
+          compact ? "mt-auto pt-6" : "mt-8",
+        ].join(" ")}
+      >
+        <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+          {step.title}
+        </h3>
+
+        <div className="mt-4 h-px w-full max-w-[12rem] bg-white/15" />
+
+        <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+          {step.description}
+        </p>
+      </div>
+
+      {showMobileImage && (
+        <div className="relative mx-auto mt-6 aspect-[4/5] w-full max-w-[25rem] overflow-hidden rounded-2xl border border-white/[0.06] bg-black lg:hidden">
+          <Image
+            src={step.image}
+            alt={step.imageAlt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
+        </div>
+      )}
+    </article>
   );
 }
 
-function StepPreview({
-  layout,
-  images,
+function VisualPanel({
+  activeIndex,
+  imageRefs,
 }: {
-  layout: (typeof processSteps)[number]["layout"];
-  images?: readonly { src: string; alt: string }[];
+  activeIndex: number;
+  imageRefs: MutableRefObject<(HTMLDivElement | null)[]>;
 }) {
-  if (!images?.length) return null;
-
-  if (layout === "grid") {
-    return (
-      <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
-        {images.map((img) => (
-          <div
-            key={img.src}
-            className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/[0.06] bg-[#111] shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 45vw, 280px"
-            />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <div
-      className={`mt-10 overflow-hidden rounded-xl border border-white/[0.06] bg-[#111] shadow-[0_12px_48px_rgba(0,0,0,0.5)] ${
-        layout === "wide" ? "aspect-[16/9] sm:aspect-[21/9]" : "aspect-[16/10]"
-      }`}
+      className="relative shrink-0 overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#BFB6A40D] shadow-[0_32px_100px_rgba(0,0,0,0.55)]"
+      style={{
+        width: POST_PANEL_WIDTH_PX,
+        height: POST_PANEL_HEIGHT_PX,
+      }}
     >
-      <div className="relative h-full w-full">
-        <Image
-          src={images[0].src}
-          alt={images[0].alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 640px"
-        />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+
+      {processSteps.map((step, index) => (
+        <div
+          key={step.step}
+          ref={(el) => {
+            imageRefs.current[index] = el;
+          }}
+          className="absolute inset-0 will-change-[opacity,transform]"
+        >
+          <Image
+            src={step.image}
+            alt={step.imageAlt}
+            fill
+            className="object-cover"
+            sizes="530px"
+            priority={index === 0}
+          />
+        </div>
+      ))}
+
+      <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/[0.06] bg-black/50 px-6 py-4 backdrop-blur-md">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/40">
+          Step {processSteps[activeIndex].step}
+        </p>
+
+        <p className="mt-1 text-sm font-medium text-white/90">
+          {processSteps[activeIndex].title}
+        </p>
       </div>
     </div>
   );
 }
 
-function TimelineStep({
-  step,
-  index,
-}: {
-  step: (typeof processSteps)[number];
-  index: number;
-}) {
-  return (
-    <Reveal delay={index * 0.08} className="how-we-work-step">
-      <div className="how-we-work-step__grid">
-        {/* Left: faded label + icon */}
-        <div className="how-we-work-step__left hidden lg:flex lg:flex-col lg:items-end lg:pr-8">
-          <span className="select-none text-[clamp(2.5rem,4vw,3.75rem)] font-sm uppercase leading-none tracking-[0.12em] text-foreground/[0.07]">
-            Step {step.step}
-          </span>
-          <div className="mt-6">
-            <StepIcon index={index} />
-          </div>
-        </div>
-
-        {/* Center: diamond marker on spine */}
-        <div className="how-we-work-step__center relative hidden lg:flex lg:items-start lg:justify-center lg:pt-3">
-          <TimelineMarker color={step.markerColor} />
-        </div>
-
-        {/* Right: content */}
-        <div className="how-we-work-step__right min-w-0">
-          <div className="mb-6 flex items-center gap-4 lg:hidden">
-            <TimelineMarker color={step.markerColor} />
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-foreground/30">
-              Step {step.step}
-            </span>
-          </div>
-
-          <p className="text-sm leading-relaxed text-muted">{step.body}</p>
-          <h3 className="mt-4 max-w-xl text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-            {step.heading}
-          </h3>
-
-          {step.cta && (
-            <div className="mt-8">
-              <Link
-                href={step.cta.href}
-                className="inline-flex h-11 items-center justify-center rounded-full bg-foreground px-8 text-sm font-medium text-background transition hover:bg-foreground/90"
-              >
-                {step.cta.label}
-              </Link>
-              {step.cta.caption && (
-                <p className="mt-3 text-xs text-muted">{step.cta.caption}</p>
-              )}
-            </div>
-          )}
-
-          <StepPreview layout={step.layout} images={step.images} />
-        </div>
-      </div>
-    </Reveal>
-  );
-}
-
 export function HowWeWorkTimeline() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const pinWrapRef = useRef<HTMLDivElement>(null);
+
+  const leftViewportRef = useRef<HTMLDivElement>(null);
+
+  const leftTrackRef = useRef<HTMLDivElement>(null);
+
+  const desktopCardRefs = useRef<(HTMLElement | null)[]>([]);
+
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const mobileCardRefs = useRef<(HTMLElement | null)[]>([]);
+
+  const [activeIndex, setActiveIndex] =
+    useState(0);
+
+  const activeIndexRef = useRef(0);
+
+  const setActive = (index: number) => {
+    if (index === activeIndexRef.current)
+      return;
+
+    activeIndexRef.current = index;
+
+    setActiveIndex(index);
+  };
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const imageLayers = imageRefs.current.filter(
+      Boolean
+    ) as HTMLDivElement[];
+
+    imageLayers.forEach((el, i) => {
+      gsap.set(el, {
+        opacity: i === 0 ? 1 : 0,
+        scale: i === 0 ? 1 : 1.05,
+        zIndex: i === 0 ? 2 : 1,
+      });
+    });
+
+    const animateImages = (index: number) => {
+      imageLayers.forEach((el, i) => {
+        gsap.to(el, {
+          opacity: i === index ? 1 : 0,
+
+          scale: i === index ? 1 : 1.05,
+
+          zIndex: i === index ? 2 : 1,
+
+          duration: 0.9,
+
+          ease: "power3.out",
+
+          overwrite: "auto",
+
+          force3D: true,
+        });
+      });
+    };
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px)", () => {
+        const pinWrap = pinWrapRef.current;
+
+        const viewport =
+          leftViewportRef.current;
+
+        const track = leftTrackRef.current;
+
+        if (!pinWrap || !viewport || !track)
+          return;
+
+        let currentY = 0;
+
+        let targetY = 0;
+
+        let rafId = 0;
+
+        const cards =
+          desktopCardRefs.current.filter(
+            Boolean
+          );
+
+        const viewportCenter =
+          viewport.clientHeight / 2;
+
+        const getScrollDistance = () =>
+          Math.max(
+            0,
+            track.scrollHeight -
+              viewport.clientHeight
+          );
+
+        const getClosestCard = (y: number) => {
+          let closestIndex = 0;
+
+          let closestDistance =
+            Number.POSITIVE_INFINITY;
+
+          cards.forEach((card, index) => {
+            const el = card as HTMLElement;
+
+            const cardCenter =
+              el.offsetTop +
+              el.offsetHeight / 2;
+
+            const distance = Math.abs(
+              cardCenter -
+                (-y + viewportCenter)
+            );
+
+            if (
+              distance < closestDistance
+            ) {
+              closestDistance = distance;
+
+              closestIndex = index;
+            }
+          });
+
+          return closestIndex;
+        };
+
+        const getLockedYForCard = (
+          index: number
+        ) => {
+          const card =
+            cards[index] as HTMLElement;
+
+          const cardCenter =
+            card.offsetTop +
+            card.offsetHeight / 2;
+
+          return -(
+            cardCenter - viewportCenter
+          );
+        };
+
+        const update = () => {
+          currentY +=
+            (targetY - currentY) * 0.04;
+
+          gsap.set(track, {
+            y: currentY,
+            force3D: true,
+          });
+
+          const active =
+            getClosestCard(currentY);
+
+          if (
+            active !==
+            activeIndexRef.current
+          ) {
+            setActive(active);
+
+            animateImages(active);
+          }
+
+          rafId =
+            requestAnimationFrame(update);
+        };
+
+        update();
+
+        const pinTrigger =
+          ScrollTrigger.create({
+            trigger: pinWrap,
+
+            start: `top ${PIN_START_OFFSET}px`,
+
+            end: () =>
+              `+=${getScrollDistance()}`,
+
+            pin: true,
+
+            pinSpacing: true,
+
+            scrub: 1,
+
+            anticipatePin: 1,
+
+            invalidateOnRefresh: true,
+
+            onUpdate: (self) => {
+              const progressY =
+                -getScrollDistance() *
+                self.progress;
+
+              if (self.progress < 0.04) {
+                const nearestIndex =
+                  getClosestCard(
+                    progressY
+                  );
+
+                const lockedY =
+                  getLockedYForCard(
+                    nearestIndex
+                  );
+
+                const t =
+                  self.progress / 0.04;
+
+                targetY =
+                  lockedY *
+                  easeOutCubic(t);
+              } else {
+                const nearestIndex =
+                  getClosestCard(
+                    progressY
+                  );
+
+                targetY =
+                  getLockedYForCard(
+                    nearestIndex
+                  );
+              }
+            },
+          });
+
+        setActive(0);
+
+        animateImages(0);
+
+        ScrollTrigger.refresh();
+
+        return () => {
+          cancelAnimationFrame(rafId);
+
+          pinTrigger.kill();
+        };
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="how-we-work relative overflow-hidden py-24 sm:py-32 lg:py-40">
-      <Container>
-        <Reveal className="flex flex-col items-center text-center">
-          <div className="relative mb-10 inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-            How We Work?
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden py-24 sm:py-32 lg:py-12"
+    >
+      {/* Desktop */}
+      <div
+        ref={pinWrapRef}
+        className="hidden lg:block"
+      >
+        <Container>
+          <div className="grid grid-cols-[minmax(520px,620px)_530px] items-start justify-center gap-24 xl:gap-48">
+            {/* LEFT */}
+            <div
+              ref={leftViewportRef}
+              className="relative h-[calc(100vh-8rem)] min-h-[680px] overflow-hidden"
+              style={{
+                perspective: "1600px",
+
+                perspectiveOrigin:
+                  "center center",
+              }}
+            >
+              <div
+                ref={leftTrackRef}
+                className="will-change-transform"
+              >
+                {/* HEADING */}
+                <div className="max-w-[620px]">
+                  <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-sm text-foreground/90 backdrop-blur-md">
+                    How We Work?
+                  </div>
+
+                  <h2 className="mt-16 max-w-[430px] text-[4rem] leading-[0.95] tracking-tight text-foreground">
+                    Our proven growth process
+                  </h2>
+
+                  <p className="mt-8 max-w-[520px] text-base leading-snug text-muted">
+                    We blend strategy,
+                    creativity, and data to
+                    design campaigns that grab
+                    attention, foster
+                    engagement, and drive
+                    tangible results.
+                  </p>
+                </div>
+
+                {/* CARDS */}
+                <div
+                  className="mt-12 flex flex-col"
+                  style={{
+                    gap: `${CARD_GAP_PX}px`,
+
+                    paddingTop: "20vh",
+
+                    paddingBottom: "55vh",
+                  }}
+                >
+                  {processSteps.map(
+                    (step, index) => (
+                      <ProcessCard
+                        key={step.step}
+                        step={step}
+                        index={index}
+                        distance={Math.abs(
+                          activeIndex - index
+                        )}
+                        showMobileImage={
+                          false
+                        }
+                        compact
+                        cardRef={(el) => {
+                          desktopCardRefs.current[
+                            index
+                          ] = el;
+                        }}
+                      />
+                    )
+                  )}
+
+                  <div className="shrink-0 pt-2">
+                    <Link
+                      href="/contact"
+                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
+                    >
+                      Book an Appointment
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT */}
+            <div className="flex h-[calc(100vh-8rem)] items-center">
+              <VisualPanel
+                activeIndex={activeIndex}
+                imageRefs={imageRefs}
+              />
+            </div>
           </div>
-          <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
-            Our proven growth process
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted">
-            We blend strategy, creativity, and data to design campaigns that grab
-            attention, foster engagement, and drive tangible results.
-          </p>
-        </Reveal>
-
-        <div className="how-we-work-timeline relative mx-auto mt-20 max-w-5xl lg:mt-28">
-          <div
-            className="pointer-events-none absolute bottom-12 top-0 hidden w-px bg-gradient-to-b from-white/[0.04] via-white/[0.14] to-white/[0.04] lg:block lg:left-[calc(28%+24px)]"
-            aria-hidden
-          />
-
-          <div className="flex flex-col">
-            {processSteps.map((step, idx) => (
-              <TimelineStep key={step.step} step={step} index={idx} />
-            ))}
-          </div>
-
-
-        </div>
-      </Container>
+        </Container>
+      </div>
     </section>
   );
 }

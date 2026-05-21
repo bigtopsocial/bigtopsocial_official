@@ -134,7 +134,7 @@ export function CaseStudyView({ project }: { project: Project }) {
               <Link
                 key={c.slug}
                 href={`/project/${c.slug}`}
-                className="rounded-card border border-white/[0.08] bg-surface/50 px-5 py-4 text-sm font-semibold text-foreground transition hover:border-white/20"
+                className="rounded-card border border-white/[0.08] bg-card px-5 py-4 text-sm font-semibold text-foreground transition hover:border-white/20"
               >
                 {c.title}
               </Link>

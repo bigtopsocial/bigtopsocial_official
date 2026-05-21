@@ -34,7 +34,7 @@ export default function ProjectIndexPage() {
             <Reveal key={p.slug} delay={idx * 0.06}>
               <Link
                 href={`/project/${p.slug}`}
-                className="group block overflow-hidden rounded-card border border-white/[0.08] bg-surface/40 transition hover:border-white/20"
+                className="group block overflow-hidden rounded-card border border-white/[0.08] bg-card transition hover:border-white/20"
               >
                 <div className="relative aspect-[16/11] overflow-hidden">
                   <Image

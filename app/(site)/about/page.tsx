@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const aboutCardGlow = {
-  backgroundColor: "rgba(18, 18, 18, 0.72)",
+  backgroundColor: "#BFB6A40D",
   borderRadius: 12,
   glowRadius: 34,
   edgeSensitivity: 18,

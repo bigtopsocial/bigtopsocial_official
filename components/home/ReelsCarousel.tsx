@@ -109,7 +109,7 @@ function ReelCard({ card }: { card: typeof reelCards[number] }) {
           overflow-hidden
           rounded-2xl
           border border-white/10
-          bg-[#0b0b0b]
+          bg-card
 
           shadow-[0_18px_45px_rgba(0,0,0,0.42)]
 

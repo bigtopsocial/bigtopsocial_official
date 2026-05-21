@@ -106,64 +106,46 @@ export const services = [
   },
 ] as const;
 
-export type ProcessStepLayout = "intro" | "grid" | "wide" | "dashboard";
-
 export type ProcessStep = {
   step: string;
   title: string;
-  heading: string;
-  body: string;
-  layout: ProcessStepLayout;
-  markerColor: string;
-  images?: readonly { src: string; alt: string }[];
-  cta?: { label: string; href: string; caption?: string };
+  description: string;
+  image: string;
+  imageAlt: string;
 };
 
 export const processSteps: readonly ProcessStep[] = [
   {
     step: "01",
     title: "Discover",
-    heading: "Start with clarity — book a free strategy call",
-    body: "We audit your brand, audience, and competitors to uncover gaps, opportunities, and quick wins that others miss. No fluff — just a focused roadmap you can act on immediately.",
-    layout: "intro",
-    markerColor: "#a855f7",
-    cta: {
-      label: "Book a Consultation",
-      href: "/contact",
-      caption: "No commitment required",
-    },
+    description:
+      "We audit your brand, audience, and competitors to uncover gaps, opportunities, and quick wins that others miss — then shape a focused roadmap you can act on immediately.",
+    image: "/post contents/1.png",
+    imageAlt: "Brand discovery and strategy session",
   },
   {
     step: "02",
     title: "Strategize",
-    heading: "Turn insights into a focused growth roadmap",
-    body: "We translate discovery into a data-driven plan with clear channels, messaging, and measurable goals. Every creative and campaign decision maps back to outcomes that matter.",
-    layout: "grid",
-    markerColor: "#3b82f6",
-    images: [
-      { src: "/post contents/1.png", alt: "Social content preview" },
-      { src: "/post contents/2.png", alt: "Brand campaign preview" },
-      { src: "/post contents/3.png", alt: "Creative asset preview" },
-      { src: "/post contents/4.png", alt: "Performance creative preview" },
-    ],
+    description:
+      "We translate insights into a data-driven plan with clear channels, messaging, and measurable goals so every creative decision maps to outcomes that matter.",
+    image: "/post contents/3.png",
+    imageAlt: "Growth strategy and creative planning",
   },
   {
     step: "03",
     title: "Execute",
-    heading: "Launch campaigns built to perform from day one",
-    body: "We ship creative, paid media, and content systems with continuous testing baked in. Performance is tracked daily so we can optimize toward stronger engagement and conversion.",
-    layout: "wide",
-    markerColor: "#ec4899",
-    images: [{ src: "/post contents/5.png", alt: "Campaign execution dashboard" }],
+    description:
+      "We launch campaigns, content systems, and paid media with continuous testing baked in — optimizing daily toward stronger engagement and conversion.",
+    image: "/post contents/5.png",
+    imageAlt: "Campaign execution and performance tracking",
   },
   {
     step: "04",
     title: "Scale",
-    heading: "Double down on what works — sustainably",
-    body: "We invest more into winning channels, refine creative, and expand reach while protecting ROI. The result is compounding growth, not one-off spikes.",
-    layout: "dashboard",
-    markerColor: "#ef4444",
-    images: [{ src: "/post contents/6.png", alt: "Growth analytics overview" }],
+    description:
+      "We double down on what works, refine creative, and expand reach while protecting ROI — compounding growth instead of one-off spikes.",
+    image: "/post contents/6.png",
+    imageAlt: "Analytics dashboard and scalable growth",
   },
 ] as const;
 

@@ -31,21 +31,13 @@ function Stars() {
   );
 }
 
-const clientLogos = [
-  "/clients-logos/Eklim.png",
-  "/clients-logos/NTSW.png",
-  "/clients-logos/artynx.png",
-  "/clients-logos/chromotics.png",
-  "/clients-logos/home of creativity.png",
-  "/clients-logos/hridayam paints.png",
-  "/clients-logos/kat expert.png",
-  "/clients-logos/nagpur heights.png",
-  "/clients-logos/nisargs.png",
-  "/clients-logos/swadesi drp.png",
-];
+const clientLogos = Array.from(
+  { length: 38 },
+  (_, i) => `/clients-logos/${i + 1}.png`
+);
 
 const homeCardGlow = {
-  backgroundColor: "rgba(18, 18, 18, 0.72)",
+  backgroundColor: "#BFB6A40D",
   borderRadius: 12,
   glowRadius: 34,
   edgeSensitivity: 18,
@@ -104,12 +96,12 @@ export function HomeSections() {
               <p className="text-xs tracking-[0.28em] text-white/80">
                 Trusted by startups, scaleups & global brands
               </p>
-              <div className="mt-10 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+              <div className="mt-20 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <div
                   className="flex items-center gap-8 px-6"
                   style={{
                     width: 'max-content',
-                    animation: 'scroll-right 25s linear infinite'
+                    animation: 'scroll-right 10s linear infinite'
                   }}
                 >
                   {[...clientLogos, ...clientLogos].map((logo, idx) => (
@@ -134,7 +126,7 @@ export function HomeSections() {
         <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
       </section>
 
-      <section className="relative bg-[#050505] py-20 sm:py-24">
+      <section className="relative bg-background py-20 sm:py-24">
         {/* ✅ BLEND: reinforces the black at the very top of this section */}
         <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
 
@@ -143,7 +135,7 @@ export function HomeSections() {
             <Link
               href="/about"
               className="
-  mb-10
+    mb-10
     relative -top-10 left-1/2 z-40
     inline-flex -translate-x-1/2
     overflow-hidden
@@ -181,29 +173,42 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-12 w-full overflow-x-hidden lg:overflow-visible">
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:min-w-[920px] lg:grid-cols-4">
+          <div className="mt-12 grid w-full items-stretch justify-center gap-4 lg:grid-cols-[minmax(280px,420px)_minmax(280px,750px)] lg:gap-8">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {stats.map((s, idx) => (
-                <Reveal key={s.numeral} delay={idx * 0.05}>
-                  <div className="aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 p-6 backdrop-blur-xl sm:p-7">
+                <Reveal key={s.numeral} delay={idx * 0.05} className="h-full">
+                  <div className="aspect-square h-full rounded-[8px] border border-white/10 bg-white/[0.045] p-4 backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.07] sm:p-5">
                     <div className="flex h-full flex-col justify-between">
-                      <div className="flex items-start justify-between gap-4">
-                        <span className="text-sm text-foreground/95">{s.numeral}</span>
-                        <span className="text-right text-xs text-foreground/60">{s.label}</span>
-                      </div>
-                      <div className="mt-10 flex items-end gap-1">
-                        <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="text-sm font-semibold text-foreground/95">
                           {s.value}
-                        </span>
-                        <span className="pb-1 text-lg font-semibold text-foreground/70">
                           {s.suffix}
                         </span>
+                        <span className="text-right text-[10px] uppercase tracking-[0.16em] text-foreground/45">
+                          {s.numeral}
+                        </span>
                       </div>
+                      <span className="max-w-[9rem] text-sm leading-tight text-foreground/75">
+                        {s.label}
+                      </span>
                     </div>
                   </div>
                 </Reveal>
               ))}
             </div>
+
+            <Reveal delay={0.12} className="min-h-[260px] lg:h-full">
+              <div className="relative h-full min-h-[260px] overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.045] sm:min-h-[340px] lg:min-h-0">
+                <Image
+                  src="/image.png"
+                  alt="Bigtop Social creative team workspace"
+                  fill
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover object-center"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -226,7 +231,7 @@ export function HomeSections() {
           <div className="mt-12 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="group relative overflow-hidden aspect-square h-full rounded-[18px] border border-gray-400/20 bg-[#0b0b0b]/85 transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
+                <div className="group relative overflow-hidden aspect-square h-full rounded-[18px] border border-gray-400/20 bg-card transform-gpu transition-transform duration-500 ease-out motion-safe:hover:scale-[1.03]">
                   <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-7">
                     <h3 className="text-lg text-foreground">
                       {svc.title}
@@ -297,10 +302,7 @@ export function HomeSections() {
                 rounded-[28px]
                 border
                 border-white/10
-                bg-gradient-to-b
-                from-white/[0.05]
-                to-white/[0.02]
-                backdrop-blur-xl
+                bg-card
                 transition-all
                 duration-500
                 will-change-transform
@@ -398,11 +400,8 @@ export function HomeSections() {
             rounded-[28px]
             border
             border-white/10
-            bg-gradient-to-b
-            from-white/[0.05]
-            to-white/[0.02]
+            bg-card
             p-8
-            backdrop-blur-xl
           "
         >
           <div>
@@ -448,7 +447,7 @@ export function HomeSections() {
 
         <div className="relative mt-16 flex flex-col gap-6 overflow-hidden py-10">
           <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-30 w-24 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
+            className="pointer-events-none absolute inset-y-0 left-0 z-30 w-24 bg-gradient-to-r from-black via-black/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
             style={{
               WebkitMaskImage:
                 "linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
@@ -458,7 +457,7 @@ export function HomeSections() {
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-y-0 right-0 z-30 w-24 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
+            className="pointer-events-none absolute inset-y-0 right-0 z-30 w-24 bg-gradient-to-l from-black via-black/80 to-transparent backdrop-blur-[16px] sm:w-48 lg:w-72"
             style={{
               WebkitMaskImage:
                 "linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
@@ -472,7 +471,7 @@ export function HomeSections() {
           <div className="flex w-max" style={{ animation: 'reels-marquee 150s linear infinite' }}>
              <div className="flex gap-6 px-3">
                {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
-                  <div key={`row1-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-[#161618] p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
+                  <div key={`row1-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-card p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
                     <div className="flex gap-1 text-yellow-400">
                       {[...Array(5)].map((_, i) => (
                         <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -505,7 +504,7 @@ export function HomeSections() {
           <div className="flex w-max" style={{ animation: 'scroll-right 160s linear infinite' }}>
              <div className="flex gap-6 px-3">
                {[...testimonials, ...testimonials, ...testimonials, ...testimonials].reverse().map((t, idx) => (
-                  <div key={`row2-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-[#161618] p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
+                  <div key={`row2-${idx}`} className="flex w-[320px] sm:w-[400px] flex-col gap-5 rounded-2xl bg-card p-6 sm:p-8 text-left transition-transform duration-300 hover:scale-[1.02] border border-white/[0.05] shadow-2xl shrink-0">
                     <div className="flex gap-1 text-yellow-400">
                       {[...Array(5)].map((_, i) => (
                         <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -537,8 +536,21 @@ export function HomeSections() {
       </section>
 
       {/* Brands / Partners Section */}
-      <section className="py-28 sm:py-36">
-        <Container>
+      <section className="relative overflow-hidden py-28 sm:py-36">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+            maskImage:
+              "linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.46)_72%,rgba(0,0,0,0.82)_100%)]" />
+        <Container className="relative z-10">
           <Reveal className="text-center flex flex-col items-center">
             <div className="mb-20 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
               Partners
@@ -552,7 +564,7 @@ export function HomeSections() {
           </Reveal>
 
           {/* Clean Floating Grid Layout */}
-          <div className="mt-20 mb-20 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-x-8 gap-y-12 sm:gap-y-16 items-center justify-center">
+          <div className="mt-20 mb-20 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-x-4 gap-y-6 sm:gap-y-8 items-center justify-center">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
               return (
@@ -565,9 +577,9 @@ export function HomeSections() {
                     <Image
                       src={logoPath}
                       alt={name}
-                      width={220}
-                      height={110}
-                      className="max-h-16 sm:max-h-20 w-auto object-contain transition-all duration-300 filter brightness-0 invert sepia-[0.25] opacity-50 hover:opacity-100 hover:sepia-0 hover:scale-[1.05]"
+                      width={340}
+                      height={170}
+                      className="max-h-28 sm:max-h-32 w-auto object-contain transition-all duration-300 filter brightness-0 invert sepia-[0.25] opacity-50 hover:opacity-100 hover:sepia-0 hover:scale-[1.05]"
                     />
                   </div>
                 </Reveal>
