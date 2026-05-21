@@ -146,23 +146,23 @@ export function HomeSections() {
               </p>
               <div className="mt-20 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <div
-                  className="flex items-center gap-3 px-6"
+                  className="flex items-center gap-8 px-6"
                   style={{
                     width: 'max-content',
-                    animation: 'scroll-right 32s linear infinite'
+                    animation: 'scroll-right 45s linear infinite'
                   }}
                 >
                   {[...clientLogos, ...clientLogos].map((logo, idx) => (
                     <div
                       key={`${logo}-${idx}`}
-                      className="flex h-14 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-16"
+                      className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
                     >
                       <img
                         src={logo}
                         alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
                         loading="lazy"
                         decoding="async"
-                        className="h-32 w-auto object-contain"
+                        className="h-20 w-auto object-contain"
                       />
                     </div>
                   ))}
@@ -588,7 +588,7 @@ export function HomeSections() {
       </section>
 
       {/* Brands / Partners Section */}
-      <section className="relative flex min-h-screen items-center overflow-hidden py-16 sm:py-20 lg:py-24">
+      <section className="relative flex min-h-screen items-center overflow-hidden py-16 sm:py-20 lg:py-24 mb-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
