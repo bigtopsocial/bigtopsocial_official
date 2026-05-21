@@ -48,6 +48,54 @@ const homeCardGlow = {
   colors: ["#071a3d", "#40bbff", "#ffffff"],
 };
 
+const partnerLogoPlacements = [
+  "sm:left-[1%] sm:top-[5%] sm:w-[96px] lg:w-[124px] sm:-rotate-3",
+  "sm:left-[13%] sm:top-[1%] sm:w-[78px] lg:w-[108px] sm:rotate-2",
+  "sm:left-[27%] sm:top-[8%] sm:w-[112px] lg:w-[142px] sm:-rotate-1",
+  "sm:left-[44%] sm:top-[2%] sm:w-[86px] lg:w-[118px] sm:rotate-3",
+  "sm:left-[58%] sm:top-[9%] sm:w-[118px] lg:w-[150px] sm:-rotate-2",
+  "sm:left-[76%] sm:top-[3%] sm:w-[92px] lg:w-[124px] sm:rotate-1",
+  "sm:left-[89%] sm:top-[11%] sm:w-[74px] lg:w-[104px] sm:-rotate-3",
+  "sm:left-[6%] sm:top-[22%] sm:w-[122px] lg:w-[156px] sm:rotate-2",
+  "sm:left-[22%] sm:top-[25%] sm:w-[86px] lg:w-[116px] sm:-rotate-2",
+  "sm:left-[36%] sm:top-[19%] sm:w-[102px] lg:w-[136px] sm:rotate-1",
+  "sm:left-[50%] sm:top-[28%] sm:w-[80px] lg:w-[112px] sm:-rotate-1",
+  "sm:left-[64%] sm:top-[22%] sm:w-[124px] lg:w-[158px] sm:rotate-3",
+  "sm:left-[82%] sm:top-[28%] sm:w-[96px] lg:w-[130px] sm:-rotate-2",
+  "sm:left-[0%] sm:top-[41%] sm:w-[84px] lg:w-[114px] sm:rotate-1",
+  "sm:left-[15%] sm:top-[43%] sm:w-[114px] lg:w-[148px] sm:-rotate-3",
+  "sm:left-[31%] sm:top-[39%] sm:w-[76px] lg:w-[106px] sm:rotate-2",
+  "sm:left-[43%] sm:top-[47%] sm:w-[122px] lg:w-[158px] sm:-rotate-1",
+  "sm:left-[61%] sm:top-[42%] sm:w-[88px] lg:w-[120px] sm:rotate-3",
+  "sm:left-[73%] sm:top-[48%] sm:w-[116px] lg:w-[148px] sm:-rotate-2",
+  "sm:left-[91%] sm:top-[43%] sm:w-[72px] lg:w-[100px] sm:rotate-1",
+  "sm:left-[7%] sm:top-[61%] sm:w-[98px] lg:w-[132px] sm:-rotate-1",
+  "sm:left-[20%] sm:top-[66%] sm:w-[80px] lg:w-[112px] sm:rotate-3",
+  "sm:left-[34%] sm:top-[58%] sm:w-[120px] lg:w-[154px] sm:-rotate-2",
+  "sm:left-[52%] sm:top-[64%] sm:w-[92px] lg:w-[124px] sm:rotate-2",
+  "sm:left-[66%] sm:top-[60%] sm:w-[108px] lg:w-[142px] sm:-rotate-3",
+  "sm:left-[83%] sm:top-[67%] sm:w-[82px] lg:w-[112px] sm:rotate-1",
+  "sm:left-[2%] sm:top-[81%] sm:w-[112px] lg:w-[144px] sm:rotate-2",
+  "sm:left-[18%] sm:top-[85%] sm:w-[74px] lg:w-[102px] sm:-rotate-2",
+  "sm:left-[30%] sm:top-[78%] sm:w-[96px] lg:w-[128px] sm:rotate-1",
+  "sm:left-[45%] sm:top-[84%] sm:w-[118px] lg:w-[152px] sm:-rotate-3",
+  "sm:left-[63%] sm:top-[79%] sm:w-[82px] lg:w-[114px] sm:rotate-3",
+  "sm:left-[75%] sm:top-[86%] sm:w-[108px] lg:w-[140px] sm:-rotate-1",
+  "sm:left-[90%] sm:top-[80%] sm:w-[76px] lg:w-[104px] sm:rotate-2",
+  "sm:left-[10%] sm:top-[52%] sm:w-[70px] lg:w-[98px] sm:-rotate-2",
+  "sm:left-[25%] sm:top-[51%] sm:w-[92px] lg:w-[122px] sm:rotate-1",
+  "sm:left-[56%] sm:top-[52%] sm:w-[72px] lg:w-[100px] sm:-rotate-1",
+  "sm:left-[70%] sm:top-[12%] sm:w-[80px] lg:w-[110px] sm:rotate-2",
+  "sm:left-[39%] sm:top-[71%] sm:w-[78px] lg:w-[108px] sm:-rotate-2",
+] as const;
+
+const partnerLogoSizes = [
+  "h-28 sm:h-36 lg:h-44",
+  "h-32 sm:h-40 lg:h-48",
+  "h-36 sm:h-44 lg:h-52",
+  "h-40 sm:h-48 lg:h-56",
+] as const;
+
 export function HomeSections() {
   return (
     <>
@@ -98,7 +146,7 @@ export function HomeSections() {
               </p>
               <div className="mt-20 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <div
-                  className="flex items-center gap-8 px-6"
+                  className="flex items-center gap-3 px-6"
                   style={{
                     width: 'max-content',
                     animation: 'scroll-right 32s linear infinite'
@@ -107,14 +155,14 @@ export function HomeSections() {
                   {[...clientLogos, ...clientLogos].map((logo, idx) => (
                     <div
                       key={`${logo}-${idx}`}
-                      className="flex h-8 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-10"
+                      className="flex h-14 w-auto items-center justify-center opacity-80 transition duration-300 hover:opacity-100 sm:h-16"
                     >
                       <img
                         src={logo}
                         alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
                         loading="lazy"
                         decoding="async"
-                        className="h-20 w-auto object-contain"
+                        className="h-32 w-auto object-contain"
                       />
                     </div>
                   ))}
@@ -540,7 +588,7 @@ export function HomeSections() {
       </section>
 
       {/* Brands / Partners Section */}
-      <section className="relative overflow-hidden py-28 sm:py-36">
+      <section className="relative flex min-h-screen items-center overflow-hidden py-16 sm:py-20 lg:py-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
@@ -556,10 +604,10 @@ export function HomeSections() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.46)_72%,rgba(0,0,0,0.82)_100%)]" />
         <Container className="relative z-10">
           <Reveal className="text-center flex flex-col items-center">
-            <div className="mb-20 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <div className="mb-8 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md sm:mb-10">
               Partners
             </div>
-            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto">
+            <h2 className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto">
               Trusted by ambitious brands
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted">
@@ -568,23 +616,26 @@ export function HomeSections() {
           </Reveal>
 
           {/* Clean Floating Grid Layout */}
-          <div className="mt-20 mb-20 grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-x-4 gap-y-6 sm:gap-y-8 items-center justify-center">
+          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-6 gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
+              const placement = partnerLogoPlacements[idx % partnerLogoPlacements.length];
+              const size = partnerLogoSizes[idx % partnerLogoSizes.length];
+
               return (
                 <Reveal
                   key={logoPath}
                   delay={idx * 0.02}
-                  className="flex items-center justify-center p-4 transition-all duration-300"
+                  className={`flex items-center justify-center p-2 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
                 >
-                  <div className="relative w-full h-full flex items-center justify-center transition-all duration-300">
+                  <div className={`relative flex w-full items-center justify-center ${size}`}>
                     <Image
                       src={logoPath}
                       alt={name}
                       width={340}
                       height={170}
                       loading="lazy"
-                      className="max-h-28 sm:max-h-32 w-auto object-contain transition-all duration-300 filter brightness-0 invert sepia-[0.25] opacity-50 hover:opacity-100 hover:sepia-0 hover:scale-[1.05]"
+                      className="h-full w-auto max-w-none object-contain"
                     />
                   </div>
                 </Reveal>
