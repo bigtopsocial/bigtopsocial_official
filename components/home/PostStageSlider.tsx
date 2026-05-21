@@ -144,7 +144,7 @@ function StageCard({
               fill
               className="object-cover"
               sizes="(max-width:768px) 78vw, 24rem"
-              priority={isActive}
+              loading={isActive ? "eager" : "lazy"}
             />
           ) : (
             <video
@@ -153,7 +153,7 @@ function StageCard({
               muted
               loop
               playsInline
-              preload="metadata"
+              preload={isActive ? "metadata" : "none"}
               aria-label={card.title}
             >
               <source src={card.src} type="video/mp4" />

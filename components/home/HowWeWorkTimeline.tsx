@@ -189,6 +189,7 @@ function ProcessCard({
             src={step.image}
             alt={step.imageAlt}
             fill
+            loading="lazy"
             className="object-cover"
             sizes="(max-width: 800px) 100vw, 50vw"
           />
@@ -229,7 +230,7 @@ function VisualPanel({
             fill
             className="object-cover"
             sizes="530px"
-            priority={index === 0}
+            loading="lazy"
           />
         </div>
       ))}

@@ -112,6 +112,8 @@ export function HomeSections() {
                       <img
                         src={logo}
                         alt={logo.replace("/clients-logos/", "").replace(/[-.]/g, " ")}
+                        loading="lazy"
+                        decoding="async"
                         className="h-20 w-auto object-contain"
                       />
                     </div>
@@ -203,6 +205,7 @@ export function HomeSections() {
                   src="/image.png"
                   alt="Bigtop Social creative team workspace"
                   fill
+                  loading="lazy"
                   sizes="(min-width: 1024px) 60vw, 100vw"
                   className="object-cover object-center"
                 />
@@ -316,6 +319,7 @@ export function HomeSections() {
                   src={p.image}
                   alt={p.alt}
                   fill
+                  loading="lazy"
                   className="
                     object-cover
                     transition-transform
@@ -484,7 +488,7 @@ export function HomeSections() {
                     </p>
                     <div className="mt-2 flex items-center gap-3">
                       {t.bgImage ? (
-                        <Image src={t.bgImage} alt={t.name} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+                        <Image src={t.bgImage} alt={t.name} width={40} height={40} loading="lazy" className="h-10 w-10 rounded-full object-cover" />
                       ) : (
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-sm font-bold text-white">
                           {t.name.charAt(0)}
@@ -517,7 +521,7 @@ export function HomeSections() {
                     </p>
                     <div className="mt-2 flex items-center gap-3">
                       {t.bgImage ? (
-                        <Image src={t.bgImage} alt={t.name} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+                        <Image src={t.bgImage} alt={t.name} width={40} height={40} loading="lazy" className="h-10 w-10 rounded-full object-cover" />
                       ) : (
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-sm font-bold text-white">
                           {t.name.charAt(0)}
@@ -579,6 +583,7 @@ export function HomeSections() {
                       alt={name}
                       width={340}
                       height={170}
+                      loading="lazy"
                       className="max-h-28 sm:max-h-32 w-auto object-contain transition-all duration-300 filter brightness-0 invert sepia-[0.25] opacity-50 hover:opacity-100 hover:sepia-0 hover:scale-[1.05]"
                     />
                   </div>

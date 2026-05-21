@@ -25,7 +25,14 @@ export const homeBlogTeasers = [
   },
 ] as const;
 
-export const testimonials = [
+type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  bgImage?: string;
+};
+
+export const testimonials: readonly Testimonial[] = [
   {
     quote:
       "Refined our brand & increased inbound leads by 70% in just a few months.",

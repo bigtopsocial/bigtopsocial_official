@@ -137,7 +137,7 @@ function ReelCard({ card }: { card: typeof reelCards[number] }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-label={card.title}
           disablePictureInPicture
           disableRemotePlayback

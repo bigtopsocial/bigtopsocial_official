@@ -24,7 +24,7 @@ export function Footer() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden
         >
           <source src="/herovideo2.mp4" type="video/mp4" />

@@ -41,6 +41,7 @@ export default function ProjectIndexPage() {
                     src={p.image}
                     alt={p.alt}
                     fill
+                    loading="lazy"
                     className="object-cover transition duration-700 motion-safe:group-hover:scale-[1.03]"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
