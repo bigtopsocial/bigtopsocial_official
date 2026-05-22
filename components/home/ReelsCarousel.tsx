@@ -1,249 +1,360 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
-import { Container } from "@/components/layout/Container";
-import { useEffect, useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  animate,
+  PanInfo,
+  useReducedMotion,
+} from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const reelCards = [
   {
-    title: "Campaign Reel",
-    caption: "Short-form narrative",
+    title: "Feature showcase",
+    caption: "Editorial campaign",
     src: "/reels/1.mp4",
   },
   {
-    title: "Brand Story",
-    caption: "Fast-cut brand story",
+    title: "Community highlight",
+    caption: "Real audience moments",
     src: "/reels/2.mp4",
   },
   {
-    title: "Product Focus",
-    caption: "Product-led motion",
+    title: "Brand reveal post",
+    caption: "Creative identity reveal",
     src: "/reels/3.mp4",
   },
   {
-    title: "BTS Edit",
-    caption: "Behind the scenes",
+    title: "Product teaser",
+    caption: "Launch-ready visuals",
     src: "/reels/4.mp4",
   },
   {
-    title: "Founder Vision",
-    caption: "Minimal social edit",
+    title: "Behind the scenes",
+    caption: "Studio process",
     src: "/reels/5.mp4",
   },
   {
-    title: "Highlight Reel",
-    caption: "Weekly highlights",
+    title: "Founder vision",
+    caption: "Story-driven messaging",
     src: "/reels/6.mp4",
   },
   {
-    title: "Motion Reel",
-    caption: "Motion graphics",
+    title: "Campaign launch",
+    caption: "High-converting creative",
     src: "/reels/7.mp4",
   },
   {
-    title: "Creative Cut",
-    caption: "Creative story",
+    title: "Creative direction",
+    caption: "Design-led storytelling",
     src: "/reels/8.mp4",
   },
   {
-    title: "Social Short",
-    caption: "Social media cut",
+    title: "Social campaign",
+    caption: "Scroll-stopping visuals",
     src: "/reels/9.mp4",
   },
 ] as const;
 
-function ReelCard({ card }: { card: typeof reelCards[number] }) {
+/* ------------------------------------------------ */
+/* CARD */
+/* ------------------------------------------------ */
+
+function ReelCard({
+  card,
+  isActive,
+}: {
+  card: (typeof reelCards)[number];
+  isActive: boolean;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
+
     if (!video) return;
 
-    // Use IntersectionObserver to play/pause video based on visibility
-    // This heavily optimizes performance by only playing videos that are in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Play when visible
-            video.play().catch(() => {
-              // Ignore play errors (e.g., auto-play prevented by browser policy)
-            });
-          } else {
-            // Pause when out of view to save resources
-            video.pause();
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "50px", // Pre-load/play slightly before entering the viewport
-        threshold: 0,
-      }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    if (isActive) {
+      video.play().catch(() => { });
+    } else {
+      video.pause();
+    }
+  }, [isActive]);
 
   return (
-    <article
+    <div
       className="
-        relative flex-none
-        w-[50vw]
-        max-w-[15rem]
-        sm:w-[14rem]
-        lg:w-[15rem]
-
-        transform-gpu
-        will-change-transform
+        relative
+        aspect-[9/16]
+        w-[320px]
+        overflow-hidden
+        rounded-[30px]
+        border border-white/10
+        bg-black
       "
     >
-      <div
-        className="
-          group/card
-          relative aspect-[9/16]
-          overflow-hidden
-          rounded-2xl
-          border border-white/10
-          bg-card
-
-          shadow-[0_18px_45px_rgba(0,0,0,0.42)]
-
-          transform-gpu
-          backface-hidden
-          will-change-transform
-
-          transition-transform
-          duration-300
-          ease-out
-
-          hover:scale-[1.02]
-        "
+      <video
+        ref={videoRef}
+        className="h-full w-full object-cover"
+        muted
+        loop
+        playsInline
+        preload="metadata"
       >
-        {/* VIDEO */}
-        <video
-          ref={videoRef}
-          className="
-            h-full w-full
-            object-cover
+        <source src={card.src} type="video/mp4" />
+      </video>
 
-            transform-gpu
-            backface-hidden
-          "
-          muted
-          loop
-          playsInline
-          preload="none"
-          aria-label={card.title}
-          disablePictureInPicture
-          disableRemotePlayback
-        >
-          <source src={card.src} type="video/mp4" />
-        </video>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-        {/* OVERLAY */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.88),rgba(0,0,0,0.08)_62%,rgba(0,0,0,0.12))]" />
+      <div className="absolute inset-x-0 bottom-0 p-6">
+        <p className="text-[11px] uppercase tracking-[0.28em] text-white/45">
+          Feed post
+        </p>
 
-        {/* CONTENT */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/55">
-            Reel
-          </p>
+        <h3 className="mt-2 text-[30px] font-medium leading-none text-white">
+          {card.title}
+        </h3>
 
-          <h3 className="mt-2 text-lg font-medium tracking-tight text-white">
-            {card.title}
-          </h3>
-
-          <p className="mt-1 text-sm leading-relaxed text-white/65">
-            {card.caption}
-          </p>
-        </div>
+        <p className="mt-2 text-sm text-white/60">
+          {card.caption}
+        </p>
       </div>
-    </article>
+    </div>
   );
 }
+
+/* ------------------------------------------------ */
+/* MAIN */
+/* ------------------------------------------------ */
 
 export function ReelsCarousel() {
   const reduceMotion = useReducedMotion();
 
-  // duplicate for seamless infinite loop
-  const loopedCards = [...reelCards, ...reelCards];
+  const [activeIndex, setActiveIndex] = useState(2);
+
+  const x = useMotionValue(0);
+
+  const total = reelCards.length;
+
+  const wrappedCards = useMemo(() => {
+    return [...reelCards];
+  }, []);
+
+  const next = () => {
+    setActiveIndex((prev) => (prev + 1) % total);
+  };
+
+  const prev = () => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  const handleDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+
+    if (offset < -80 || velocity < -500) {
+      next();
+    }
+
+    if (offset > 80 || velocity > 500) {
+      prev();
+    }
+
+    animate(x, 0, {
+      type: "spring",
+      stiffness: 260,
+      damping: 28,
+    });
+  };
+
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const interval = setInterval(() => {
+      next();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [reduceMotion]);
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24">
-      {/* Heading */}
-      <Container className="relative">
-        <div className="mx-auto max-w-3xl text-center flex flex-col items-center">
-          <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-            Reels
-          </div>
+    <section className="relative overflow-hidden bg-black py-0">
+      <div className="relative h-[760px] overflow-hidden">
+        {/* LEFT FADE */}
+        <div
+          className="
+            pointer-events-none
+            absolute inset-y-0 left-0 z-40
+            w-52
+            bg-gradient-to-r
+            from-black
+            via-black/90
+            to-transparent
+          "
+        />
 
-          <h2 className="mt-10 text-3xl tracking-tight text-white sm:text-4xl">
-            Short-form motion, built to loop
-          </h2>
+        {/* RIGHT FADE */}
+        <div
+          className="
+            pointer-events-none
+            absolute inset-y-0 right-0 z-40
+            w-52
+            bg-gradient-to-l
+            from-black
+            via-black/90
+            to-transparent
+          "
+        />
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/60">
-            A minimal horizontal reel strip for campaign cuts, product clips,
-            and founder stories.
-          </p>
+        {/* CENTER STAGE */}
+        <div
+          className="
+            absolute inset-0
+            flex items-center justify-center
+          "
+        >
+          <motion.div
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.08}
+            onDragEnd={handleDragEnd}
+            style={{ x }}
+            className="
+              relative
+              h-[680px]
+              w-full
+              cursor-grab
+              active:cursor-grabbing
+            "
+          >
+            {wrappedCards.map((card, index) => {
+              let offset = index - activeIndex;
+
+              if (offset > total / 2) offset -= total;
+              if (offset < -total / 2) offset += total;
+
+              const abs = Math.abs(offset);
+
+              const isActive = offset === 0;
+
+              const translateX = offset * 285;
+
+              const scale =
+                isActive
+                  ? 1
+                  : abs === 1
+                    ? 0.92
+                    : abs === 2
+                      ? 0.82
+                      : 0.72;
+
+              const translateY =
+                isActive
+                  ? 0
+                  : abs === 1
+                    ? -12
+                    : abs === 2
+                      ? -24
+                      : -36;
+
+              const opacity =
+                isActive
+                  ? 1
+                  : abs === 1
+                    ? 0.55
+                    : abs === 2
+                      ? 0.28
+                      : 0.1;
+
+              const blur =
+                abs >= 3
+                  ? 1.4
+                  : abs === 2
+                    ? 0.7
+                    : 0;
+
+              const brightness =
+                isActive
+                  ? 1
+                  : abs === 1
+                    ? 0.7
+                    : 0.42;
+
+              const zIndex = 100 - abs;
+
+              return (
+                <motion.div
+                  key={`${card.title}-${index}`}
+                  animate={{
+                    x: translateX,
+                    y: translateY,
+                    scale,
+                    opacity,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 24,
+                  }}
+                  style={{
+                    zIndex,
+                    filter: `
+                      blur(${blur}px)
+                      brightness(${brightness})
+                    `,
+                  }}
+                  className="
+                    absolute
+                    left-1/2 top-1/2
+                    will-change-transform
+                  "
+                >
+                  <div className="-translate-x-1/2 -translate-y-1/2">
+                    <motion.div
+                      whileHover={{
+                        scale: isActive ? 1.02 : scale + 0.02,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                      className="relative"
+                    >
+                      <ReelCard
+                        card={card}
+                        isActive={isActive}
+                      />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
-      </Container>
 
-      {/* Slider */}
-      <div className="relative mt-28 overflow-hidden max-w-[1600px] mx-auto">
-        {/* SMOOTH MASKED GRADIENT BLUR LEFT */}
-        <div 
-          className="pointer-events-none absolute inset-y-0 left-0 z-30 w-32 sm:w-96 bg-gradient-to-r from-black via-black/80 to-transparent backdrop-blur-[16px]" 
-          style={{
-            WebkitMaskImage: "linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
-            maskImage: "linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)"
-          }}
-        />
+        {/* FOOTER */}
+        <div
+          className="
+            absolute bottom-10 left-1/2 z-50
+            -translate-x-1/2
+            text-center
+          "
+        >
+          <p className="text-sm text-white/40">
+            Active:
+            <span className="ml-2 text-white/80">
+              {wrappedCards[activeIndex].title}
+            </span>
+          </p>
 
-        {/* SMOOTH MASKED GRADIENT BLUR RIGHT */}
-        <div 
-          className="pointer-events-none absolute inset-y-0 right-0 z-30 w-32 sm:w-96 bg-gradient-to-l from-black via-black/80 to-transparent backdrop-blur-[16px]" 
-          style={{
-            WebkitMaskImage: "linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)",
-            maskImage: "linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 100%)"
-          }}
-        />
-
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden px-4 sm:px-8">
-          <div className="group overflow-hidden">
-            <div
-              className={[
-                `
-                reels-track
-                flex w-max items-stretch
-                gap-6 lg:gap-8
-                py-2
-
-                transform-gpu
-                will-change-transform
-                backface-hidden
-              `,
-                reduceMotion
-                  ? ""
-                  : "motion-safe:animate-[reels-marquee_26s_linear_infinite] group-hover:[animation-play-state:paused]",
-              ].join(" ")}
-              style={{
-                /* We adjust the animation duration since there are more videos now. 
-                   Assuming each card takes ~18rem and we have 9 cards = 162rem per loop.
-                   Let's slow it down to 50s. */
-                animationDuration: reduceMotion ? undefined : "50s"
-              }}
-            >
-              {loopedCards.map((card, index) => (
-                <ReelCard key={`${card.title}-${index}`} card={card} />
-              ))}
-            </div>
-          </div>
+          <p className="mt-2 text-xs text-white/30">
+            Swipe, scroll, or click a card
+          </p>
         </div>
       </div>
     </section>

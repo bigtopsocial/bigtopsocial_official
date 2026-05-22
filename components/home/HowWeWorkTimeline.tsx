@@ -346,7 +346,7 @@ export function HowWeWorkTimeline() {
           Math.max(
             0,
             track.scrollHeight -
-              viewport.clientHeight
+            viewport.clientHeight
           );
 
         const getClosestCard = (y: number) => {
@@ -364,7 +364,7 @@ export function HowWeWorkTimeline() {
 
             const distance = Math.abs(
               cardCenter -
-                (-y + viewportCenter)
+              (-y + viewportCenter)
             );
 
             if (
@@ -505,96 +505,96 @@ export function HowWeWorkTimeline() {
       >
         <Container>
           <div className="grid grid-cols-[minmax(520px,620px)_530px] items-start justify-center gap-24 xl:gap-48">
-            {/* LEFT */}
-            <div
-              ref={leftViewportRef}
-              className="relative h-[calc(100vh-8rem)] min-h-[680px] overflow-hidden"
-              style={{
-                perspective: "1600px",
+        {/* LEFT */}
+        <div
+          ref={leftViewportRef}
+          className="relative h-[calc(100vh-8rem)] min-h-[680px] overflow-hidden"
+          style={{
+            perspective: "1600px",
 
-                perspectiveOrigin:
-                  "center center",
+            perspectiveOrigin:
+              "center center",
+          }}
+        >
+          <div
+            ref={leftTrackRef}
+            className="will-change-transform"
+          >
+            {/* HEADING */}
+            <div className="max-w-[620px]">
+              <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-sm text-foreground/90 backdrop-blur-md">
+                How We Work?
+              </div>
+
+              <h2 className="mt-16 max-w-[430px] text-[4rem] leading-[0.95] tracking-tight text-foreground">
+                Our proven growth process
+              </h2>
+
+              <p className="mt-8 max-w-[520px] text-base leading-snug text-muted">
+                We blend strategy,
+                creativity, and data to
+                design campaigns that grab
+                attention, foster
+                engagement, and drive
+                tangible results.
+              </p>
+            </div>
+
+            {/* CARDS */}
+            <div
+              className="mt-12 flex flex-col"
+              style={{
+                gap: `${CARD_GAP_PX}px`,
+
+                paddingTop: "20vh",
+
+                paddingBottom: "55vh",
               }}
             >
-              <div
-                ref={leftTrackRef}
-                className="will-change-transform"
-              >
-                {/* HEADING */}
-                <div className="max-w-[620px]">
-                  <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-sm text-foreground/90 backdrop-blur-md">
-                    How We Work?
-                  </div>
+              {processSteps.map(
+                (step, index) => (
+                  <ProcessCard
+                    key={step.step}
+                    step={step}
+                    index={index}
+                    distance={Math.abs(
+                      activeIndex - index
+                    )}
+                    showMobileImage={
+                      false
+                    }
+                    compact
+                    cardRef={(el) => {
+                      desktopCardRefs.current[
+                        index
+                      ] = el;
+                    }}
+                  />
+                )
+              )}
 
-                  <h2 className="mt-16 max-w-[430px] text-[4rem] leading-[0.95] tracking-tight text-foreground">
-                    Our proven growth process
-                  </h2>
-
-                  <p className="mt-8 max-w-[520px] text-base leading-snug text-muted">
-                    We blend strategy,
-                    creativity, and data to
-                    design campaigns that grab
-                    attention, foster
-                    engagement, and drive
-                    tangible results.
-                  </p>
-                </div>
-
-                {/* CARDS */}
-                <div
-                  className="mt-12 flex flex-col"
-                  style={{
-                    gap: `${CARD_GAP_PX}px`,
-
-                    paddingTop: "20vh",
-
-                    paddingBottom: "55vh",
-                  }}
+              <div className="shrink-0 pt-2">
+                <Link
+                  href="/contact"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
                 >
-                  {processSteps.map(
-                    (step, index) => (
-                      <ProcessCard
-                        key={step.step}
-                        step={step}
-                        index={index}
-                        distance={Math.abs(
-                          activeIndex - index
-                        )}
-                        showMobileImage={
-                          false
-                        }
-                        compact
-                        cardRef={(el) => {
-                          desktopCardRefs.current[
-                            index
-                          ] = el;
-                        }}
-                      />
-                    )
-                  )}
-
-                  <div className="shrink-0 pt-2">
-                    <Link
-                      href="/contact"
-                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
-                    >
-                      Book an Appointment
-                    </Link>
-                  </div>
-                </div>
+                  Book an Appointment
+                </Link>
               </div>
             </div>
-
-            {/* RIGHT */}
-            <div className="flex h-[calc(100vh-8rem)] items-center">
-              <VisualPanel
-                activeIndex={activeIndex}
-                imageRefs={imageRefs}
-              />
-            </div>
           </div>
-        </Container>
+        </div>
+
+        {/* RIGHT */}
+        <div className="flex h-[calc(100vh-8rem)] items-center">
+          <VisualPanel
+            activeIndex={activeIndex}
+            imageRefs={imageRefs}
+          />
+        </div>
       </div>
-    </section>
+    </Container>
+      </div >
+    </section >
   );
 }

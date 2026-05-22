@@ -35,48 +35,50 @@ type Testimonial = {
 export const testimonials: readonly Testimonial[] = [
   {
     quote:
-      "Refined our brand & increased inbound leads by 70% in just a few months.",
+      "Refined our positioning and increased qualified inbound leads by over 70% within the first quarter. The creative direction and campaign execution felt world-class from day one.",
     name: "Sarah Ahmed",
-    role: "MD, BrightLabs",
-    bgImage:
-      "/image.png",
+    role: "Managing Director • BrightLabs",
+    bgImage: "/testimonials/sarah.jpg",
   },
+
   {
     quote:
-      "Their team understood our vision and delivered campaigns that drove real growth.",
+      "They completely understood our brand vision and translated it into campaigns that actually converted. Every launch looked premium and performed even better.",
     name: "Daniel Foster",
-    role: "Founder, ScaleForge",
-
+    role: "Founder • ScaleForge",
+    bgImage: "/testimonials/daniel.jpg",
   },
+
   {
     quote:
-      "Cut acquisition costs by 40% & doubled qualified leads with Elevon’s strategy.",
+      "We reduced acquisition costs by nearly 40% while doubling qualified pipeline volume. Their strategy, creative systems, and performance optimization were exceptional.",
     name: "Emily Carter",
-    role: "CTO, TechFlow Inc",
-    bgImage:
-      "/image.png",
+    role: "CTO • TechFlow Inc",
+    bgImage: "/testimonials/emily.jpg",
   },
+
   {
     quote:
-      "From creative to performance, everything was handled with clarity and precision.",
+      "From creative production to paid performance, the process was seamless and highly strategic. The team consistently delivered clarity, speed, and measurable impact.",
     name: "Michael Reed",
-    role: "CMO, UrbanEdge",
-
+    role: "CMO • UrbanEdge",
+    bgImage: "/testimonials/michael.jpg",
   },
+
   {
     quote:
-      "Elevon helped us scale faster with smarter strategy and stronger creative execution.",
+      "Working with them elevated our entire brand presence. The content quality, motion direction, and campaign execution helped us scale much faster than expected.",
     name: "Olivia Grant",
-    role: "Co-Founder, Thrive",
-
+    role: "Co-Founder • Thrive",
+    bgImage: "/testimonials/olivia.jpg",
   },
+
   {
     quote:
-      "Our engagement and conversions improved significantly within weeks of launching with Elevon.",
+      "Our engagement rates and conversion metrics improved dramatically within weeks. Their ability to combine creative storytelling with performance strategy is rare.",
     name: "Ryan Mitchell",
-    role: "MD, GreenSupply",
-    bgImage:
-      "/image.png",
+    role: "Managing Director • GreenSupply",
+    bgImage: "/testimonials/ryan.jpg",
   },
 ] as const;
 

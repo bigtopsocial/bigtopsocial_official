@@ -82,7 +82,7 @@ function StageCard({
   useEffect(() => {
     if (card.type === "Video" && videoRef.current) {
       if (isActive) {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
       } else {
         videoRef.current.pause();
       }
@@ -93,16 +93,17 @@ function StageCard({
   const CARD_SPACING = 310;
 
   // scale hierarchy
-  const scale = isActive ? 1 : distance === 1 ? 0.88 : 0.76;
+  const scale = isActive ? 1 : distance === 1 ? 0.92 : distance === 2 ? 0.82 : 0.72;
 
   // opacity hierarchy
-  const opacity = isActive ? 1 : distance === 1 ? 0.42 : 0.12;
+  const opacity = isActive ? 1 : distance === 1 ? 0.55 : distance === 2 ? 0.28 : 0.12;
 
-  // slight perspective rotation
-  const rotate = isActive ? 0 : offset > 0 ? 5 : -5;
+  // vertical position matches the reel stack
+  const translateY = isActive ? 0 : distance === 1 ? -14 : distance === 2 ? -26 : -40;
 
-  // vertical lift
-  const translateY = isActive ? -14 : 0;
+  // blur/brightness hierarchy matches the reel stack
+  const blur = distance >= 3 ? 1.2 : distance === 2 ? 0.8 : 0;
+  const brightness = isActive ? 1 : distance === 1 ? 0.7 : 0.45;
 
   // stacking
   const zIndex = 100 - distance;
@@ -121,7 +122,6 @@ function StageCard({
         x: offset * CARD_SPACING,
         scale,
         opacity,
-        rotateY: rotate,
         y: translateY,
       }}
       transition={{
@@ -131,6 +131,10 @@ function StageCard({
       }}
       style={{
         zIndex,
+        filter: `
+          blur(${blur}px)
+          brightness(${brightness})
+        `,
         transformStyle: "preserve-3d",
       }}
       onClick={onClick}
@@ -179,7 +183,7 @@ function StageCard({
   );
 }
 
-export function PostStageSlider() {
+export function PostStageSliderContent() {
   const reduceMotion = useReducedMotion();
 
   const [activeIndex, setActiveIndex] = useState(2);
@@ -211,25 +215,7 @@ export function PostStageSlider() {
   }, [reduceMotion, isInteracting]);
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-22">
-      {/* Header */}
-      <Container>
-        <div className="mx-auto max-w-3xl text-center flex flex-col items-center">
-          <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
-            Posts
-          </div>
-
-          <h2 className="mt-10 text-4xl tracking-tight text-white sm:text-5xl ">
-            Posts that pop on the feed
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/60">
-            A centered cinematic carousel with layered depth and smooth
-            horizontal interaction.
-          </p>
-        </div>
-      </Container>
-
+    <>
       {/* Slider */}
       <div className="w-full overflow-hidden px-4 sm:px-8 lg:px-16 xl:px-24">
         <motion.div
@@ -303,6 +289,14 @@ export function PostStageSlider() {
           <span>Swipe, scroll, or click a card</span>
         </div>
       </Container>
+    </>
+  );
+}
+
+export function PostStageSlider() {
+  return (
+    <section className="relative overflow-hidden pt-0 pb-20 sm:pb-24">
+      <PostStageSliderContent />
     </section>
   );
 }
