@@ -96,6 +96,28 @@ const partnerLogoSizes = [
   "h-40 sm:h-48 lg:h-56",
 ] as const;
 
+/**
+ * Seeded shuffle function for consistent randomization
+ * Uses current date as seed so layout changes daily but stays consistent within a day
+ */
+function seededShuffle<T>(array: readonly T[]): T[] {
+  const arr = [...array];
+  const seed = Math.floor(Date.now() / (1000 * 60 * 60 * 24)); // New seed each day
+  let random = (index: number) => {
+    const x = Math.sin(seed + index) * 10000;
+    return x - Math.floor(x);
+  };
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(random(i) * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const shuffledPlacements = seededShuffle(partnerLogoPlacements);
+const shuffledSizes = seededShuffle(partnerLogoSizes);
+
 export function HomeSections() {
   return (
     <>
@@ -756,8 +778,8 @@ export function HomeSections() {
           <div className="relative mt-10 grid grid-cols-4 items-center gap-x-6 gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
-              const placement = partnerLogoPlacements[idx % partnerLogoPlacements.length];
-              const size = partnerLogoSizes[idx % partnerLogoSizes.length];
+              const placement = shuffledPlacements[idx % shuffledPlacements.length];
+              const size = shuffledSizes[idx % shuffledSizes.length];
 
               return (
                 <Reveal
