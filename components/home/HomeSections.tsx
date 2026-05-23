@@ -19,6 +19,21 @@ import {
 } from "@/lib/content/home";
 import { projectTeasers } from "@/lib/content/projects";
 
+const serviceIcons = [
+  // Globe — Social Media Strategy
+  <svg key="globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
+  // Video — Story-Driven Content
+  <svg key="video" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg>,
+  // Layers — Brand Identity
+  <svg key="layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><path d="m12 2 10 6.5-10 6.5L2 8.5z"/><path d="m2 15.5 10 6.5 10-6.5"/><path d="m2 12 10 6.5 10-6.5"/></svg>,
+  // Users — Influencer Marketing
+  <svg key="users" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+  // Target — Paid Campaigns
+  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+  // Bar chart — Analytics & Growth
+  <svg key="chart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
+];
+
 function Stars() {
   return (
     <div className="flex items-center justify-center gap-1 text-accent">
@@ -121,7 +136,7 @@ const shuffledSizes = seededShuffle(partnerLogoSizes);
 export function HomeSections() {
   return (
     <>
-      <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-[70px] sm:pt-[80px] lg:pt-[90px]">
+      <section className="relative flex min-h-[90svh] flex-col overflow-hidden pt-[70px] sm:pt-[80px] lg:pt-[90px]">
         <div className="pointer-events-none absolute inset-0">
           <video
             className="absolute inset-0 h-full w-full object-cover object-center"
@@ -244,43 +259,23 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid w-full items-stretch justify-center gap-3 sm:gap-4 lg:grid-cols-[minmax(280px,420px)_minmax(280px,750px)] lg:gap-8">
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
-              {stats.map((s, idx) => (
-                <Reveal key={s.numeral} delay={idx * 0.05} className="h-full">
-                  <div className="aspect-square h-full rounded-[12px] bg-card p-5">
-                    <div className="flex h-full flex-col justify-between">
-                      <div className="flex items-start justify-between gap-3">
-                        <span className="text-sm font-semibold text-foreground/95">
-                          {s.value}
-                          {s.suffix}
-                        </span>
-                        <span className="text-right text-[10px] uppercase tracking-[0.16em] text-foreground/45">
-                          {s.numeral}
-                        </span>
-                      </div>
-                      <span className="max-w-[9rem] text-sm leading-tight text-foreground/75">
-                        {s.label}
-                      </span>
-                    </div>
+          <div className="mt-14 grid grid-cols-2 gap-[3px] lg:grid-cols-4">
+            {stats.map((s, idx) => (
+              <Reveal key={s.numeral} delay={idx * 0.05}>
+                <div className="flex min-h-[260px] flex-col justify-between rounded-[12px] bg-card p-5 sm:p-6">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-xs text-foreground/40">{s.numeral}</span>
+                    <span className="text-right text-xs text-foreground/40">{s.label}</span>
                   </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={0.12} className="min-h-[260px] lg:h-full">
-              <div className="relative h-full min-h-[260px] overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.045] sm:min-h-[340px] lg:min-h-0">
-                <Image
-                  src="/image.png"
-                  alt="Bigtop Social creative team workspace"
-                  fill
-                  loading="lazy"
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                  className="object-cover object-center"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
-              </div>
-            </Reveal>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[3.25rem] font-semibold leading-none tracking-tight text-foreground sm:text-[4rem]">
+                      {s.value}
+                    </span>
+                    <span className="text-lg font-medium text-foreground/60">{s.suffix}</span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>
@@ -300,16 +295,18 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-14 mx-auto max-w-5xl grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-14 grid grid-cols-1 gap-[3px] sm:grid-cols-2 lg:grid-cols-3">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="relative overflow-hidden aspect-[4/4] h-full rounded-[18px] bg-card">
-                  {/* Content */}
-                  <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
-                    <h3 className="text-lg text-foreground">
+                <div className="flex min-h-[280px] flex-col justify-between rounded-[18px] bg-card p-6 sm:p-7">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-white/[0.06]">
+                    {serviceIcons[idx]}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-foreground">
                       {svc.title}
                     </h3>
-                    <p className="mt-auto text-sm leading-relaxed text-white/70">
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
                       {svc.body}
                     </p>
                   </div>
