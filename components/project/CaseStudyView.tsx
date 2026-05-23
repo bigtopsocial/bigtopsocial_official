@@ -90,7 +90,7 @@ export function CaseStudyView({ project }: { project: Project }) {
 
       <section className="pb-6">
         <Container>
-          <div className="relative aspect-[21/9] overflow-hidden rounded-card border border-white/[0.08]">
+          <div className="relative aspect-[21/9] overflow-hidden rounded-card">
             <Image
               src={project.coverSrc}
               alt={project.coverAlt}
@@ -134,7 +134,7 @@ export function CaseStudyView({ project }: { project: Project }) {
               <Link
                 key={c.slug}
                 href={`/project/${c.slug}`}
-                className="rounded-card border border-white/[0.08] bg-card px-5 py-4 text-sm font-semibold text-foreground transition hover:border-white/20"
+                className="rounded-card bg-[#0d0d0b] px-5 py-4 text-sm font-semibold text-foreground transition"
               >
                 {c.title}
               </Link>

@@ -19,9 +19,9 @@
   --foreground: #ffffff;
   --muted: #888888;
   --foreground-soft: #cccccc;
-  --card: #BFB6A40D;
-  --surface: #BFB6A40D;
-  --surface-elevated: #BFB6A40D;
+  --card: #0d0d0b;
+  --surface: #0d0d0b;
+  --surface-elevated: #0d0d0b;
   --border-subtle: #262626;
   --accent: #ff8c33;
   --accent-soft: rgba(255, 140, 51, 0.35);
