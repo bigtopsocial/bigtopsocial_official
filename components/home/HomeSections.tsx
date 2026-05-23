@@ -305,19 +305,6 @@ export function HomeSections() {
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
                 <div className="group relative overflow-hidden aspect-[4/4] h-full rounded-[18px] border border-white/10 transform-gpu transition-transform duration-300 ease-out motion-safe:hover:scale-[1.03]">
-                  {/* Background image */}
-                  {svc.bgImage && (
-                    <Image
-                      src={svc.bgImage}
-                      alt={svc.title}
-                      fill
-                      loading="lazy"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                    />
-                  )}
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
                   {/* Content */}
                   <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
                     <h3 className="text-lg text-foreground">
