@@ -106,10 +106,10 @@ const partnerLogoPlacements = [
 ] as const;
 
 const partnerLogoSizes = [
-  "h-28 sm:h-36 lg:h-44",
-  "h-32 sm:h-40 lg:h-48",
+  "h-36 sm:h-36 lg:h-44",
+  "h-36 sm:h-40 lg:h-48",
   "h-36 sm:h-44 lg:h-52",
-  "h-40 sm:h-48 lg:h-56",
+  "h-36 sm:h-48 lg:h-56",
 ] as const;
 
 /**
@@ -579,8 +579,56 @@ export function HomeSections() {
           </Reveal>
         </Container>
 
-        {/* TESTIMONIAL STRIP */}
-        <div className="relative mt-20 overflow-hidden py-12">
+        {/* ── MOBILE: static stacked cards ── */}
+        <div className="lg:hidden mt-10 px-4 sm:px-6">
+          <div className="flex flex-col gap-4">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="relative overflow-hidden rounded-[24px] bg-white/[0.03] p-6 backdrop-blur-xl"
+              >
+                {/* stars */}
+                <div className="flex gap-1 text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* quote */}
+                <p className="mt-4 text-[14px] leading-[1.8] text-white/80">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+
+                {/* author */}
+                <div className="mt-5 flex items-center gap-3">
+                  {t.bgImage ? (
+                    <Image
+                      src={t.bgImage}
+                      alt={t.name}
+                      width={44}
+                      height={44}
+                      loading="lazy"
+                      className="h-11 w-11 shrink-0 rounded-full border border-white/10 object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
+                      {t.name.charAt(0)}
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-[13px] font-medium text-white">{t.name}</p>
+                    <p className="mt-0.5 text-[11px] text-white/40">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── DESKTOP: marquee strip ── */}
+        <div className="hidden lg:block relative mt-20 overflow-hidden py-12">
           {/* LEFT FADE */}
           <div
             className="pointer-events-none absolute inset-y-0 left-0 z-30 w-24 bg-gradient-to-r from-black via-black/90 to-transparent sm:w-48 lg:w-72"
@@ -631,8 +679,6 @@ export function HomeSections() {
               justify-between
               overflow-hidden
               rounded-[32px]
-              border
-              border-white/[0.08]
               bg-white/[0.03]
               p-8
               sm:p-10
@@ -645,13 +691,8 @@ export function HomeSections() {
               shrink-0
             "
                 >
-                  {/* Ambient glow */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-[#40ffbb]/10 blur-3xl" />
-                  </div>
-
                   {/* Stars */}
-                  <div className="relative z-10 flex gap-1 text-[#40ffbb]">
+                  <div className="relative z-10 flex gap-1 text-yellow-400">
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
@@ -674,46 +715,16 @@ export function HomeSections() {
                   <div className="relative z-10 mt-10 flex items-center gap-5">
                     {/* Profile Photo */}
                     {t.bgImage ? (
-                      <div className="relative">
-                        {/* Glow */}
-                        <div className="absolute inset-0 rounded-full bg-[#40ffbb]/30 blur-lg" />
-
-                        <Image
-                          src={t.bgImage}
-                          alt={t.name}
-                          width={64}
-                          height={64}
-                          loading="lazy"
-                          className="
-                      relative
-                      h-16
-                      w-16
-                      rounded-full
-                      border
-                      border-white/10
-                      object-cover
-                    "
-                        />
-                      </div>
+                      <Image
+                        src={t.bgImage}
+                        alt={t.name}
+                        width={64}
+                        height={64}
+                        loading="lazy"
+                        className="h-16 w-16 rounded-full border border-white/10 object-cover"
+                      />
                     ) : (
-                      <div
-                        className="
-                    flex
-                    h-16
-                    w-16
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/10
-                    bg-gradient-to-br
-                    from-[#40ffbb]
-                    to-[#12ced6]
-                    text-base
-                    font-semibold
-                    text-black
-                  "
-                      >
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/10 text-base font-semibold text-white">
                         {t.name.charAt(0)}
                       </div>
                     )}
@@ -765,7 +776,7 @@ export function HomeSections() {
           </Reveal>
 
           {/* Clean Floating Grid Layout */}
-          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-6 gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
+          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-6 gap-y-0 sm:gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
               const placement = shuffledPlacements[idx % shuffledPlacements.length];
@@ -775,7 +786,7 @@ export function HomeSections() {
                 <Reveal
                   key={logoPath}
                   delay={idx * 0.02}
-                  className={`flex items-center justify-center p-2 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
+                  className={`flex items-center justify-center p-0 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
                 >
                   <div className={`relative flex w-full items-center justify-center ${size}`}>
                     <Image

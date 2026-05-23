@@ -38,7 +38,7 @@ export const testimonials: readonly Testimonial[] = [
       "Refined our positioning and increased qualified inbound leads by over 70% within the first quarter. The creative direction and campaign execution felt world-class from day one.",
     name: "Sarah Ahmed",
     role: "Managing Director • BrightLabs",
-    bgImage: "/testimonials/sarah.jpg",
+    bgImage: "/post contents/1.png",
   },
 
   {
@@ -46,7 +46,7 @@ export const testimonials: readonly Testimonial[] = [
       "They completely understood our brand vision and translated it into campaigns that actually converted. Every launch looked premium and performed even better.",
     name: "Daniel Foster",
     role: "Founder • ScaleForge",
-    bgImage: "/testimonials/daniel.jpg",
+    bgImage: "/post contents/2.png",
   },
 
   {
@@ -54,7 +54,7 @@ export const testimonials: readonly Testimonial[] = [
       "We reduced acquisition costs by nearly 40% while doubling qualified pipeline volume. Their strategy, creative systems, and performance optimization were exceptional.",
     name: "Emily Carter",
     role: "CTO • TechFlow Inc",
-    bgImage: "/testimonials/emily.jpg",
+    bgImage: "/post contents/3.png",
   },
 
   {
@@ -62,7 +62,7 @@ export const testimonials: readonly Testimonial[] = [
       "From creative production to paid performance, the process was seamless and highly strategic. The team consistently delivered clarity, speed, and measurable impact.",
     name: "Michael Reed",
     role: "CMO • UrbanEdge",
-    bgImage: "/testimonials/michael.jpg",
+    bgImage: "/post contents/4.png",
   },
 
   {
@@ -70,16 +70,9 @@ export const testimonials: readonly Testimonial[] = [
       "Working with them elevated our entire brand presence. The content quality, motion direction, and campaign execution helped us scale much faster than expected.",
     name: "Olivia Grant",
     role: "Co-Founder • Thrive",
-    bgImage: "/testimonials/olivia.jpg",
+    bgImage: "/post contents/5.png",
   },
 
-  {
-    quote:
-      "Our engagement rates and conversion metrics improved dramatically within weeks. Their ability to combine creative storytelling with performance strategy is rare.",
-    name: "Ryan Mitchell",
-    role: "Managing Director • GreenSupply",
-    bgImage: "/testimonials/ryan.jpg",
-  },
 ] as const;
 
 export const services = [
