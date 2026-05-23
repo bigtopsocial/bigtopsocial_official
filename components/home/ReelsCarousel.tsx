@@ -87,10 +87,9 @@ function ReelCard({
       className="
         relative
         aspect-[9/16]
-        w-[320px]
+        w-[280px] sm:w-[320px]
         overflow-hidden
-        rounded-[30px]
-        border border-white/10
+        rounded-[24px] sm:rounded-[30px]
         bg-black
       "
     >
@@ -183,13 +182,13 @@ export function ReelsCarousel() {
 
   return (
     <section className="relative overflow-hidden bg-black py-0">
-      <div className="relative h-[760px] overflow-hidden">
+      <div className="relative min-h-[600px] sm:min-h-[680px] lg:h-[760px] overflow-hidden">
         {/* LEFT FADE */}
         <div
           className="
             pointer-events-none
             absolute inset-y-0 left-0 z-40
-            w-52
+            w-32 sm:w-40 lg:w-52
             bg-gradient-to-r
             from-black
             via-black/90
@@ -202,7 +201,7 @@ export function ReelsCarousel() {
           className="
             pointer-events-none
             absolute inset-y-0 right-0 z-40
-            w-52
+            w-32 sm:w-40 lg:w-52
             bg-gradient-to-l
             from-black
             via-black/90
@@ -225,7 +224,7 @@ export function ReelsCarousel() {
             style={{ x }}
             className="
               relative
-              h-[680px]
+              h-[520px] sm:h-[600px] lg:h-[680px]
               w-full
               cursor-grab
               active:cursor-grabbing

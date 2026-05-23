@@ -112,9 +112,9 @@ function StageCard({
     <motion.div
       className="
         absolute
-        w-[82vw]
-        max-w-[26rem]
+        w-[min(82vw,20rem)]
         sm:w-[22rem]
+        md:w-[24rem]
         lg:w-[26rem]
         cursor-pointer
       "
@@ -139,7 +139,7 @@ function StageCard({
       }}
       onClick={onClick}
     >
-      <div className="overflow-hidden rounded-[30px] border border-white/10 bg-card shadow-[0_30px_80px_rgba(0,0,0,0.55)] pointer-events-none">
+      <div className="overflow-hidden rounded-[30px] bg-card shadow-[0_30px_80px_rgba(0,0,0,0.55)] pointer-events-none">
         <div className="relative aspect-[4/5]">
           {card.type === "Image" ? (
             <Image
@@ -217,9 +217,9 @@ export function PostStageSliderContent() {
   return (
     <>
       {/* Slider */}
-      <div className="w-full overflow-hidden px-4 sm:px-8 lg:px-16 xl:px-24">
+      <div className="w-full overflow-hidden px-3 sm:px-6 md:px-8 lg:px-16 xl:px-24">
         <motion.div
-          className="relative isolate overflow-hidden rounded-[40px] touch-pan-y cursor-grab active:cursor-grabbing"
+          className="relative isolate overflow-hidden rounded-[28px] sm:rounded-[32px] lg:rounded-[40px] touch-pan-y cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsInteracting(true)}
           onMouseLeave={() => setIsInteracting(false)}
           onTouchStart={() => setIsInteracting(true)}
@@ -252,8 +252,8 @@ export function PostStageSliderContent() {
           <div className="pointer-events-none absolute inset-0 " />
 
           {/* Carousel */}
-          <div className="relative flex min-h-[38rem] items-center justify-center overflow-hidden py-12 sm:min-h-[44rem]">
-            <div className="relative flex h-[36rem] w-full items-center justify-center">
+          <div className="relative flex min-h-[32rem] items-center justify-center overflow-hidden py-8 sm:min-h-[38rem] md:min-h-[42rem] lg:min-h-[44rem]">
+            <div className="relative flex h-[30rem] sm:h-[32rem] md:h-[34rem] lg:h-[36rem] w-full items-center justify-center">
               {cards.map((card, index) => {
                 const total = cards.length;
 

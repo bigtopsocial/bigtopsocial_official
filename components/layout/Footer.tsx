@@ -120,8 +120,8 @@ export function Footer() {
         </div>
 
         {/* Giant Wordmark */}
-        <div className="w-full flex items-end justify-center pt-8 pb-12 ">
-          <h1 className="text-[14.5vw] font-bold leading-[0.8] tracking-tight text-white select-none text-center whitespace-nowrap lowercase">
+        <div className="w-full flex items-end justify-center pt-8 pb-12 overflow-hidden">
+          <h1 className="text-[clamp(2rem,14.5vw,18rem)] font-bold leading-[0.8] tracking-tight text-white/80 select-none text-center lowercase break-words">
             bigtopsocial
           </h1>
         </div>

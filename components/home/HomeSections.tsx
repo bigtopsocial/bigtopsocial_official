@@ -122,10 +122,10 @@ export function HomeSections() {
               <p className="mt-3 text-sm text-foreground/80">
                 5.0 rating · Helped over 100+ businesses
               </p>
-              <h1 className="mt-10 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+              <h1 className="mt-10 text-[clamp(1.75rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
                 Elevating brands
               </h1>
-              <h1 className="mt-1 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+              <h1 className="mt-1 text-[clamp(1.75rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
                 Forward, Faster
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
@@ -223,7 +223,7 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid w-full items-stretch justify-center gap-5 lg:grid-cols-[minmax(280px,420px)_minmax(280px,750px)] lg:gap-8">
+          <div className="mt-14 grid w-full items-stretch justify-center gap-3 sm:gap-4 lg:grid-cols-[minmax(280px,420px)_minmax(280px,750px)] lg:gap-8">
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {stats.map((s, idx) => (
                 <Reveal key={s.numeral} delay={idx * 0.05} className="h-full">
@@ -279,7 +279,7 @@ export function HomeSections() {
             </p>
           </Reveal>
 
-          <div className="mt-14 mx-auto max-w-5xl grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+          <div className="mt-14 mx-auto max-w-5xl grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
                 <div className="group relative overflow-hidden aspect-[4/4] h-full rounded-[18px] border border-white/10 bg-card transform-gpu transition-transform duration-300 ease-out motion-safe:hover:scale-[1.03]">

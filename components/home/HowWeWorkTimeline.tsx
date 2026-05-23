@@ -130,11 +130,8 @@ function ProcessCard({
     <article
       ref={cardRef}
       className={[
-        "process-card relative flex shrink-0 flex-col justify-between rounded-[24px] border p-6 sm:p-10",
+        "process-card relative flex shrink-0 flex-col justify-between rounded-[24px] p-6 sm:p-10 bg-[#BFB6A40D]",
         compact ? "" : "min-h-[280px]",
-        distance === 0
-          ? "border-white/[0.12] bg-[#BFB6A40D]"
-          : "border-white/[0.05] bg-[#BFB6A40D]",
       ].join(" ")}
       style={{
         height: compact ? CARD_HEIGHT_PX : undefined,
@@ -159,7 +156,7 @@ function ProcessCard({
         backfaceVisibility: "hidden",
 
         transition:
-          "transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 700ms ease, border-color 700ms ease, filter 700ms ease",
+          "transform 900ms cubic-bezier(0.22,1,0.36,1), opacity 700ms ease, filter 700ms ease",
       }}
     >
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-black/50">
@@ -184,7 +181,7 @@ function ProcessCard({
       </div>
 
       {showMobileImage && (
-        <div className="relative mx-auto mt-6 aspect-[4/5] w-full max-w-[25rem] overflow-hidden rounded-2xl border border-white/[0.06] bg-black lg:hidden">
+        <div className="relative mx-auto mt-6 aspect-[4/5] w-full max-w-[25rem] overflow-hidden rounded-2xl bg-black lg:hidden">
           <Image
             src={step.image}
             alt={step.imageAlt}
@@ -208,7 +205,7 @@ function VisualPanel({
 }) {
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-[24px] border border-white/[0.08] bg-[#BFB6A40D] shadow-[0_32px_100px_rgba(0,0,0,0.55)]"
+      className="relative shrink-0 overflow-hidden rounded-[24px] bg-[#BFB6A40D] shadow-[0_32px_100px_rgba(0,0,0,0.55)]"
       style={{
         width: POST_PANEL_WIDTH_PX,
         height: POST_PANEL_HEIGHT_PX,
@@ -504,96 +501,96 @@ export function HowWeWorkTimeline() {
         className="hidden lg:block"
       >
         <Container>
-          <div className="grid grid-cols-[minmax(520px,620px)_530px] items-start justify-center gap-24 xl:gap-48">
-        {/* LEFT */}
-        <div
-          ref={leftViewportRef}
-          className="relative h-[calc(100vh-8rem)] min-h-[680px] overflow-hidden"
-          style={{
-            perspective: "1600px",
-
-            perspectiveOrigin:
-              "center center",
-          }}
-        >
-          <div
-            ref={leftTrackRef}
-            className="will-change-transform"
-          >
-            {/* HEADING */}
-            <div className="max-w-[620px]">
-              <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-sm text-foreground/90 backdrop-blur-md">
-                How We Work?
-              </div>
-
-              <h2 className="mt-16 max-w-[430px] text-[4rem] leading-[0.95] tracking-tight text-foreground">
-                Our proven growth process
-              </h2>
-
-              <p className="mt-8 max-w-[520px] text-base leading-snug text-muted">
-                We blend strategy,
-                creativity, and data to
-                design campaigns that grab
-                attention, foster
-                engagement, and drive
-                tangible results.
-              </p>
-            </div>
-
-            {/* CARDS */}
+          <div className="grid grid-cols-[minmax(420px,620px)_530px] items-start justify-center gap-12 xl:gap-32">
+            {/* LEFT */}
             <div
-              className="mt-12 flex flex-col"
+              ref={leftViewportRef}
+              className="relative h-[calc(100vh-8rem)] min-h-[680px] overflow-hidden"
               style={{
-                gap: `${CARD_GAP_PX}px`,
+                perspective: "1600px",
 
-                paddingTop: "20vh",
-
-                paddingBottom: "55vh",
+                perspectiveOrigin:
+                  "center center",
               }}
             >
-              {processSteps.map(
-                (step, index) => (
-                  <ProcessCard
-                    key={step.step}
-                    step={step}
-                    index={index}
-                    distance={Math.abs(
-                      activeIndex - index
-                    )}
-                    showMobileImage={
-                      false
-                    }
-                    compact
-                    cardRef={(el) => {
-                      desktopCardRefs.current[
-                        index
-                      ] = el;
-                    }}
-                  />
-                )
-              )}
+              <div
+                ref={leftTrackRef}
+                className="will-change-transform"
+              >
+                {/* HEADING */}
+                <div className="max-w-[620px]">
+                  <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-sm text-foreground/90 backdrop-blur-md">
+                    How We Work?
+                  </div>
 
-              <div className="shrink-0 pt-2">
-                <Link
-                  href="/contact"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
+                  <h2 className="mt-16 max-w-[430px] text-[clamp(2.5rem,4vw,4rem)] leading-[0.95] tracking-tight text-foreground">
+                    Our proven growth process
+                  </h2>
+
+                  <p className="mt-8 max-w-[520px] text-sm lg:text-base leading-snug text-muted">
+                    We blend strategy,
+                    creativity, and data to
+                    design campaigns that grab
+                    attention, foster
+                    engagement, and drive
+                    tangible results.
+                  </p>
+                </div>
+
+                {/* CARDS */}
+                <div
+                  className="mt-12 flex flex-col"
+                  style={{
+                    gap: `${CARD_GAP_PX}px`,
+
+                    paddingTop: "20vh",
+
+                    paddingBottom: "55vh",
+                  }}
                 >
-                  Book an Appointment
-                </Link>
+                  {processSteps.map(
+                    (step, index) => (
+                      <ProcessCard
+                        key={step.step}
+                        step={step}
+                        index={index}
+                        distance={Math.abs(
+                          activeIndex - index
+                        )}
+                        showMobileImage={
+                          false
+                        }
+                        compact
+                        cardRef={(el) => {
+                          desktopCardRefs.current[
+                            index
+                          ] = el;
+                        }}
+                      />
+                    )
+                  )}
+
+                  <div className="shrink-0 pt-2">
+                    <Link
+                      href="/contact"
+                      className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-transparent px-10 text-sm font-semibold text-foreground transition hover:border-white/30"
+                    >
+                      Book an Appointment
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* RIGHT */}
-        <div className="flex h-[calc(100vh-8rem)] items-center">
-          <VisualPanel
-            activeIndex={activeIndex}
-            imageRefs={imageRefs}
-          />
-        </div>
-      </div>
-    </Container>
+            {/* RIGHT */}
+            <div className="flex h-[calc(100vh-8rem)] items-center">
+              <VisualPanel
+                activeIndex={activeIndex}
+                imageRefs={imageRefs}
+              />
+            </div>
+          </div>
+        </Container>
       </div >
     </section >
   );
