@@ -304,7 +304,7 @@ export function HomeSections() {
           <div className="mt-14 mx-auto max-w-5xl grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="group relative overflow-hidden aspect-[4/4] h-full rounded-[18px] border border-white/10 bg-card transform-gpu transition-transform duration-300 ease-out motion-safe:hover:scale-[1.03]">
+                <div className="group relative overflow-hidden aspect-[4/4] h-full rounded-[18px] border border-white/10 transform-gpu transition-transform duration-300 ease-out motion-safe:hover:scale-[1.03]">
                   {/* Background image */}
                   {svc.bgImage && (
                     <Image
