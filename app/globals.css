@@ -15,11 +15,11 @@
 */
 
 :root {
-  --background: #0F0D0D;
+  --background: #000003fe;
   --foreground: #ffffff;
   --muted: #888888;
   --foreground-soft: #cccccc;
-  --card: #0d0d0b;
+  --card: #0a0a0a;
   --surface: #0d0d0b;
   --surface-elevated: #0d0d0b;
   --border-subtle: #262626;
