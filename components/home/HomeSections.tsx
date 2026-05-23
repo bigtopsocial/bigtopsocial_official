@@ -396,16 +396,16 @@ export function HomeSections() {
         <Container>
           {/* Heading */}
           <div className="flex justify-center text-center">
-            <Reveal className="mb-14 max-w-2xl flex flex-col items-center">
-              <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <Reveal className="mb-10 sm:mb-14 max-w-2xl flex flex-col items-center px-4 sm:px-0">
+              <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-white/[0.03] px-4 sm:px-6 py-1.5 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur-md transition-colors duration-300 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#40ffbb]/40 before:to-transparent before:content-['']">
                 Portfolio
               </div>
 
-              <h2 className="mt-10 text-4xl tracking-tight text-foreground sm:text-5xl">
+              <h2 className="mt-6 sm:mt-10 text-2xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
                 The selected projects
               </h2>
 
-              <p className="mt-6 text-lg leading-relaxed text-muted">
+              <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-relaxed text-white/60">
                 Discover our selected projects, highlighting partnerships with
                 forward-thinking clients in various sectors.
               </p>
@@ -413,7 +413,7 @@ export function HomeSections() {
           </div>
 
           {/* Bento Grid */}
-          <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[320px]">
+          <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5 lg:auto-rows-[320px]">
             {projectTeasers.slice(0, 5).map((p, idx) => {
               // Bento Layout Pattern
               const layouts = [
@@ -437,8 +437,9 @@ export function HomeSections() {
                 relative
                 flex
                 h-full
+                min-h-[280px] sm:min-h-[320px]
                 overflow-hidden
-                rounded-[28px]
+                rounded-[20px] sm:rounded-[28px]
                 border
                 border-white/10
                 bg-card
@@ -537,24 +538,25 @@ export function HomeSections() {
             flex-col
             justify-between
             overflow-hidden
-            rounded-[28px]
+            rounded-[20px] sm:rounded-[28px]
             border
             border-white/10
             bg-card
-            p-8
+            p-5 sm:p-8
+            min-h-[280px] sm:min-h-[320px]
           "
               >
                 <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-white/50">
+                  <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50">
                     Projects Delivered
                   </p>
 
-                  <h3 className="mt-6 text-6xl font-semibold tracking-tight text-white">
+                  <h3 className="mt-4 sm:mt-6 text-4xl sm:text-6xl font-semibold tracking-tight text-white">
                     48+
                   </h3>
                 </div>
 
-                <p className="max-w-xs text-sm leading-relaxed text-white/70">
+                <p className="max-w-xs text-xs sm:text-sm leading-relaxed text-white/70">
                   Helping startups and brands craft scalable, high-performing digital
                   products with modern user experiences.
                 </p>
