@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 
 type PostCard = {
@@ -13,54 +13,14 @@ type PostCard = {
 };
 
 const cards: PostCard[] = [
-  {
-    title: "Brand reveal post",
-    meta: "Feed post • 01",
-    type: "Image",
-    src: "/post contents/1.png",
-  },
-  {
-    title: "Campaign highlight",
-    meta: "Carousel • 02",
-    type: "Image",
-    src: "/post contents/2.png",
-  },
-  {
-    title: "Product teaser",
-    meta: "Feed post • 03",
-    type: "Image",
-    src: "/post contents/3.png",
-  },
-  {
-    title: "Social proof card",
-    meta: "Feed post • 04",
-    type: "Image",
-    src: "/post contents/4.png",
-  },
-  {
-    title: "Behind the scenes",
-    meta: "Carousel • 05",
-    type: "Image",
-    src: "/post contents/5.png",
-  },
-  {
-    title: "Founder vision",
-    meta: "Feed post • 06",
-    type: "Image",
-    src: "/post contents/6.png",
-  },
-  {
-    title: "Feature showcase",
-    meta: "Feed post • 07",
-    type: "Image",
-    src: "/post contents/7.png",
-  },
-  {
-    title: "Community highlight",
-    meta: "Carousel • 08",
-    type: "Image",
-    src: "/post contents/8.png",
-  },
+  { title: "Brand reveal post",    meta: "Feed post • 01",  type: "Image", src: "/post contents/1.png" },
+  { title: "Campaign highlight",   meta: "Carousel • 02",   type: "Image", src: "/post contents/2.png" },
+  { title: "Product teaser",       meta: "Feed post • 03",  type: "Image", src: "/post contents/3.png" },
+  { title: "Social proof card",    meta: "Feed post • 04",  type: "Image", src: "/post contents/4.png" },
+  { title: "Behind the scenes",    meta: "Carousel • 05",   type: "Image", src: "/post contents/5.png" },
+  { title: "Founder vision",       meta: "Feed post • 06",  type: "Image", src: "/post contents/6.png" },
+  { title: "Feature showcase",     meta: "Feed post • 07",  type: "Image", src: "/post contents/7.png" },
+  { title: "Community highlight",  meta: "Carousel • 08",   type: "Image", src: "/post contents/8.png" },
 ] as const;
 
 function StageCard({
@@ -68,78 +28,39 @@ function StageCard({
   isActive,
   offset,
   distance,
+  spacing,
   onClick,
 }: {
   card: PostCard;
   isActive: boolean;
   offset: number;
   distance: number;
+  spacing: number;
   onClick: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Performance Optimization: Only play video if it is the active center card
   useEffect(() => {
-    if (card.type === "Video" && videoRef.current) {
-      if (isActive) {
-        videoRef.current.play().catch(() => { });
-      } else {
-        videoRef.current.pause();
-      }
-    }
+    if (card.type !== "Video" || !videoRef.current) return;
+    if (isActive) videoRef.current.play().catch(() => {});
+    else videoRef.current.pause();
   }, [isActive, card.type]);
 
-  // spacing between cards
-  const CARD_SPACING = 310;
-
-  // scale hierarchy
-  const scale = isActive ? 1 : distance === 1 ? 0.92 : distance === 2 ? 0.82 : 0.72;
-
-  // opacity hierarchy
-  const opacity = isActive ? 1 : distance === 1 ? 0.55 : distance === 2 ? 0.28 : 0.12;
-
-  // vertical position matches the reel stack
-  const translateY = isActive ? 0 : distance === 1 ? -14 : distance === 2 ? -26 : -40;
-
-  // blur/brightness hierarchy matches the reel stack
-  const blur = distance >= 3 ? 1.2 : distance === 2 ? 0.8 : 0;
-  const brightness = isActive ? 1 : distance === 1 ? 0.7 : 0.45;
-
-  // stacking
-  const zIndex = 100 - distance;
+  const scale      = isActive ? 1    : distance === 1 ? 0.90 : distance === 2 ? 0.80 : 0.70;
+  const opacity    = isActive ? 1    : distance === 1 ? 0.50 : distance === 2 ? 0.25 : 0.10;
+  const translateY = isActive ? 0    : distance === 1 ? -12  : distance === 2 ? -22  : -32;
+  const blur       = distance >= 3   ? 1.5 : distance === 2   ? 0.8 : 0;
+  const brightness = isActive ? 1    : distance === 1 ? 0.65 : 0.40;
 
   return (
     <motion.div
-      className="
-        absolute
-        w-[min(82vw,20rem)]
-        sm:w-[22rem]
-        md:w-[24rem]
-        lg:w-[26rem]
-        cursor-pointer
-      "
-      animate={{
-        x: offset * CARD_SPACING,
-        scale,
-        opacity,
-        y: translateY,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 180,
-        damping: 22,
-      }}
-      style={{
-        zIndex,
-        filter: `
-          blur(${blur}px)
-          brightness(${brightness})
-        `,
-        transformStyle: "preserve-3d",
-      }}
+      className="absolute cursor-pointer select-none"
+      style={{ zIndex: 100 - distance, filter: `blur(${blur}px) brightness(${brightness})` }}
+      animate={{ x: offset * spacing, scale, opacity, y: translateY }}
+      transition={{ type: "spring", stiffness: 200, damping: 26, mass: 0.8 }}
       onClick={onClick}
     >
-      <div className="overflow-hidden rounded-[30px] bg-[#0d0d0b] shadow-[0_30px_80px_rgba(0,0,0,0.55)] pointer-events-none">
+      <div className="w-[72vw] max-w-[17rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[24rem] overflow-hidden rounded-[24px] bg-card shadow-[0_24px_64px_rgba(0,0,0,0.5)] pointer-events-none">
         <div className="relative aspect-[4/5]">
           {card.type === "Image" ? (
             <Image
@@ -147,7 +68,7 @@ function StageCard({
               alt={card.title}
               fill
               className="object-cover"
-              sizes="(max-width:768px) 78vw, 24rem"
+              sizes="(max-width: 640px) 72vw, (max-width: 1024px) 22rem, 24rem"
               loading={isActive ? "eager" : "lazy"}
             />
           ) : (
@@ -158,22 +79,18 @@ function StageCard({
               loop
               playsInline
               preload={isActive ? "metadata" : "none"}
-              aria-label={card.title}
             >
               <source src={card.src} type="video/mp4" />
             </video>
           )}
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.88),rgba(0,0,0,0.08)_58%,rgba(0,0,0,0.18))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.06)_55%,transparent)]" />
 
-          {/* Content */}
           <div className="absolute inset-x-0 bottom-0 p-5">
-            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/50">
+            <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/50">
               {card.meta}
             </p>
-
-            <h3 className="mt-2 text-lg font-medium tracking-tight text-white">
+            <h3 className="mt-1.5 text-base font-medium tracking-tight text-white">
               {card.title}
             </h3>
           </div>
@@ -183,120 +100,102 @@ function StageCard({
   );
 }
 
-export function PostStageSliderContent() {
+export function PostStageSlider() {
   const reduceMotion = useReducedMotion();
-
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
+  const [spacing, setSpacing] = useState(260);
 
-  const wheelLock = useRef(false);
-  const autoAdvance = useRef<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const activeCard = useMemo(() => cards[activeIndex], [activeIndex]);
+  // Responsive card spacing
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setSpacing(w < 480 ? 210 : w < 768 ? 240 : w < 1024 ? 270 : 300);
+    };
+    update();
+    window.addEventListener("resize", update, { passive: true });
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
-  const goTo = (nextIndex: number) => {
+  const goTo = useCallback((next: number) => {
     const total = cards.length;
-    setActiveIndex((nextIndex + total) % total);
-  };
+    setActiveIndex(((next % total) + total) % total);
+  }, []);
 
-  // Auto-slide functionality with pause on hover/interaction
+  // Auto-advance
   useEffect(() => {
     if (reduceMotion || isInteracting) return;
-
-    autoAdvance.current = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % cards.length);
+    timerRef.current = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % cards.length);
     }, 3800);
-
-    return () => {
-      if (autoAdvance.current) {
-        window.clearInterval(autoAdvance.current);
-      }
-    };
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [reduceMotion, isInteracting]);
 
   return (
-    <>
-      {/* Slider */}
-      <div className="w-full overflow-hidden px-3 sm:px-6 md:px-8 lg:px-16 xl:px-24">
-        <motion.div
-          className="relative isolate overflow-hidden rounded-[28px] sm:rounded-[32px] lg:rounded-[40px] touch-pan-y cursor-grab active:cursor-grabbing"
+    <section className="py-16 sm:py-20 lg:py-24">
+      <Container>
+        {/* Stage — gesture zone, clips horizontal overflow, no rounded corners */}
+        <div
+          className="relative overflow-hidden"
           onMouseEnter={() => setIsInteracting(true)}
           onMouseLeave={() => setIsInteracting(false)}
           onTouchStart={() => setIsInteracting(true)}
-          onTouchEnd={() => setIsInteracting(false)}
-          onWheel={(event) => {
-            if (
-              !event.shiftKey &&
-              Math.abs(event.deltaY) <= Math.abs(event.deltaX)
-            ) {
-              return;
-            }
-            if (wheelLock.current) return;
-
-            wheelLock.current = true;
-
-            goTo(activeIndex + (event.deltaY > 0 || event.deltaX > 0 ? 1 : -1));
-
-            window.setTimeout(() => {
-              wheelLock.current = false;
-            }, 600);
-          }}
-          onPanEnd={(_e, info) => {
-            // Enhanced swipe/drag detection via framer motion
-            if (Math.abs(info.offset.x) > 40) {
-              goTo(activeIndex + (info.offset.x < 0 ? 1 : -1));
-            }
+          onTouchEnd={() => { setTimeout(() => setIsInteracting(false), 1200); }}
+          onWheel={(e) => {
+            const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+            const delta = isHorizontal ? e.deltaX : e.shiftKey ? e.deltaY : 0;
+            if (!delta) return;
+            goTo(activeIndex + (delta > 0 ? 1 : -1));
           }}
         >
-          {/* Ambient background glow */}
-          <div className="pointer-events-none absolute inset-0 " />
+          {/* Card stage */}
+          <motion.div
+            className="relative flex items-center justify-center"
+            style={{ height: "clamp(22rem, 55vw, 38rem)" }}
+            onPanEnd={(_e, info) => {
+              if (Math.abs(info.offset.x) > 35) {
+                goTo(activeIndex + (info.offset.x < 0 ? 1 : -1));
+              }
+            }}
+          >
+            {cards.map((card, index) => {
+              const total = cards.length;
+              let offset = index - activeIndex;
+              if (offset >  total / 2) offset -= total;
+              if (offset < -total / 2) offset += total;
+              const distance = Math.abs(offset);
 
-          {/* Carousel */}
-          <div className="relative flex min-h-[32rem] items-center justify-center overflow-hidden py-8 sm:min-h-[38rem] md:min-h-[42rem] lg:min-h-[44rem]">
-            <div className="relative flex h-[30rem] sm:h-[32rem] md:h-[34rem] lg:h-[36rem] w-full items-center justify-center">
-              {cards.map((card, index) => {
-                const total = cards.length;
+              return (
+                <StageCard
+                  key={card.src}
+                  card={card}
+                  isActive={offset === 0}
+                  offset={offset}
+                  distance={distance}
+                  spacing={spacing}
+                  onClick={() => goTo(index)}
+                />
+              );
+            })}
+          </motion.div>
+        </div>
 
-                let offset = index - activeIndex;
-
-                // Circular indexing
-                if (offset > total / 2) offset -= total;
-                if (offset < -total / 2) offset += total;
-
-                const distance = Math.abs(offset);
-                const isActive = offset === 0;
-
-                return (
-                  <StageCard
-                    key={`${card.title}-${index}`}
-                    card={card}
-                    isActive={isActive}
-                    offset={offset}
-                    distance={distance}
-                    onClick={() => goTo(index)}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Footer */}
-      <Container className="mt-8">
-        <div className="flex items-center justify-between gap-4 text-sm text-white/50">
-          <span>Active: {activeCard.title}</span>
-          <span>Swipe, scroll, or click a card</span>
+        {/* Dot indicators */}
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {cards.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === activeIndex ? "w-6 bg-white" : "w-1.5 bg-white/25"
+              }`}
+            />
+          ))}
         </div>
       </Container>
-    </>
-  );
-}
-
-export function PostStageSlider() {
-  return (
-    <section className="relative overflow-hidden pt-0 pb-20 sm:pb-24">
-      <PostStageSliderContent />
     </section>
   );
 }

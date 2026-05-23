@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
 import { ReelsCarousel } from "@/components/home/ReelsCarousel";
 import { PostStageSlider } from "@/components/home/PostStageSlider";
+import { MobileContentReel } from "@/components/home/MobileContentReel";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { blogListing } from "@/lib/content/blog";
 import {
@@ -370,9 +371,14 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <ReelsCarousel />
+      {/* Desktop: two carousels */}
+      <div className="hidden lg:block">
+        <ReelsCarousel />
+        <PostStageSlider />
+      </div>
 
-      <PostStageSlider />
+      {/* Mobile: combined 3D cylinder */}
+      <MobileContentReel />
 
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
