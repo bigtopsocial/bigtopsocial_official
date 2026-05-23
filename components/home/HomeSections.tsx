@@ -171,7 +171,7 @@ export function HomeSections() {
                   className="flex items-center gap-4 sm:gap-5"
                   style={{
                     width: 'max-content',
-                    animation: 'scroll-right 45s linear infinite',
+                    animation: 'scroll-right 55s linear infinite',
                   }}
                 >
                   {[...clientLogos, ...clientLogos].map((logo, idx) => (
@@ -621,7 +621,7 @@ export function HomeSections() {
           <div
             className="flex w-max"
             style={{
-              animation: "reels-marquee 120s linear infinite",
+              animation: "reels-marquee 170s linear infinite",
             }}
           >
             <div className="flex gap-8 px-4">
