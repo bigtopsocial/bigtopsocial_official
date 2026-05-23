@@ -20,7 +20,7 @@ const aboutCardGlow = {
   glowIntensity: 0.9,
   coneSpread: 22,
   fillOpacity: 0.16,
-  colors: ["#071a3d", "#0f2f68", "#1d4ed8"],
+  colors: ["#071a3d", "#40bbff", "#ffffff"],
 };
 
 export default function AboutPage() {

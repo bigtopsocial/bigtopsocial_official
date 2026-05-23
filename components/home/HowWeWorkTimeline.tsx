@@ -175,7 +175,7 @@ function ProcessCard({
 
         <div className="mt-4 h-px w-full max-w-[12rem] bg-white/15" />
 
-        <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+        <p className="mt-4 text-sm leading-relaxed text-muted">
           {step.description}
         </p>
       </div>

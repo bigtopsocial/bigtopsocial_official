@@ -107,7 +107,7 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Email address"
-                className="w-full bg-[#1A1A1A] text-white text-[13px] rounded-md px-4 py-3 outline-none border border-transparent focus:border-white/20 transition-colors placeholder:text-white/30"
+                className="w-full bg-card text-white text-[13px] rounded-md px-4 py-3 outline-none border border-transparent focus:border-white/20 transition-colors placeholder:text-white/30"
               />
               <button type="submit" className="absolute right-2 p-2 text-white/50 hover:text-white transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

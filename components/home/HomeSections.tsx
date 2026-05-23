@@ -45,7 +45,7 @@ const homeCardGlow = {
   glowIntensity: 0.9,
   coneSpread: 22,
   fillOpacity: 0.16,
-  colors: ["#071a3d", "#40bbff", "#ffffff"],
+  colors: ["#071a3d", "#12ced6", "#ffffff"],
 };
 
 const partnerLogoPlacements = [
@@ -228,7 +228,7 @@ export function HomeSections() {
     before:h-px
     before:bg-gradient-to-r
     before:from-transparent
-    before:via-sky-400/60
+    before:via-[#12ced6]/60
     before:to-transparent
     before:content-['']
   "
@@ -248,7 +248,7 @@ export function HomeSections() {
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {stats.map((s, idx) => (
                 <Reveal key={s.numeral} delay={idx * 0.05} className="h-full">
-                  <div className="aspect-square h-full rounded-[12px] border border-white/10 bg-white/[0.050] p-5 backdrop-blur-xl transition duration-300 ease-out hover:border-white/20 hover:bg-white/[0.07]">
+                  <div className="aspect-square h-full rounded-[12px] bg-card p-5">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between gap-3">
                         <span className="text-sm font-semibold text-foreground/95">
@@ -288,7 +288,7 @@ export function HomeSections() {
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
           <Reveal className="mb-14 text-center flex flex-col items-center">
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               Our Services
             </div>
             <h2 className="mt-10 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto">
@@ -303,7 +303,7 @@ export function HomeSections() {
           <div className="mt-14 mx-auto max-w-5xl grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
             {services.map((svc, idx) => (
               <Reveal key={svc.title} delay={idx * 0.04}>
-                <div className="group relative overflow-hidden aspect-[4/4] h-full rounded-[18px] border border-white/10 transform-gpu transition-transform duration-300 ease-out motion-safe:hover:scale-[1.03]">
+                <div className="relative overflow-hidden aspect-[4/4] h-full rounded-[18px] bg-card">
                   {/* Content */}
                   <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
                     <h3 className="text-lg text-foreground">
@@ -351,7 +351,7 @@ export function HomeSections() {
           before:h-px
           before:bg-gradient-to-r
           before:from-transparent
-          before:via-sky-400/60
+          before:via-[#12ced6]/60
           before:to-transparent
           before:content-['']
         "
@@ -547,7 +547,7 @@ export function HomeSections() {
                 </p>
 
                 {/* Ambient Glow */}
-                <div className="absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-sky-500/20 blur-3xl" />
+                <div className="absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-[#12ced6]/20 blur-3xl" />
               </div>
             </Reveal>
           </div>
@@ -559,7 +559,7 @@ export function HomeSections() {
         <Container>
           <Reveal className="mb-14 flex flex-col items-center text-center">
             {/* Badge */}
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               Testimonials
             </div>
 
@@ -705,7 +705,7 @@ export function HomeSections() {
                     border-white/10
                     bg-gradient-to-br
                     from-[#40ffbb]
-                    to-[#40bbff]
+                    to-[#12ced6]
                     text-base
                     font-semibold
                     text-black
@@ -750,7 +750,7 @@ export function HomeSections() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.46)_72%,rgba(0,0,0,0.82)_100%)]" />
         <Container className="relative z-10">
           <Reveal className="mb-14 text-center flex flex-col items-center">
-            <div className="mb-8 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <div className="mb-8 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               Partners
             </div>
             <h2 className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto">
@@ -796,7 +796,7 @@ export function HomeSections() {
           {/* SECTION HEADING */}
           <Reveal className="mb-14 flex flex-col items-center text-center">
             {/* Badge */}
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400/60 before:to-transparent before:content-['']">
+            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               FAQ
             </div>
 

@@ -344,14 +344,14 @@ export function ReelsCarousel() {
             text-center
           "
         >
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/50">
             Active:
             <span className="ml-2 text-white/80">
               {wrappedCards[activeIndex].title}
             </span>
           </p>
 
-          <p className="mt-2 text-xs text-white/30">
+          <p className="mt-2 text-xs text-muted">
             Swipe, scroll, or click a card
           </p>
         </div>
