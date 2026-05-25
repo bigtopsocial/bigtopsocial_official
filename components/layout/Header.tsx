@@ -44,9 +44,14 @@ export function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 bg-transparent border-white/[0.06] backdrop-blur-xl transition-transform duration-300 ease-out ${visible ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="mx-auto flex h-[72px] w-[92%] max-w-[1440px] items-center justify-between sm:h-[80px]">
         <Link href="/" className="flex items-center text-foreground">
-          <span className="text-xl font-semibold tracking-[0.05em] uppercase text-white">
-            BIGTOPSOCIAL
-          </span>
+          <Image
+            src="/logo.png"
+            alt="BigTopSocial"
+            width={3256}
+            height={669}
+            priority
+            className="h-8 w-auto sm:h-9 lg:h-10"
+          />
         </Link>
 
         <NavLinks className="hidden lg:block" />

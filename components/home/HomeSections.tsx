@@ -8,14 +8,16 @@ import { Reveal } from "@/components/motion/Reveal";
 import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
 import { ReelsCarousel } from "@/components/home/ReelsCarousel";
 import { PostStageSlider } from "@/components/home/PostStageSlider";
-import { MobileContentReel } from "@/components/home/MobileContentReel";
+import dynamic from "next/dynamic";
+const MobileContentReel = dynamic(
+  () => import("@/components/home/MobileContentReel").then((m) => m.MobileContentReel)
+);
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { blogListing } from "@/lib/content/blog";
 import {
   homeBlogTeasers,
   pricingPlans,
   services,
-  stats,
   testimonials,
 } from "@/lib/content/home";
 import { projectTeasers } from "@/lib/content/projects";
@@ -150,7 +152,6 @@ export function HomeSections() {
           >
             <source src="/herovideo2.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/15" />
         </div>
 
         <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
@@ -158,15 +159,15 @@ export function HomeSections() {
             <Reveal>
               <Stars />
               <p className="mt-3 text-sm text-foreground/80">
-                5.0 rating · Helped over 100+ businesses
+                5.0 rating · Helped over 50+ businesses
               </p>
-              <h1 className="mt-10 text-[clamp(1.75rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+              <h1 className="mt-10 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
                 Elevating brands
               </h1>
-              <h1 className="mt-1 text-[clamp(1.75rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
+              <h1 className="mt-1 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
                 Forward, Faster
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
                 We help ambitious brands scale with performance marketing, creative
                 strategy, and conversion-focused campaigns.
               </p>
@@ -179,12 +180,23 @@ export function HomeSections() {
             </Reveal>
 
             <Reveal delay={0.08} className="mt-14">
-              <p className="text-xs tracking-[0.28em] text-white/80">
-                Trusted by startups, scaleups &amp; global brands
-              </p>
+              <div className="mx-auto inline-flex items-stretch divide-x divide-white/15 px-1.5 py-1.5">
+                <div className="flex w-20 flex-col items-center px-2 sm:w-24">
+                  <span className="text-sm font-semibold text-white sm:text-base">4+</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">Experience</span>
+                </div>
+                <div className="flex w-20 flex-col items-center px-2 sm:w-24">
+                  <span className="text-sm font-semibold text-white sm:text-base">50+</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">Clients</span>
+                </div>
+                <div className="flex w-20 flex-col items-center px-2 sm:w-24">
+                  <span className="text-sm font-semibold text-white sm:text-base">8x</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">ROI</span>
+                </div>
+              </div>
               <div className="mt-6 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
                 <div
-                  className="flex items-center gap-4 sm:gap-5"
+                  className="flex items-center gap-1 sm:gap-5"
                   style={{
                     width: 'max-content',
                     animation: 'scroll-right 55s linear infinite',
@@ -200,7 +212,7 @@ export function HomeSections() {
                         alt={logo.replace('/clients-logos/', '').replace(/[-.]/g, ' ')}
                         loading="lazy"
                         decoding="async"
-                        className="h-20 w-auto object-contain sm:h-28 lg:h-32"
+                        className="h-28 w-auto object-contain sm:h-28 lg:h-32"
                       />
                     </div>
                   ))}
@@ -251,33 +263,26 @@ export function HomeSections() {
             >
               About
             </Link>
-            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl text-center mx-auto">
-              We make brands memorable
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted text-center mx-auto">
-              We blend strategy & creativity to help brands grow, connect, & stand
-              out with content that drives real engagement.
-            </p>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-[3px] lg:grid-cols-4">
-            {stats.map((s, idx) => (
-              <Reveal key={s.numeral} delay={idx * 0.05}>
-                <div className="flex min-h-[260px] flex-col justify-between rounded-[12px] bg-card p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-xs text-foreground/40">{s.numeral}</span>
-                    <span className="text-right text-xs text-foreground/40">{s.label}</span>
-                  </div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-[3.25rem] font-semibold leading-none tracking-tight text-foreground sm:text-[4rem]">
-                      {s.value}
-                    </span>
-                    <span className="text-lg font-medium text-foreground/60">{s.suffix}</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="mt-14">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className="order-2 text-center lg:order-1 lg:text-left">
+                <h2 className="text-4xl tracking-tight text-foreground sm:text-5xl">
+                  We make brands memorable
+                </h2>
+                <p className="mt-6 text-base leading-relaxed text-muted">
+                  We blend strategy & creativity to help brands grow, connect, & stand
+                  out with content that drives real engagement.
+                </p>
+              </div>
+              <img
+                src="/image%20copy.png"
+                alt="Our team"
+                className="order-1 h-auto w-full rounded-2xl object-contain lg:order-2"
+              />
+            </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -401,15 +406,15 @@ export function HomeSections() {
           </div>
 
           {/* Bento Grid */}
-          <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5 lg:auto-rows-[320px]">
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-12 lg:gap-5 lg:auto-rows-[320px]">
             {projectTeasers.slice(0, 5).map((p, idx) => {
               // Bento Layout Pattern
               const layouts = [
-                "lg:col-span-8 lg:row-span-2", // hero
-                "lg:col-span-4", // small
-                "lg:col-span-4 lg:row-span-2", // tall
-                "lg:col-span-4", // small
-                "lg:col-span-8", // wide
+                "col-span-2 lg:col-span-8 lg:row-span-2", // hero — full width
+                "col-span-1 lg:col-span-4", // small
+                "col-span-1 lg:col-span-4 lg:row-span-2", // small (lg: tall)
+                "col-span-1 lg:col-span-4", // small
+                "col-span-1 lg:col-span-8", // small (lg: wide)
               ];
 
               return (
@@ -425,7 +430,7 @@ export function HomeSections() {
                 relative
                 flex
                 h-full
-                min-h-[280px] sm:min-h-[320px]
+                min-h-[180px] sm:min-h-[220px] lg:min-h-[320px]
                 overflow-hidden
                 rounded-[20px] sm:rounded-[28px]
                 border
@@ -470,18 +475,18 @@ export function HomeSections() {
                       </div>
 
                       {/* Bottom Content */}
-                      <div className="absolute bottom-0 left-0 z-20 w-full p-6 sm:p-8">
-                        <div className="flex items-end justify-between gap-4">
+                      <div className="absolute bottom-0 left-0 z-20 w-full p-4 sm:p-6 lg:p-8">
+                        <div className="flex items-end justify-between gap-3 lg:gap-4">
                           <div>
-                            <p className="mb-3 text-sm text-white/60">
+                            <p className="mb-1 text-xs text-white/60 lg:mb-3 lg:text-sm">
                               {p.year}
                             </p>
 
-                            <h3 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
+                            <h3 className="text-base font-medium tracking-tight text-white sm:text-lg lg:text-3xl">
                               {p.title}
                             </h3>
 
-                            <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
+                            <p className="mt-3 hidden max-w-md text-sm leading-relaxed text-white/70 lg:block">
                               Building immersive digital experiences with scalable
                               modern architecture and refined visual systems.
                             </p>
@@ -491,8 +496,8 @@ export function HomeSections() {
                           <div
                             className="
                         flex
-                        h-12
-                        w-12
+                        h-8 w-8 shrink-0
+                        lg:h-12 lg:w-12
                         items-center
                         justify-center
                         rounded-full
@@ -531,7 +536,7 @@ export function HomeSections() {
             border-white/10
             bg-card
             p-5 sm:p-8
-            min-h-[280px] sm:min-h-[320px]
+            min-h-[180px] sm:min-h-[220px] lg:min-h-[320px]
           "
               >
                 <div>

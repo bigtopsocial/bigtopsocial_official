@@ -6,6 +6,13 @@ import { useRef, useState, useEffect } from "react";
 import { Container } from "@/components/layout/Container";
 import { processSteps } from "@/lib/content/home";
 
+const stepImages = [
+  "/testimonials/15M4kvkfOTEm4Aa0gaOHpjxbsg.png",
+  "/testimonials/36gqztWcToPPHd22gfZKy1MeKM.png",
+  "/testimonials/RnNDQCdRzWFSlr5xHMtOdaCwv0A.png",
+  "/testimonials/wCeVqDNsespfMwpEZDJh9bvoe0.png",
+];
+
 function CardIcon({ index }: { index: number }) {
   const cls = "h-6 w-6 text-white/80";
   switch (index) {
@@ -76,11 +83,11 @@ export function HowWeWorkTimeline() {
           {/* LEFT — heading + cards */}
           <div>
             {/* Pill */}
-            <div className="inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-4 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md">
+            <div className="relative mx-auto mb-10 flex w-fit overflow-hidden rounded-full lg:mx-0 lg:inline-flex border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               How We Work?
             </div>
 
-            <h2 className="mt-8 max-w-[22rem] text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.0] tracking-tight text-foreground">
+            <h2 className="max-w-[22rem] text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.0] tracking-tight text-foreground">
               Our proven growth process
             </h2>
 
@@ -90,12 +97,12 @@ export function HowWeWorkTimeline() {
             </p>
 
             {/* Cards */}
-            <div className="mt-10 flex flex-col gap-3">
+            <div className="mt-10 flex flex-col gap-[3px]">
               {processSteps.map((step, index) => (
                 <article
                   key={step.step}
                   ref={(el) => { cardRefs.current[index] = el; }}
-                  className="flex min-h-[360px] flex-col justify-between rounded-[20px] bg-card p-8 sm:p-10"
+                  className="flex min-h-[280px] flex-col justify-between rounded-[18px] bg-card p-6 sm:min-h-[360px] sm:rounded-[20px] sm:p-10"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.06]">
                     <CardIcon index={index} />
@@ -119,7 +126,7 @@ export function HowWeWorkTimeline() {
           {/* RIGHT — sticky image panel */}
           <div className="hidden lg:block">
             <div className="sticky top-24">
-  ``              <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-card">
+                <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-card">
                 {processSteps.map((step, index) => (
                   <div
                     key={step.step}
@@ -132,7 +139,7 @@ export function HowWeWorkTimeline() {
                     }}
                   >
                     <Image
-                      src={step.image}
+                      src={stepImages[index] ?? step.image}
                       alt={step.imageAlt}
                       fill
                       className="object-cover"

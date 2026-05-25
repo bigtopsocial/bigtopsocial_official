@@ -109,13 +109,16 @@ function Card({ item, index, total, scrollX, onOpen, onJump }: CardProps) {
           <Image
             src={item.src} alt={item.id} fill
             sizes="(max-width:640px) 56vw, 230px"
-            className="object-cover" loading="eager" draggable={false}
+            className="object-cover"
+            loading={Math.abs(index) < 2 ? "eager" : "lazy"}
+            decoding="async"
+            draggable={false}
           />
         ) : (
           <video
             ref={videoRef}
             className="h-full w-full object-cover"
-            muted loop playsInline preload="metadata"
+            muted loop playsInline preload="none"
           >
             <source src={item.src} type="video/mp4" />
           </video>
@@ -380,8 +383,8 @@ function CardStack({ items, label, autoplayOffset = 0 }: CardStackProps) {
 export function MobileContentReel() {
   return (
     <section className="lg:hidden select-none space-y-12 py-8 sm:py-14">
-      <CardStack items={POSTS} label="Posts" autoplayOffset={0}    />
-      <CardStack items={REELS} label="Reels" autoplayOffset={1800} />
+      <CardStack items={REELS} label="Reels" autoplayOffset={0}    />
+      <CardStack items={POSTS} label="Posts" autoplayOffset={1800} />
     </section>
   );
 }
