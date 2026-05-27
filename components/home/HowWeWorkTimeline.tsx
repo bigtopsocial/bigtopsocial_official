@@ -14,7 +14,7 @@ const stepImages = [
 ];
 
 function CardIcon({ index }: { index: number }) {
-  const cls = "h-6 w-6 text-white/80";
+  const cls = "h-6 w-6 text-sky-400";
   switch (index) {
     case 0:
       return (

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
 import { ReelsCarousel } from "@/components/home/ReelsCarousel";
 import { PostStageSlider } from "@/components/home/PostStageSlider";
+import { MobileTestimonials } from "@/components/home/MobileTestimonials";
 import dynamic from "next/dynamic";
 const MobileContentReel = dynamic(
   () => import("@/components/home/MobileContentReel").then((m) => m.MobileContentReel)
@@ -24,17 +25,17 @@ import { projectTeasers } from "@/lib/content/projects";
 
 const serviceIcons = [
   // Globe — Social Media Strategy
-  <svg key="globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>,
+  <svg key="globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>,
   // Video — Story-Driven Content
-  <svg key="video" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><rect x="2" y="6" width="15" height="12" rx="2" /><path d="m17 10 5-3v10l-5-3" /></svg>,
+  <svg key="video" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><rect x="2" y="6" width="15" height="12" rx="2" /><path d="m17 10 5-3v10l-5-3" /></svg>,
   // Layers — Brand Identity
-  <svg key="layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><path d="m12 2 10 6.5-10 6.5L2 8.5z" /><path d="m2 15.5 10 6.5 10-6.5" /><path d="m2 12 10 6.5 10-6.5" /></svg>,
+  <svg key="layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="m12 2 10 6.5-10 6.5L2 8.5z" /><path d="m2 15.5 10 6.5 10-6.5" /><path d="m2 12 10 6.5 10-6.5" /></svg>,
   // Users — Influencer Marketing
-  <svg key="users" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
+  <svg key="users" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
   // Target — Paid Campaigns
-  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
+  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
   // Bar chart — Analytics & Growth
-  <svg key="chart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-white/70"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>,
+  <svg key="chart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>,
 ];
 
 function Stars() {
@@ -184,7 +185,7 @@ export function HomeSections() {
             <Reveal delay={0.08} className="mt-14">
               <div className="mx-auto inline-flex items-stretch divide-x divide-white/15 px-1.5 py-1.5">
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
-                  <span className="text-sm font-semibold text-white sm:text-base">4+</span>
+                  <span className="text-sm font-semibold text-white sm:text-base">2+</span>
                   <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">Experience</span>
                 </div>
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
@@ -265,18 +266,21 @@ export function HomeSections() {
             >
               About
             </Link>
+            <h2 className="mx-auto max-w-3xl text-center text-4xl tracking-tight text-foreground sm:text-5xl">
+              We make brands memorable
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-muted">
+              We blend strategy & creativity to help brands grow, connect, & stand
+              out with content that drives real engagement.
+            </p>
           </Reveal>
 
           <Reveal className="mt-14">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
               <div className="order-2 text-center lg:order-1 lg:text-left">
-                <h2 className="text-4xl tracking-tight text-foreground sm:text-5xl">
-                  We make brands memorable
-                </h2>
-                <p className="mt-6 text-base leading-relaxed text-muted">
-                  We blend strategy & creativity to help brands grow, connect, & stand
-                  out with content that drives real engagement.
-                </p>
+                <h3 className="text-2xl tracking-tight text-muted sm:text-5xl lg:text-5xl">
+                  Our team of creatives, strategists, and growth experts is dedicated to crafting content that not only looks stunning but also delivers measurable results.
+                </h3>
               </div>
               <img
                 src="/image%20copy.png"
@@ -396,7 +400,7 @@ export function HomeSections() {
                 Portfolio
               </div>
 
-              <h2 className="mt-6 sm:mt-10 text-2xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
+              <h2 className="mt-6 sm:mt-10 text-4xl sm:text-5xl tracking-tight text-white">
                 The selected projects
               </h2>
 
@@ -412,11 +416,11 @@ export function HomeSections() {
             {projectTeasers.slice(0, 5).map((p, idx) => {
               // Bento Layout Pattern
               const layouts = [
-                "col-span-2 lg:col-span-8 lg:row-span-2", // hero — full width
-                "col-span-1 lg:col-span-4", // small
-                "col-span-1 lg:col-span-4 lg:row-span-2", // small (lg: tall)
-                "col-span-1 lg:col-span-4", // small
-                "col-span-1 lg:col-span-8", // small (lg: wide)
+                "col-span-2 min-h-[180px] sm:min-h-[220px] lg:col-span-8 lg:row-span-2", // hero — full width
+                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4", // mobile: square / desktop: small
+                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4 lg:row-span-2", // mobile: square / desktop: tall
+                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4", // mobile: square / desktop: small
+                "col-span-1 aspect-square lg:aspect-auto lg:col-span-8", // mobile: square / desktop: wide
               ];
 
               return (
@@ -432,7 +436,7 @@ export function HomeSections() {
                 relative
                 flex
                 h-full
-                min-h-[180px] sm:min-h-[220px] lg:min-h-[320px]
+                lg:min-h-[320px]
                 overflow-hidden
                 rounded-[20px] sm:rounded-[28px]
                 border
@@ -524,7 +528,7 @@ export function HomeSections() {
             })}
 
             {/* Stats Card */}
-            <Reveal className="lg:col-span-4">
+            <Reveal className="col-span-1 aspect-square lg:aspect-auto lg:col-span-4">
               <div
                 className="
             relative
@@ -538,10 +542,26 @@ export function HomeSections() {
             border-white/10
             bg-card
             p-5 sm:p-8
-            min-h-[180px] sm:min-h-[220px] lg:min-h-[320px]
+            lg:min-h-[320px]
           "
               >
-                <div>
+                {/* Background Video */}
+                <video
+                  className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-hidden
+                >
+                  <source src="/herovideo2.webm" type="video/webm" />
+                  <source src="/herovideo2.mp4" type="video/mp4" />
+                </video>
+
+             
+
+                <div className="relative z-10">
                   <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50">
                     Projects Delivered
                   </p>
@@ -551,9 +571,8 @@ export function HomeSections() {
                   </h3>
                 </div>
 
-                <p className="max-w-xs text-xs sm:text-sm leading-relaxed text-white/70">
-                  Helping startups and brands craft scalable, high-performing digital
-                  products with modern user experiences.
+                <p className="relative z-10 max-w-xs text-xs sm:text-sm leading-relaxed text-white/70">
+                  Helping brands craft scalable, high-performing digital products.
                 </p>
 
                 {/* Ambient Glow */}
@@ -586,53 +605,8 @@ export function HomeSections() {
           </Reveal>
         </Container>
 
-        {/* ── MOBILE: static stacked cards ── */}
-        <div className="lg:hidden mt-10 px-4 sm:px-6">
-          <div className="flex flex-col gap-4">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="relative overflow-hidden rounded-[24px] bg-white/[0.03] p-6 backdrop-blur-xl"
-              >
-                {/* stars */}
-                <div className="flex gap-1 text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-
-                {/* quote */}
-                <p className="mt-4 text-[14px] leading-[1.8] text-white/80">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                {/* author */}
-                <div className="mt-5 flex items-center gap-3">
-                  {t.bgImage ? (
-                    <Image
-                      src={t.bgImage}
-                      alt={t.name}
-                      width={44}
-                      height={44}
-                      loading="lazy"
-                      className="h-11 w-11 shrink-0 rounded-full border border-white/10 object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
-                      {t.name.charAt(0)}
-                    </div>
-                  )}
-                  <div>
-                    <p className="text-[13px] font-medium text-white">{t.name}</p>
-                    <p className="mt-0.5 text-[11px] text-white/40">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* ── MOBILE: static stacked cards (2 visible + show more) ── */}
+        <MobileTestimonials />
 
         {/* ── DESKTOP: marquee strip ── */}
         <div className="hidden lg:block relative mt-20 overflow-hidden py-12">
