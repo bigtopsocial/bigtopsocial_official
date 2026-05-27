@@ -4,6 +4,7 @@ import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import { aboutTeam, industries } from "@/lib/content/about";
 import { stats, testimonials } from "@/lib/content/home";
 
@@ -31,12 +32,17 @@ export default function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
             About Us
           </p>
-          <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-            Where brands
-          </h1>
-          <h1 className="mt-1 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-            become unforgettable
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text="Where brands"
+            className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
+          />
+          <BlurTextReveal
+            as="h1"
+            text="become unforgettable"
+            delay={0.4}
+            className="mt-1 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
+          />
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             A team of creators and marketers elevating brands with powerful content
             and campaigns.
@@ -47,9 +53,11 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20">
         <Container>
           <Reveal>
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Our Story
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Our Story"
+              className="text-2xl font-semibold text-foreground sm:text-3xl"
+            />
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
               Established in 2014, driven by creativity & innovation continuously.
             </p>
@@ -123,9 +131,11 @@ export default function AboutPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
               Awards
             </p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Awards & Achievements
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Awards & Achievements"
+              className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
               We’re honored to be recognized for our creativity, performance, and
               commitment to delivering outstanding marketing results.
@@ -137,9 +147,11 @@ export default function AboutPage() {
       <section className="border-t border-white/[0.06] py-16 sm:py-20">
         <Container>
           <Reveal>
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Client Feedback
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Client Feedback"
+              className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
               Discover success stories from satisfied clients. Learn how we assisted
               them in reaching their objectives and generating significant, enduring
@@ -169,9 +181,11 @@ export default function AboutPage() {
       <section className="border-t border-white/[0.06] py-16 sm:py-20">
         <Container>
           <Reveal>
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Trusted by teams building what’s ahead.
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Trusted by teams building what’s ahead."
+              className="text-2xl font-semibold text-foreground sm:text-3xl"
+            />
             <p className="mt-4 text-sm text-muted">Design partner</p>
           </Reveal>
         </Container>
@@ -180,9 +194,11 @@ export default function AboutPage() {
       <section className="border-t border-white/[0.06] py-16 sm:py-20">
         <Container>
           <Reveal>
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Industries We Power.
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Industries We Power."
+              className="text-2xl font-semibold text-foreground sm:text-3xl"
+            />
             <p className="mt-4 max-w-4xl text-sm leading-relaxed text-muted sm:text-base">
               {industries}
             </p>
@@ -193,9 +209,11 @@ export default function AboutPage() {
       <section className="border-t border-white/[0.06] py-16 sm:py-20">
         <Container>
           <Reveal>
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Minds behind Elevon
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Minds behind Elevon"
+              className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
               Our team blends strategy, creativity, and performance to build marketing
               that drives real growth.
@@ -223,12 +241,17 @@ export default function AboutPage() {
               FAQ
             </p>
             <div className="mt-4 max-w-3xl">
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                Everything
-              </h2>
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                you’re wondering
-              </h2>
+              <BlurTextReveal
+                as="h2"
+                text="Everything"
+                className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+              />
+              <BlurTextReveal
+                as="h2"
+                text="you’re wondering"
+                delay={0.2}
+                className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+              />
             </div>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
               Have questions? Find clear, concise answers to the most common inquiries

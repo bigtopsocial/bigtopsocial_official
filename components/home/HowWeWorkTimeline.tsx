@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
 import { Container } from "@/components/layout/Container";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import { processSteps } from "@/lib/content/home";
 
 const stepImages = [
@@ -87,9 +88,11 @@ export function HowWeWorkTimeline() {
               How We Work?
             </div>
 
-            <h2 className="max-w-[22rem] text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.0] tracking-tight text-foreground">
-              Our proven growth process
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Our proven growth process"
+              className="mx-auto max-w-[22rem] text-center text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.0] tracking-tight text-foreground lg:mx-0 lg:text-left"
+            />
 
             <p className="mt-5 max-w-[30rem] text-sm leading-relaxed text-muted sm:text-base">
               We blend strategy, creativity, and data to design campaigns that

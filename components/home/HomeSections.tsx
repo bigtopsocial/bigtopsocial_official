@@ -5,6 +5,7 @@ import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
 import { ReelsCarousel } from "@/components/home/ReelsCarousel";
 import { PostStageSlider } from "@/components/home/PostStageSlider";
@@ -143,7 +144,7 @@ const shuffledSizes = seededShuffle(partnerLogoSizes);
 export function HomeSections() {
   return (
     <>
-      <section className="relative flex min-h-[90svh] flex-col overflow-hidden pt-[70px] sm:pt-[80px] lg:pt-[90px]">
+      <section className="relative flex min-h-[90svh] flex-col overflow-hidden pt-[120px] sm:pt-[130px] lg:pt-[140px]">
         <div className="pointer-events-none absolute inset-0">
           <video
             className="absolute inset-0 h-full w-full object-cover object-center"
@@ -156,6 +157,9 @@ export function HomeSections() {
           >
             <source src="/herovideo2.mp4" type="video/mp4" />
           </video>
+          {/* Mobile-only legibility scrim: darkens the top/middle so the white
+              headline reads cleanly over the video. Desktop (sm+) is unchanged. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-transparent sm:hidden" />
         </div>
 
         <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
@@ -165,25 +169,30 @@ export function HomeSections() {
               <p className="mt-3 text-sm text-foreground/80">
                 5.0 rating · Helped over 50+ businesses
               </p>
-              <h1 className="mt-10 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
-                Elevating brands
-              </h1>
-              <h1 className="mt-1 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground">
-                Forward, Faster
-              </h1>
+              <BlurTextReveal
+                as="h1"
+                text="Elevating brands"
+                className="mt-8 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground sm:mt-10"
+              />
+              <BlurTextReveal
+                as="h1"
+                text="Forward, Faster"
+                delay={0.4}
+                className="mt-1 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground"
+              />
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
                 We help ambitious brands scale with performance marketing, creative
                 strategy, and conversion-focused campaigns.
               </p>
               <Link
                 href="/contact"
-                className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm text-background transition hover:bg-foreground/90"
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-10 text-sm text-background transition hover:bg-foreground/90 sm:mt-10"
               >
                 Book a Consultation
               </Link>
             </Reveal>
 
-            <Reveal delay={0.08} className="mt-14">
+            <Reveal delay={0.08} className="mt-10 sm:mt-14">
               <div className="mx-auto inline-flex items-stretch divide-x divide-white/15 px-1.5 py-1.5">
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
                   <span className="text-sm font-semibold text-white sm:text-base">2+</span>
@@ -216,7 +225,7 @@ export function HomeSections() {
                         alt={logo.replace('/clients-logos/', '').replace(/[-.]/g, ' ')}
                         loading="lazy"
                         decoding="async"
-                        className="h-28 w-auto object-contain sm:h-28 lg:h-32"
+                        className="h-24 w-auto object-contain sm:h-28 lg:h-32"
                       />
                     </div>
                   ))}
@@ -242,9 +251,11 @@ export function HomeSections() {
             >
               About
             </Link>
-            <h2 className="mt-8 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
-              We make brands memorable
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="We make brands memorable"
+              className="mt-8 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl"
+            />
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
               We blend strategy & creativity to help brands grow, connect, & stand
               out with content that drives real engagement.
@@ -300,9 +311,11 @@ export function HomeSections() {
             <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
               Our Services
             </div>
-            <h2 className="mt-10 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto">
-              What we master
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="What we master"
+              className="mt-10 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto"
+            />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
               We empower brands to grow, engage, and succeed with clever social
               tactics and captivating visuals.
@@ -371,9 +384,11 @@ export function HomeSections() {
             </div>
 
             {/* Heading */}
-            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
-              Posts that stop the scroll
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Posts that stop the scroll"
+              className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl"
+            />
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
@@ -402,9 +417,11 @@ export function HomeSections() {
                 Portfolio
               </div>
 
-              <h2 className="mt-6 sm:mt-10 text-4xl sm:text-5xl tracking-tight text-white">
-                The selected projects
-              </h2>
+              <BlurTextReveal
+                as="h2"
+                text="The selected projects"
+                className="mt-6 sm:mt-10 text-4xl sm:text-5xl tracking-tight text-white"
+              />
 
               <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-relaxed text-white/60">
                 Discover our selected projects, highlighting partnerships with
@@ -595,9 +612,11 @@ export function HomeSections() {
             </div>
 
             {/* Heading */}
-            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
-              Client feedback that speaks volumes
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Client feedback that speaks volumes"
+              className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl"
+            />
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
@@ -750,9 +769,11 @@ export function HomeSections() {
             <div className="mb-4 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-[''] sm:mb-8">
               Partners
             </div>
-            <h2 className="max-w-3xl text-2xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto">
-              Trusted by ambitious brands
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Trusted by ambitious brands"
+              className="max-w-3xl text-2xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto"
+            />
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
               We collaborate with industry leaders and fast-growing startups to build digital authorities and high-converting channels.
             </p>
@@ -800,9 +821,11 @@ export function HomeSections() {
             </div>
 
             {/* Heading */}
-            <h2 className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Everything you’re wondering
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Everything you’re wondering"
+              className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+            />
 
             {/* Description */}
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
