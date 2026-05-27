@@ -20,18 +20,26 @@ export function FaqAccordion() {
       {faqItems.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={item.question} className="px-5 py-4 sm:px-6">
+          <div
+            key={item.question}
+            className="px-5 py-4 transition-colors hover:bg-white/[0.02] sm:px-6"
+          >
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 text-left"
+              className="group flex w-full items-center justify-between gap-4 text-left"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
             >
-              <span className="text-sm text-foreground sm:text-base">
+              <span className="text-sm font-medium text-foreground sm:text-base">
                 {item.question}
               </span>
-              <span className="text-lg text-muted transition group-hover:text-foreground">
-                {isOpen ? "−" : "+"}
+              <span
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-muted transition-all duration-300 group-hover:border-white/20 group-hover:text-foreground ${
+                  isOpen ? "rotate-45 bg-white/[0.06] text-foreground" : ""
+                }`}
+                aria-hidden="true"
+              >
+                +
               </span>
             </button>
             <AnimatePresence initial={false}>

@@ -141,7 +141,7 @@ export function PostStageSlider() {
   if (!isDesktop) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="relative z-0 py-16 sm:py-20 lg:py-24">
       <Container>
         {/* Stage — gesture zone, clips horizontal overflow, no rounded corners */}
         <div
@@ -150,12 +150,6 @@ export function PostStageSlider() {
           onMouseLeave={() => setIsInteracting(false)}
           onTouchStart={() => setIsInteracting(true)}
           onTouchEnd={() => { setTimeout(() => setIsInteracting(false), 1200); }}
-          onWheel={(e) => {
-            const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-            const delta = isHorizontal ? e.deltaX : e.shiftKey ? e.deltaY : 0;
-            if (!delta) return;
-            goTo(activeIndex + (delta > 0 ? 1 : -1));
-          }}
         >
           {/* Card stage */}
           <motion.div

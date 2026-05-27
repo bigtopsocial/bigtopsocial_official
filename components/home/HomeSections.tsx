@@ -109,12 +109,13 @@ const partnerLogoPlacements = [
 ] as const;
 
 const partnerLogoSizes = [
-  // Phone (< sm) renders these in a 4-col grid, so the base height must stay
-  // small; the sm:/lg: values drive the scattered floating layout unchanged.
-  "h-10 sm:h-36 lg:h-44",
-  "h-10 sm:h-40 lg:h-48",
-  "h-10 sm:h-44 lg:h-52",
-  "h-10 sm:h-48 lg:h-56",
+  // Phone (< sm) renders these in a 4-col grid whose rows stretch to fill the
+  // viewport, so the base height is `h-full` (logo fills its row, capped by the
+  // cell width). The sm:/lg: values drive the scattered floating layout unchanged.
+  "h-full sm:h-36 lg:h-44",
+  "h-full sm:h-40 lg:h-48",
+  "h-full sm:h-44 lg:h-52",
+  "h-full sm:h-48 lg:h-56",
 ] as const;
 
 /**
@@ -229,64 +230,65 @@ export function HomeSections() {
         <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-full bg-gradient-to-b from-transparent to-black" />
       </section>
 
-      <section className="relative bg-background py-16 sm:py-20 lg:py-24">
+      <section className="relative bg-background py-16 sm:py-20 lg:py-28">
         {/* ✅ BLEND: reinforces the black at the very top of this section */}
         <div className="pointer-events-none absolute top-0 left-0 h-24 w-full bg-gradient-to-b from-black to-transparent" />
 
         <Container>
-          <Reveal className="mb-14">
+          <Reveal className="mb-12 flex flex-col items-center text-center sm:mb-16">
             <Link
               href="/about"
-              className="
-    mb-10
-    relative -top-10 left-1/2 z-40
-    inline-flex -translate-x-1/2
-    overflow-hidden
-    rounded-full
-        bg-black/70
-    px-6 py-2
-    text-xs font-semibold uppercase tracking-[0.2em]
-    text-foreground/90
-    backdrop-blur-md
-    transition
-    hover:border-white/20
-    hover:bg-black/80
-
-    before:absolute
-    before:left-[12%]
-    before:right-[12%]
-    before:top-0
-    before:h-px
-    before:bg-gradient-to-r
-    before:from-transparent
-    before:via-[#12ced6]/60
-    before:to-transparent
-    before:content-['']
-  "
+              className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-[#0a0a0a] px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-sky-400 before:to-transparent before:shadow-[0_0_12px_1px_rgba(56,189,248,0.9)] before:content-['']"
             >
               About
             </Link>
-            <h2 className="mx-auto max-w-3xl text-center text-4xl tracking-tight text-foreground sm:text-5xl">
+            <h2 className="mt-8 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
               We make brands memorable
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-muted">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
               We blend strategy & creativity to help brands grow, connect, & stand
               out with content that drives real engagement.
             </p>
           </Reveal>
 
-          <Reveal className="mt-14">
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className="order-2 text-center lg:order-1 lg:text-left">
-                <h3 className="text-2xl tracking-tight text-muted sm:text-5xl lg:text-5xl">
-                  Our team of creatives, strategists, and growth experts is dedicated to crafting content that not only looks stunning but also delivers measurable results.
-                </h3>
+          <Reveal>
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              {/* Image */}
+              <div className="order-1 lg:col-span-6 lg:order-2">
+                <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
+                  <img
+                    src="/image%20copy.png"
+                    alt="Our team"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                </div>
               </div>
-              <img
-                src="/image%20copy.png"
-                alt="Our team"
-                className="order-1 h-auto w-full rounded-2xl object-contain lg:order-2"
-              />
+
+              {/* Text */}
+              <div className="order-2 text-center lg:col-span-6 lg:order-1 lg:text-left">
+                <h3 className="text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2.5rem]">
+                  Our team of creatives, strategists, and growth experts is
+                  dedicated to crafting content that not only looks stunning but
+                  also delivers{" "}
+                  <span className="bg-gradient-to-r from-sky-400 to-[#12ced6] bg-clip-text text-transparent">
+                    measurable results
+                  </span>
+                  .
+                </h3>
+
+                <Link
+                  href="/about"
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground/90 transition hover:text-sky-400"
+                >
+                  Learn more about us
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </Reveal>
         </Container>
@@ -729,7 +731,7 @@ export function HomeSections() {
       </section>
 
       {/* Brands / Partners Section */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden py-16 sm:py-20 lg:py-24">
+      <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden py-10 sm:py-20 lg:py-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
@@ -743,21 +745,22 @@ export function HomeSections() {
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.46)_72%,rgba(0,0,0,0.82)_100%)]" />
-        <Container className="relative z-10">
-          <Reveal className="mb-14 text-center flex flex-col items-center">
-            <div className="mb-8 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
+        <Container className="relative z-10 flex w-[90%] flex-1 flex-col sm:block sm:flex-none">
+          <Reveal className="mb-6 text-center flex flex-col items-center sm:mb-14">
+            <div className="mb-4 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-[''] sm:mb-8">
               Partners
             </div>
-            <h2 className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto">
+            <h2 className="max-w-3xl text-2xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto">
               Trusted by ambitious brands
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
               We collaborate with industry leaders and fast-growing startups to build digital authorities and high-converting channels.
             </p>
           </Reveal>
 
-          {/* Clean Floating Grid Layout */}
-          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-4 gap-y-6 sm:gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
+          {/* Mobile: fills remaining viewport as a 4-col grid (10 stretched rows).
+              sm+: reverts to the scattered floating layout. */}
+          <div className="relative grid flex-1 grid-cols-4 content-center items-stretch gap-x-2 gap-y-2 [grid-auto-rows:minmax(0,1fr)] sm:mt-10 sm:block sm:h-[600px] sm:flex-none sm:gap-x-4 sm:gap-y-8 lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
               const placement = shuffledPlacements[idx % shuffledPlacements.length];
@@ -767,6 +770,7 @@ export function HomeSections() {
                 <Reveal
                   key={logoPath}
                   delay={idx * 0.02}
+                  blur={false}
                   className={`flex items-center justify-center p-0 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
                 >
                   <div className={`relative flex w-full items-center justify-center ${size}`}>
@@ -786,29 +790,30 @@ export function HomeSections() {
         </Container>
       </section>
 
-      <section className="relative py-16 sm:py-20 lg:py-24">
+      <section className="relative py-14 sm:py-20 lg:py-24">
         <Container>
           {/* SECTION HEADING */}
-          <Reveal className="mb-14 flex flex-col items-center text-center">
+          <Reveal className="mb-10 flex flex-col items-center text-center sm:mb-14">
             {/* Badge */}
-            <div className="mb-10 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-['']">
+            <div className="mb-4 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-[''] sm:mb-8">
               FAQ
             </div>
 
             {/* Heading */}
-            <h2 className="max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl">
+            <h2 className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Everything you’re wondering
             </h2>
 
             {/* Description */}
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
               Have questions? Find clear, concise answers to the most common
               inquiries below.
             </p>
           </Reveal>
 
           {/* FAQ ACCORDION */}
-          <Reveal className="mx-auto mt-16 w-full max-w-4xl">
+          <Reveal className="mx-auto mt-10 w-full max-w-4xl sm:mt-16">
+
             <FaqAccordion />
           </Reveal>
         </Container>

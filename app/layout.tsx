@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@/components/BorderGlow.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import { ProgressiveBlur } from "@/components/layout/ProgressiveBlur";
 
 const helveticaNeue = localFont({
   src: "../public/helvetica-neue-5/HelveticaNeueMedium.otf",
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en" className={helveticaNeue.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <SmoothScroll>{children}</SmoothScroll>
+        <ProgressiveBlur />
       </body>
     </html>
   );

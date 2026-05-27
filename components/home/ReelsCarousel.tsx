@@ -187,7 +187,7 @@ export function ReelsCarousel() {
   if (!isDesktop) return null;
 
   return (
-    <section className="relative overflow-hidden bg-black py-0">
+    <section className="relative z-0 overflow-hidden bg-black py-0">
       <div className="relative min-h-[600px] sm:min-h-[680px] lg:h-[760px] overflow-hidden">
         {/* LEFT FADE */}
         <div
