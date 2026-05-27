@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
+import { useMatchMedia } from "@/lib/useMatchMedia";
 
 type PostCard = {
   title: string;
@@ -102,6 +103,9 @@ function StageCard({
 
 export function PostStageSlider() {
   const reduceMotion = useReducedMotion();
+  // Desktop-only section (parent uses `hidden lg:block`). Avoid mounting it on
+  // mobile so its videos and autoplay timer stay idle there.
+  const isDesktop = useMatchMedia("(min-width: 1024px)");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [spacing, setSpacing] = useState(260);
@@ -110,6 +114,7 @@ export function PostStageSlider() {
 
   // Responsive card spacing
   useEffect(() => {
+    if (!isDesktop) return;
     const update = () => {
       const w = window.innerWidth;
       setSpacing(w < 480 ? 210 : w < 768 ? 240 : w < 1024 ? 270 : 300);
@@ -117,7 +122,7 @@ export function PostStageSlider() {
     update();
     window.addEventListener("resize", update, { passive: true });
     return () => window.removeEventListener("resize", update);
-  }, []);
+  }, [isDesktop]);
 
   const goTo = useCallback((next: number) => {
     const total = cards.length;
@@ -126,12 +131,14 @@ export function PostStageSlider() {
 
   // Auto-advance
   useEffect(() => {
-    if (reduceMotion || isInteracting) return;
+    if (reduceMotion || isInteracting || !isDesktop) return;
     timerRef.current = setInterval(() => {
       setActiveIndex((i) => (i + 1) % cards.length);
     }, 3800);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [reduceMotion, isInteracting]);
+  }, [reduceMotion, isInteracting, isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <section className="py-16 sm:py-20 lg:py-24">

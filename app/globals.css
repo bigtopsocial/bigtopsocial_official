@@ -203,3 +203,49 @@ body {
   pointer-events: none;
   z-index: 10;
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Mobile-only optimizations (no effect on desktop / large tablets)
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Stop iOS Safari from auto-inflating text on orientation change. No-op on
+   desktop. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Remove the grey tap flash and the 300ms double-tap delay on controls.
+   These properties are inert on non-touch (desktop) pointers. */
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Hard guard against horizontal scroll on phones/small tablets only. The
+   desktop sticky panels live at lg+ and are untouched by this. */
+@media (max-width: 1023px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* iOS zooms the page when a focused field has font-size < 16px. Enforce 16px
+   on phones only so inputs no longer trigger an accidental zoom; desktop keeps
+   its original sizing. */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}

@@ -108,10 +108,12 @@ const partnerLogoPlacements = [
 ] as const;
 
 const partnerLogoSizes = [
-  "h-36 sm:h-36 lg:h-44",
-  "h-36 sm:h-40 lg:h-48",
-  "h-36 sm:h-44 lg:h-52",
-  "h-36 sm:h-48 lg:h-56",
+  // Phone (< sm) renders these in a 4-col grid, so the base height must stay
+  // small; the sm:/lg: values drive the scattered floating layout unchanged.
+  "h-10 sm:h-36 lg:h-44",
+  "h-10 sm:h-40 lg:h-48",
+  "h-10 sm:h-44 lg:h-52",
+  "h-10 sm:h-48 lg:h-56",
 ] as const;
 
 /**
@@ -753,7 +755,7 @@ export function HomeSections() {
       </section>
 
       {/* Brands / Partners Section */}
-      <section className="relative flex min-h-screen items-center overflow-hidden py-16 sm:py-20 lg:py-24">
+      <section className="relative flex min-h-[100svh] items-center overflow-hidden py-16 sm:py-20 lg:py-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
@@ -781,7 +783,7 @@ export function HomeSections() {
           </Reveal>
 
           {/* Clean Floating Grid Layout */}
-          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-6 gap-y-0 sm:gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
+          <div className="relative mt-10 grid grid-cols-4 items-center gap-x-4 gap-y-6 sm:gap-y-8 sm:block sm:h-[600px] lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
               const placement = shuffledPlacements[idx % shuffledPlacements.length];
@@ -800,7 +802,7 @@ export function HomeSections() {
                       width={340}
                       height={170}
                       loading="lazy"
-                      className="h-full w-auto max-w-none object-contain"
+                      className="h-full w-auto max-w-full object-contain sm:max-w-none"
                     />
                   </div>
                 </Reveal>

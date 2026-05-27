@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
+import { useMatchMedia } from "@/lib/useMatchMedia";
 
 // ─── data ────────────────────────────────────────────────────────────────────
 
@@ -52,11 +53,12 @@ type CardProps = {
   index: number;
   total: number;
   scrollX: MotionValue<number>;
+  active: boolean;
   onOpen: (i: number) => void;
   onJump: (i: number) => void;
 };
 
-function Card({ item, index, total, scrollX, onOpen, onJump }: CardProps) {
+function Card({ item, index, total, scrollX, active, onOpen, onJump }: CardProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const lastOff  = useRef(0);
 
@@ -78,10 +80,12 @@ function Card({ item, index, total, scrollX, onOpen, onJump }: CardProps) {
       lastOff.current = v;
       const vid = videoRef.current;
       if (!vid) return;
-      if (Math.abs(v) < 0.45) vid.play().catch(() => {});
-      else if (!vid.paused)   vid.pause();
+      // Only drive playback while this carousel is the visible (mobile) one —
+      // keeps videos paused on desktop where the section is display:none.
+      if (active && Math.abs(v) < 0.45) vid.play().catch(() => {});
+      else if (!vid.paused) vid.pause();
     });
-  }, [offset]);
+  }, [offset, active]);
 
   return (
     <motion.div
@@ -212,6 +216,9 @@ type CardStackProps = {
 function CardStack({ items, label, autoplayOffset = 0 }: CardStackProps) {
   const n       = items.length;
   const scrollX = useMotionValue(0);
+  // True only when this mobile section is actually on screen (< lg). On desktop
+  // it is hidden, so we skip autoplay timers and video playback to save work.
+  const active  = useMatchMedia("(max-width: 1023px)");
 
   const [activeIdx, setActiveIdx] = useState(0);
   const [openIdx,   setOpenIdx]   = useState<number | null>(null);
@@ -266,10 +273,10 @@ function CardStack({ items, label, autoplayOffset = 0 }: CardStackProps) {
   }, [startAuto]);
 
   useEffect(() => {
-    if (openIdx !== null) { stopAuto(); return; }
+    if (!active || openIdx !== null) { stopAuto(); return; }
     const t = setTimeout(startAuto, autoplayOffset);
     return () => { clearTimeout(t); stopAuto(); };
-  }, [openIdx, startAuto, stopAuto, autoplayOffset]);
+  }, [active, openIdx, startAuto, stopAuto, autoplayOffset]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     ptrStartX.current  = e.clientX;
@@ -344,6 +351,7 @@ function CardStack({ items, label, autoplayOffset = 0 }: CardStackProps) {
             index={i}
             total={n}
             scrollX={scrollX}
+            active={active}
             onOpen={setOpenIdx}
             onJump={(idx) => { jumpTo(idx); stopAuto(); scheduleResume(); }}
           />

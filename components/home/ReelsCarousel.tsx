@@ -8,6 +8,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useMatchMedia } from "@/lib/useMatchMedia";
 
 const reelCards = [
   {
@@ -129,6 +130,9 @@ function ReelCard({
 
 export function ReelsCarousel() {
   const reduceMotion = useReducedMotion();
+  // This carousel is desktop-only (parent uses `hidden lg:block`). Skip mounting
+  // it on mobile entirely so its videos and autoplay timers never run there.
+  const isDesktop = useMatchMedia("(min-width: 1024px)");
 
   const [activeIndex, setActiveIndex] = useState(2);
 
@@ -171,14 +175,16 @@ export function ReelsCarousel() {
   };
 
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion || !isDesktop) return;
 
     const interval = setInterval(() => {
       next();
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [reduceMotion]);
+  }, [reduceMotion, isDesktop]);
+
+  if (!isDesktop) return null;
 
   return (
     <section className="relative overflow-hidden bg-black py-0">

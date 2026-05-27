@@ -19,12 +19,17 @@ export default function SmoothScroll({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    // On touch devices, let the browser own touch scrolling (native momentum).
+    // syncTouch drives scroll through JS/rAF which causes jank, lag and lost
+    // inertia on phones — desktop wheel smoothing is unaffected.
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+
     const lenis = new Lenis({
       duration: prefersReducedMotion ? 0 : 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      syncTouch: true,
-      touchMultiplier: 2,
+      syncTouch: isTouch ? false : true,
+      touchMultiplier: isTouch ? 1 : 2,
     });
 
     lenisRef.current = lenis;
