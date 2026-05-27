@@ -47,7 +47,7 @@ export function BlurTextReveal({
     return <Tag className={className}>{text}</Tag>;
   }
 
-  const MotionTag = motion[as] as ElementType;
+  const MotionTag = motion[as] as any;
   const words = text.split(" ");
 
   const container: Variants = {
