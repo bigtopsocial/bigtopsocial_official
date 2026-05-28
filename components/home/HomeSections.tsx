@@ -102,47 +102,6 @@ const homeCardGlow = {
   colors: ["#071a3d", "#12ced6", "#ffffff"],
 };
 
-const partnerLogoPlacements = [
-  "sm:left-[1%] sm:top-[5%] sm:w-[96px] lg:w-[124px] sm:-rotate-3",
-  "sm:left-[13%] sm:top-[1%] sm:w-[78px] lg:w-[108px] sm:rotate-2",
-  "sm:left-[27%] sm:top-[8%] sm:w-[112px] lg:w-[142px] sm:-rotate-1",
-  "sm:left-[44%] sm:top-[2%] sm:w-[86px] lg:w-[118px] sm:rotate-3",
-  "sm:left-[58%] sm:top-[9%] sm:w-[118px] lg:w-[150px] sm:-rotate-2",
-  "sm:left-[76%] sm:top-[3%] sm:w-[92px] lg:w-[124px] sm:rotate-1",
-  "sm:left-[89%] sm:top-[11%] sm:w-[74px] lg:w-[104px] sm:-rotate-3",
-  "sm:left-[6%] sm:top-[22%] sm:w-[122px] lg:w-[156px] sm:rotate-2",
-  "sm:left-[22%] sm:top-[25%] sm:w-[86px] lg:w-[116px] sm:-rotate-2",
-  "sm:left-[36%] sm:top-[19%] sm:w-[102px] lg:w-[136px] sm:rotate-1",
-  "sm:left-[50%] sm:top-[28%] sm:w-[80px] lg:w-[112px] sm:-rotate-1",
-  "sm:left-[64%] sm:top-[22%] sm:w-[124px] lg:w-[158px] sm:rotate-3",
-  "sm:left-[82%] sm:top-[28%] sm:w-[96px] lg:w-[130px] sm:-rotate-2",
-  "sm:left-[0%] sm:top-[41%] sm:w-[84px] lg:w-[114px] sm:rotate-1",
-  "sm:left-[15%] sm:top-[43%] sm:w-[114px] lg:w-[148px] sm:-rotate-3",
-  "sm:left-[31%] sm:top-[39%] sm:w-[76px] lg:w-[106px] sm:rotate-2",
-  "sm:left-[43%] sm:top-[47%] sm:w-[122px] lg:w-[158px] sm:-rotate-1",
-  "sm:left-[61%] sm:top-[42%] sm:w-[88px] lg:w-[120px] sm:rotate-3",
-  "sm:left-[73%] sm:top-[48%] sm:w-[116px] lg:w-[148px] sm:-rotate-2",
-  "sm:left-[91%] sm:top-[43%] sm:w-[72px] lg:w-[100px] sm:rotate-1",
-  "sm:left-[7%] sm:top-[61%] sm:w-[98px] lg:w-[132px] sm:-rotate-1",
-  "sm:left-[20%] sm:top-[66%] sm:w-[80px] lg:w-[112px] sm:rotate-3",
-  "sm:left-[34%] sm:top-[58%] sm:w-[120px] lg:w-[154px] sm:-rotate-2",
-  "sm:left-[52%] sm:top-[64%] sm:w-[92px] lg:w-[124px] sm:rotate-2",
-  "sm:left-[66%] sm:top-[60%] sm:w-[108px] lg:w-[142px] sm:-rotate-3",
-  "sm:left-[83%] sm:top-[67%] sm:w-[82px] lg:w-[112px] sm:rotate-1",
-  "sm:left-[2%] sm:top-[81%] sm:w-[112px] lg:w-[144px] sm:rotate-2",
-  "sm:left-[18%] sm:top-[85%] sm:w-[74px] lg:w-[102px] sm:-rotate-2",
-  "sm:left-[30%] sm:top-[78%] sm:w-[96px] lg:w-[128px] sm:rotate-1",
-  "sm:left-[45%] sm:top-[84%] sm:w-[118px] lg:w-[152px] sm:-rotate-3",
-  "sm:left-[63%] sm:top-[79%] sm:w-[82px] lg:w-[114px] sm:rotate-3",
-  "sm:left-[75%] sm:top-[86%] sm:w-[108px] lg:w-[140px] sm:-rotate-1",
-  "sm:left-[90%] sm:top-[80%] sm:w-[76px] lg:w-[104px] sm:rotate-2",
-  "sm:left-[10%] sm:top-[52%] sm:w-[70px] lg:w-[98px] sm:-rotate-2",
-  "sm:left-[25%] sm:top-[51%] sm:w-[92px] lg:w-[122px] sm:rotate-1",
-  "sm:left-[56%] sm:top-[52%] sm:w-[72px] lg:w-[100px] sm:-rotate-1",
-  "sm:left-[70%] sm:top-[12%] sm:w-[80px] lg:w-[110px] sm:rotate-2",
-  "sm:left-[39%] sm:top-[71%] sm:w-[78px] lg:w-[108px] sm:-rotate-2",
-] as const;
-
 const partnerLogoSizes = [
   // Phone (< sm) renders these in a 4-col grid whose rows stretch to fill the
   // viewport, so the base height is `h-full` (logo fills its row, capped by the
@@ -172,8 +131,59 @@ function seededShuffle<T>(array: readonly T[]): T[] {
   return arr;
 }
 
-const shuffledPlacements = seededShuffle(partnerLogoPlacements);
 const shuffledSizes = seededShuffle(partnerLogoSizes);
+
+/**
+ * Jittered-grid scatter: lays logos into a COLS×ROWS grid (one per cell) and
+ * nudges each within its cell. Even coverage (no gaps / clusters) that still
+ * reads as random. Cells are shuffled with the daily seed so it varies per day.
+ */
+const PARTNER_COLS = 9;
+const PARTNER_ROWS = 4;
+
+function buildPartnerPlacements(count: number) {
+  const seed = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+  const rand = (n: number) => {
+    const x = Math.sin(seed * 127.1 + n * 311.7) * 43758.5453;
+    return x - Math.floor(x);
+  };
+
+  const cells = Array.from({ length: PARTNER_COLS * PARTNER_ROWS }, (_, i) => i);
+  for (let i = cells.length - 1; i > 0; i--) {
+    const j = Math.floor(rand(i + 911) * (i + 1));
+    [cells[i], cells[j]] = [cells[j], cells[i]];
+  }
+
+  const cellW = 100 / PARTNER_COLS;
+  const cellH = 100 / PARTNER_ROWS;
+
+  return Array.from({ length: count }, (_, i) => {
+    const cell = cells[i];
+    const col = cell % PARTNER_COLS;
+    const row = Math.floor(cell / PARTNER_COLS);
+    // Lock each logo to its cell centre — uniform, consistent spacing. Only a
+    // tiny nudge (±12% of a cell) so it reads as placed, not mechanical.
+    const left = cellW * (col + 0.5) + (rand(i * 2 + 1) - 0.5) * cellW * 0.12;
+    const top = cellH * (row + 0.5) + (rand(i * 2 + 2) - 0.5) * cellH * 0.12;
+    const wSm = Math.round(92 + rand(i + 31) * 24);
+    const wLg = Math.round(wSm * 1.28);
+    return { left: +left.toFixed(2), top: +top.toFixed(2), wSm, wLg };
+  });
+}
+
+const partnerPlacements = buildPartnerPlacements(clientLogos.length);
+
+const partnerPlacementCss =
+  "@media (min-width:640px){" +
+  partnerPlacements
+    .map(
+      (p, i) =>
+        `.partner-cell-${i}{left:${p.left}%;top:${p.top}%;width:${p.wSm}px;transform:translate(-50%,-50%);}`
+    )
+    .join("") +
+  "}@media (min-width:1024px){" +
+  partnerPlacements.map((p, i) => `.partner-cell-${i}{width:${p.wLg}px;}`).join("") +
+  "}";
 
 export function HomeSections() {
   return (
@@ -516,7 +526,7 @@ export function HomeSections() {
                     ease-out
                     group-hover:scale-[1.03]
                   "
-                        sizes="100vw"
+                        sizes="(min-width: 1024px) 66vw, 50vw"
                       />
 
                       {/* Overlay */}
@@ -814,16 +824,16 @@ export function HomeSections() {
 
           {/* Mobile: fills remaining viewport as a 4-col grid (10 stretched rows).
               sm+: reverts to the scattered floating layout. */}
+          <style>{partnerPlacementCss}</style>
           <div className="relative grid flex-1 grid-cols-4 content-center items-stretch gap-x-2 gap-y-2 [grid-auto-rows:minmax(0,1fr)] sm:mt-10 sm:block sm:h-[600px] sm:flex-none sm:gap-x-4 sm:gap-y-8 lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
               const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
-              const placement = shuffledPlacements[idx % shuffledPlacements.length];
               const size = shuffledSizes[idx % shuffledSizes.length];
 
               return (
                 <div
                   key={logoPath}
-                  className={`flex items-center justify-center p-0 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
+                  className={`partner-cell-${idx} flex items-center justify-center p-0 sm:absolute sm:p-0`}
                 >
                   <div className={`relative flex w-full items-center justify-center ${size}`}>
                     <Image

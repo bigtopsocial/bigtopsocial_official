@@ -18,17 +18,27 @@ import { useMatchMedia } from "@/lib/useMatchMedia";
 
 type Item = { id: string; type: "image" | "video"; src: string };
 
+function videoPoster(src: string): string {
+  return src.replace("/upload/q_auto,f_auto/", "/upload/q_auto,so_0/").replace(/\.mp4$/, ".jpg");
+}
+
 const POSTS: Item[] = Array.from({ length: 8 }, (_, i) => ({
   id: `post-${i + 1}`,
   type: "image",
   src: `/post contents/${i + 1}.png`,
 }));
 
-const REELS: Item[] = Array.from({ length: 9 }, (_, i) => ({
-  id: `reel-${i + 1}`,
-  type: "video",
-  src: `/reels/${i + 1}.mp4`,
-}));
+const REELS: Item[] = [
+  { id: "reel-1", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956593/Bored_of_the_same_old_weekend_routines_in_Nagpur_Leave_the_city_noise_behind_Just_a_1-hour_sc_ljs15v.mp4" },
+  { id: "reel-2", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956581/Nisarga_Lake_View_Resort_A_serene_lake-touch_farmhouse_near_Dhamangaon_Lake_Where_nature_uxfqza.mp4" },
+  { id: "reel-3", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956578/Most_students_think_cracking_the_CAT_exam_is_all_about_mastering_complex_math_equations._But_her_halywl.mp4" },
+  { id: "reel-4", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956575/Lock_your_center_dominate_every_turn_grip_harder_exit_stronger._NTXCrossover_EdgeControl_Ska_ploefd.mp4" },
+  { id: "reel-5", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956576/We_don_t_just_ship_products_we_deliver_commitment_nationwide_every_single_day._AllOverIndia_rmoza5.mp4" },
+  { id: "reel-6", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956573/A_river_that_once_flowed_like_the_lifeline_of_a_city_today_carries_the_weight_of_its_neglect.For_cux7z8.mp4" },
+  { id: "reel-7", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956572/Why_is_India_maintaining_silence_on_the_ongoing_war_This_reel_of_The_Hitavada_decoding_the_confl_by7asc.mp4" },
+  { id: "reel-8", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956569/NTX_FIRE_Bearings_Built_for_speed_control_durability.Designed_to_roll_smoother_faster_vybmiu.mp4" },
+  { id: "reel-9", type: "video", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956568/Bring_the_power_of_the_sun_right_into_your_living_space_This_Artynex_Brass_Sun_Idol_is_more_than_f7zchs.mp4" },
+];
 
 // ─── physics ──────────────────────────────────────────────────────────────────
 
@@ -123,9 +133,9 @@ function Card({ item, index, total, scrollX, active, onOpen, onJump }: CardProps
             ref={videoRef}
             className="h-full w-full object-cover"
             muted loop playsInline preload="none"
-          >
-            <source src={item.src} type="video/mp4" />
-          </video>
+            src={item.src}
+            poster={videoPoster(item.src)}
+          />
         )}
 
         <motion.div
@@ -326,7 +336,7 @@ function CardStack({ items, label, autoplayOffset = 0 }: CardStackProps) {
       <div
         className="relative overflow-x-hidden"
         style={{
-          height: "clamp(20rem, 82vw, 34rem)",
+          height: "clamp(285px, calc(56vw * 16 / 9), 410px)",
           // Prevents the browser from competing with our drag (kills scroll-glitches on mobile)
           touchAction: "none",
         }}
