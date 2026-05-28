@@ -25,7 +25,7 @@ export function Footer() {
           preload="metadata"
           aria-hidden="true"
         >
-          <source src="/herovideo2.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
         </video>
 
         {/* Seamless blend from the previous section */}

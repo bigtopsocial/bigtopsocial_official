@@ -111,6 +111,26 @@ export default function BlurDemoPage() {
             </button>
           </div>
         </div>
+        {/* Render Reel Demo */}
+        <div className="mt-16">
+          <p className="text-xs uppercase tracking-[0.2em] text-accent">Render Reel</p>
+          <h2 className="mt-2 text-xl font-semibold sm:text-2xl">Reel Preview</h2>
+          <p className="mt-2 max-w-xl text-sm text-foreground/70">
+            Native video playback via Cloudinary.
+          </p>
+          <div className="mt-6 flex justify-center">
+            {/* Replace the src below with your Cloudinary .mp4 URL */}
+            <video
+              src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779956593/Bored_of_the_same_old_weekend_routines_in_Nagpur_Leave_the_city_noise_behind_Just_a_1-hour_sc_ljs15v.mp4"
+              style={{ width: 320, height: 569, objectFit: "cover" }}
+              className="rounded-2xl bg-black"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+        </div>
       </Container>
     </main>
   );

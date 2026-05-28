@@ -155,7 +155,7 @@ export function HomeSections() {
             preload="metadata"
             aria-hidden
           >
-            <source src="/herovideo2.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
           </video>
           {/* Mobile-only legibility scrim: darkens the top/middle so the white
               headline reads cleanly over the video. Desktop (sm+) is unchanged. */}
@@ -574,8 +574,7 @@ export function HomeSections() {
                   preload="metadata"
                   aria-hidden
                 >
-                  <source src="/herovideo2.webm" type="video/webm" />
-                  <source src="/herovideo2.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
                 </video>
 
              

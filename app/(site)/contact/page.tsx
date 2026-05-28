@@ -61,9 +61,11 @@ export default function ContactPage() {
             </a>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-              Address
-            </h2>
+            <BlurTextReveal
+              as="h2"
+              text="Address"
+              className="text-sm font-semibold uppercase tracking-[0.2em] text-muted"
+            />
             <p className="mt-2 text-lg font-semibold leading-relaxed text-foreground">
               <Link
                 href="https://maps.google.com/?q=475+Madison+Avenue+New+York"
