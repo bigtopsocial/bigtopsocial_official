@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import type { BlogPost } from "@/lib/content/blog";
 
 export function BlogArticleView({ post }: { post: BlogPost }) {
@@ -11,9 +12,11 @@ export function BlogArticleView({ post }: { post: BlogPost }) {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
             Blogs
           </p>
-          <h1 className="mt-6 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            {post.title}
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text={post.title}
+            className="mt-6 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl"
+          />
           <div className="mt-8 grid gap-6 border-t border-white/[0.06] pt-6 sm:grid-cols-2">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
@@ -39,9 +42,11 @@ export function BlogArticleView({ post }: { post: BlogPost }) {
         <Container className="max-w-3xl">
           {post.sections.map((sec, i) => (
             <Reveal key={`${sec.heading}-${i}`} delay={i * 0.04}>
-              <h2 className="mt-10 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl">
-                {sec.heading}
-              </h2>
+              <BlurTextReveal
+                as="h2"
+                text={sec.heading}
+                className="mt-10 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl"
+              />
               {sec.paragraphs?.map((p, pi) => (
                 <p
                   key={`${sec.heading}-p-${pi}`}

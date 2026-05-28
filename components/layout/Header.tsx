@@ -45,7 +45,7 @@ export function Header() {
       <div className="mx-auto flex h-[72px] w-[92%] max-w-[1440px] items-center justify-between sm:h-[80px]">
         <Link href="/" className="flex items-center text-foreground">
           <Image
-            src="/logo.png"
+            src="https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958803/logo_k02u6g.png"
             alt="BigTopSocial"
             width={3256}
             height={669}

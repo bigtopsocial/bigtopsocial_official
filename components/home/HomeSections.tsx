@@ -51,10 +51,44 @@ function Stars() {
   );
 }
 
-const clientLogos = Array.from(
-  { length: 38 },
-  (_, i) => `/clients-logos/${i + 1}.png`
-);
+const clientLogos = [
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/1_claxp2.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/2_n5jpvb.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/3_qgybwn.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/4_vihtww.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/6_muawws.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/8_r9bkuq.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/9_zjbseh.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/10_z7zxuj.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/11_kbneh1.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/12_gtfklr.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/13_lth947.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/14_bsijjz.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/15_eawuml.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/16_qlk2vt.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/17_f0qmp1.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/18_bfjgxt.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/19_ifbz26.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/20_udeca1.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/21_t0wqhv.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/22_hliljw.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/23_sxftjt.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/24_etow4b.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/25_apzjox.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/26_hxz6jr.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/27_xnjpma.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/28_prbv3g.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/29_x4vgqu.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/30_nt8eq1.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/31_mpmi8o.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/32_rmsgac.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/33_hvswe7.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/34_abrwom.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/35_wpvgrh.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/36_s8mr2t.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/37_bmocca.png",
+  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/38_ls8kmf.png",
+];
 
 const homeCardGlow = {
   backgroundColor: "#BFB6A40D",
@@ -787,10 +821,8 @@ export function HomeSections() {
               const size = shuffledSizes[idx % shuffledSizes.length];
 
               return (
-                <Reveal
+                <div
                   key={logoPath}
-                  delay={idx * 0.02}
-                  blur={false}
                   className={`flex items-center justify-center p-0 sm:absolute sm:-translate-x-1/2 sm:-translate-y-1/2 sm:p-0 ${placement}`}
                 >
                   <div className={`relative flex w-full items-center justify-center ${size}`}>
@@ -803,7 +835,7 @@ export function HomeSections() {
                       className="h-full w-auto max-w-full object-contain sm:max-w-none"
                     />
                   </div>
-                </Reveal>
+                </div>
               );
             })}
           </div>

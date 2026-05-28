@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import type { CaseBlock, Project } from "@/lib/content/projects";
 
 function renderBlock(block: CaseBlock, sectionIdx: number, blockIdx: number) {
@@ -30,9 +31,11 @@ export function CaseStudyView({ project }: { project: Project }) {
       <section className="border-b border-white/[0.06] pb-16 pt-28 sm:pt-32">
         <Container>
           <p className="text-sm text-muted">{project.date}</p>
-          <h1 className="mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            {project.title}
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text={project.title}
+            className="mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-foreground sm:text-5xl"
+          />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
             {project.subtitle}
           </p>
@@ -107,9 +110,11 @@ export function CaseStudyView({ project }: { project: Project }) {
         <Container className="max-w-3xl">
           {project.blocks.map((section, i) => (
             <Reveal key={section.heading + String(i)} delay={i * 0.04}>
-              <h2 className="mt-12 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl">
-                {section.heading}
-              </h2>
+              <BlurTextReveal
+                as="h2"
+                text={section.heading}
+                className="mt-12 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl"
+              />
               {section.content.map((c, j) => (
                 <div key={j}>{renderBlock(c, i, j)}</div>
               ))}
@@ -120,9 +125,11 @@ export function CaseStudyView({ project }: { project: Project }) {
 
       <section className="border-t border-white/[0.06] py-16">
         <Container>
-          <h2 className="text-2xl font-semibold text-foreground">
-            More Other cases
-          </h2>
+          <BlurTextReveal
+            as="h2"
+            text="More Other cases"
+            className="text-2xl font-semibold text-foreground"
+          />
           <Link
             href="/project"
             className="mt-3 inline-block text-sm font-semibold text-foreground/80 underline-offset-4 hover:underline"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -204,9 +205,11 @@ export default function PrivacyPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
             Latest Policy
           </p>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Privacy Policy
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text="Privacy Policy"
+            className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+          />
           <p className="mt-4 text-sm text-muted">
             Updated Date: Feb 2, 2026, 12:00 AM
           </p>

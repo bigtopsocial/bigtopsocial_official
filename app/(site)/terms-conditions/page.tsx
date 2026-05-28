@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -215,9 +216,11 @@ export default function TermsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
             Terms & Conditions
           </p>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Terms & Conditions
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text="Terms & Conditions"
+            className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+          />
           <p className="mt-4 text-sm text-muted">
             Last Updated: Feb 2, 2026, 12:00 AM
           </p>

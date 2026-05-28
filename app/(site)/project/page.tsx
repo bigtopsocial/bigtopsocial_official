@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
 import { projectTeasers } from "@/lib/content/projects";
 
 export const metadata: Metadata = {
@@ -17,12 +18,17 @@ export default function ProjectIndexPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
             Explore Our Portfolio
           </p>
-          <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-            Explore Our
-          </h1>
-          <h1 className="mt-1 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-            Impactful Projects
-          </h1>
+          <BlurTextReveal
+            as="h1"
+            text="Explore Our"
+            className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
+          />
+          <BlurTextReveal
+            as="h1"
+            text="Impactful Projects"
+            delay={0.4}
+            className="mt-1 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
+          />
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             From ambitious startups to established brands, we build powerful digital
             experiences that elevate presence and drive measurable results.
