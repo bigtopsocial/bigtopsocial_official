@@ -15,10 +15,13 @@ export async function GET(): Promise<Response> {
     });
 
     const urls: string[] = result.resources.map(
-      (r: { secure_url: string }) => r.secure_url
+      (r: { secure_url: string }) =>
+        r.secure_url.replace("/upload/", "/upload/q_auto,f_auto/")
     );
 
-    return Response.json({ urls });
+    return Response.json({ urls }, {
+      headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+    });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     return Response.json({ error: message }, { status: 500 });

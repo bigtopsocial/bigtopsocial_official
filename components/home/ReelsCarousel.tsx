@@ -11,16 +11,20 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useMatchMedia } from "@/lib/useMatchMedia";
 
 const reelCards = [
-  { title: "Feature showcase",    caption: "Editorial campaign" },
-  { title: "Community highlight", caption: "Real audience moments" },
-  { title: "Brand reveal post",   caption: "Creative identity reveal" },
-  { title: "Product teaser",      caption: "Launch-ready visuals" },
-  { title: "Behind the scenes",   caption: "Studio process" },
-  { title: "Founder vision",      caption: "Story-driven messaging" },
-  { title: "Campaign launch",     caption: "High-converting creative" },
-  { title: "Creative direction",  caption: "Design-led storytelling" },
-  { title: "Social campaign",     caption: "Scroll-stopping visuals" },
+  { title: "Feature showcase",    caption: "Editorial campaign",       src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956593/Bored_of_the_same_old_weekend_routines_in_Nagpur_Leave_the_city_noise_behind_Just_a_1-hour_sc_ljs15v.mp4" },
+  { title: "Community highlight", caption: "Real audience moments",    src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956581/Nisarga_Lake_View_Resort_A_serene_lake-touch_farmhouse_near_Dhamangaon_Lake_Where_nature_uxfqza.mp4" },
+  { title: "Brand reveal post",   caption: "Creative identity reveal", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956578/Most_students_think_cracking_the_CAT_exam_is_all_about_mastering_complex_math_equations._But_her_halywl.mp4" },
+  { title: "Product teaser",      caption: "Launch-ready visuals",     src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956575/Lock_your_center_dominate_every_turn_grip_harder_exit_stronger._NTXCrossover_EdgeControl_Ska_ploefd.mp4" },
+  { title: "Behind the scenes",   caption: "Studio process",           src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956576/We_don_t_just_ship_products_we_deliver_commitment_nationwide_every_single_day._AllOverIndia_rmoza5.mp4" },
+  { title: "Founder vision",      caption: "Story-driven messaging",   src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956573/A_river_that_once_flowed_like_the_lifeline_of_a_city_today_carries_the_weight_of_its_neglect.For_cux7z8.mp4" },
+  { title: "Campaign launch",     caption: "High-converting creative", src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956572/Why_is_India_maintaining_silence_on_the_ongoing_war_This_reel_of_The_Hitavada_decoding_the_confl_by7asc.mp4" },
+  { title: "Creative direction",  caption: "Design-led storytelling",  src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956569/NTX_FIRE_Bearings_Built_for_speed_control_durability.Designed_to_roll_smoother_faster_vybmiu.mp4" },
+  { title: "Social campaign",     caption: "Scroll-stopping visuals",  src: "https://res.cloudinary.com/diqnwnz6x/video/upload/q_auto,f_auto/v1779956568/Bring_the_power_of_the_sun_right_into_your_living_space_This_Artynex_Brass_Sun_Idol_is_more_than_f7zchs.mp4" },
 ];
+
+function videoPoster(src: string): string {
+  return src.replace("/upload/q_auto,f_auto/", "/upload/q_auto,so_0/").replace(/\.mp4$/, ".jpg");
+}
 
 /* ------------------------------------------------ */
 /* CARD */
@@ -67,6 +71,7 @@ function ReelCard({
           playsInline
           preload="metadata"
           src={src}
+          poster={videoPoster(src)}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">
@@ -100,22 +105,11 @@ export function ReelsCarousel() {
   const isDesktop = useMatchMedia("(min-width: 1024px)");
 
   const [activeIndex, setActiveIndex] = useState(2);
-  const [videoUrls, setVideoUrls] = useState<string[]>([]);
 
   const x = useMotionValue(0);
   const total = reelCards.length;
 
   const wrappedCards = useMemo(() => [...reelCards], []);
-
-  // Fetch all Cloudinary video URLs once on mount
-  useEffect(() => {
-    fetch("/api/cloudinary-reels")
-      .then((r) => r.json())
-      .then((data: { urls?: string[] }) => {
-        if (data.urls) setVideoUrls(data.urls);
-      })
-      .catch(() => {});
-  }, []);
 
   const next = () => setActiveIndex((prev) => (prev + 1) % total);
   const prev = () => setActiveIndex((prev) => (prev - 1 + total) % total);
@@ -210,7 +204,7 @@ export function ReelsCarousel() {
                     >
                       <ReelCard
                         card={card}
-                        src={videoUrls[index] ?? ""}
+                        src={abs <= 1 ? card.src : ""}
                         isActive={isActive}
                       />
                     </motion.div>
