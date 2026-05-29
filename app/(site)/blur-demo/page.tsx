@@ -60,7 +60,7 @@ export default function BlurDemoPage() {
     <main className="min-h-screen bg-background py-28 text-foreground sm:py-32">
       <Container>
         <p className="text-xs uppercase tracking-[0.2em] text-accent">Motion lab</p>
-        <h1 className="mt-2 text-2xl font-semibold sm:text-3xl">
+        <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
           Word-by-word blur reveal
         </h1>
         <p className="mt-2 max-w-xl text-sm text-foreground/70">

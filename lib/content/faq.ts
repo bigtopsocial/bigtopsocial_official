@@ -10,9 +10,9 @@ export const faqItems: FaqItem[] = [
       "Share your goals, timeline, and any existing brand assets or analytics access. From there, we schedule a discovery call, align on scope, and send a clear proposal with milestones, deliverables, and success metrics.",
   },
   {
-    question: "What services does Elevon offer?",
+    question: "What services does Bigtopsocial offer?",
     answer:
-      "Elevon provides performance marketing, creative strategy, social and paid campaigns, influencer collaborations, brand identity support, analytics, and conversion-focused content production—built as integrated programs or focused engagements.",
+      "Bigtopsocial provides performance marketing, creative strategy, social and paid campaigns, influencer collaborations, brand identity support, analytics, and conversion-focused content production—built as integrated programs or focused engagements.",
   },
   {
     question: "How long does it take to see results?",
@@ -25,7 +25,7 @@ export const faqItems: FaqItem[] = [
       "Yes. Every roadmap is tailored to your category, audience, offer, and constraints. We combine qualitative brand positioning with quantitative performance data to prioritize what will move the business fastest.",
   },
   {
-    question: "Do I need a large budget to work with Elevon?",
+    question: "Do I need a large budget to work with Bigtopsocial?",
     answer:
       "No. We scope engagements to match your stage—whether you are validating a new offer or scaling proven demand. What matters most is clarity on goals, a realistic testing budget for paid channels, and willingness to iterate quickly.",
   },

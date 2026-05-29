@@ -25,18 +25,18 @@ import {
 import { projectTeasers } from "@/lib/content/projects";
 
 const serviceIcons = [
-  // Globe — Social Media Strategy
-  <svg key="globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>,
-  // Video — Story-Driven Content
-  <svg key="video" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><rect x="2" y="6" width="15" height="12" rx="2" /><path d="m17 10 5-3v10l-5-3" /></svg>,
-  // Layers — Brand Identity
+  // Megaphone — Digital Marketing
+  <svg key="megaphone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg>,
+  // Target — Performance Marketing
+  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
+  // Search — SEO
+  <svg key="search" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>,
+  // Code — Web Development
+  <svg key="code" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
+  // Layers — Branding
   <svg key="layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="m12 2 10 6.5-10 6.5L2 8.5z" /><path d="m2 15.5 10 6.5 10-6.5" /><path d="m2 12 10 6.5 10-6.5" /></svg>,
   // Users — Influencer Marketing
   <svg key="users" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-  // Target — Paid Campaigns
-  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
-  // Bar chart — Analytics & Growth
-  <svg key="chart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>,
 ];
 
 function Stars() {
@@ -216,13 +216,13 @@ export function HomeSections() {
               <BlurTextReveal
                 as="h1"
                 text="Elevating brands"
-                className="mt-8 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground sm:mt-10"
+                className="mt-8 text-[clamp(3rem,8vw,5.5rem)] leading-[1.05] tracking-tight text-foreground sm:mt-10"
               />
               <BlurTextReveal
                 as="h1"
                 text="Forward, Faster"
                 delay={0.4}
-                className="mt-1 text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] tracking-tight text-foreground"
+                className="mt-1 text-[clamp(3rem,8vw,5.5rem)] leading-[1.05] tracking-tight text-foreground"
               />
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
                 We help ambitious brands scale with performance marketing, creative
@@ -380,6 +380,13 @@ export function HomeSections() {
                     <p className="mt-2 text-sm leading-relaxed text-muted">
                       {svc.body}
                     </p>
+                    <Link
+                      href={`/services/${svc.slug}`}
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-foreground/90 transition hover:text-foreground"
+                    >
+                      Learn more
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                    </Link>
                   </div>
                 </div>
               </Reveal>
@@ -854,32 +861,34 @@ export function HomeSections() {
 
       <section className="relative py-14 sm:py-20 lg:py-24">
         <Container>
-          {/* SECTION HEADING */}
-          <Reveal className="mb-10 flex flex-col items-center text-center sm:mb-14">
-            {/* Badge */}
-            <div className="mb-4 relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-6 py-2 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md transition hover:border-white/20 hover:bg-black/80 before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-[''] sm:mb-8">
-              FAQ
-            </div>
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+            {/* Left: heading */}
+            <Reveal className="flex flex-col items-start">
+              <div className="relative inline-flex overflow-hidden rounded-full border border-white/10 bg-black/70 px-5 py-1.5 text-xs uppercase tracking-[0.2em] text-foreground/90 backdrop-blur-md before:absolute before:left-[12%] before:right-[12%] before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#12ced6]/60 before:to-transparent before:content-[‘’]">
+                FAQ
+              </div>
+              <BlurTextReveal
+                as="h2"
+                text="Everything"
+                className="mt-8 text-4xl tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              />
+              <BlurTextReveal
+                as="h2"
+                text="you’re wondering"
+                delay={0.2}
+                className="mt-1 text-4xl tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              />
+              <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted">
+                Have questions? Find clear, concise answers to the most common
+                inquiries below.
+              </p>
+            </Reveal>
 
-            {/* Heading */}
-            <BlurTextReveal
-              as="h2"
-              text="Everything you’re wondering"
-              className="max-w-3xl text-3xl tracking-tight text-foreground sm:text-4xl lg:text-5xl"
-            />
-
-            {/* Description */}
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
-              Have questions? Find clear, concise answers to the most common
-              inquiries below.
-            </p>
-          </Reveal>
-
-          {/* FAQ ACCORDION */}
-          <Reveal className="mx-auto mt-10 w-full max-w-4xl sm:mt-16">
-
-            <FaqAccordion />
-          </Reveal>
+            {/* Right: accordion */}
+            <Reveal delay={0.05}>
+              <FaqAccordion />
+            </Reveal>
+          </div>
         </Container>
 
         {/* Bottom fade */}

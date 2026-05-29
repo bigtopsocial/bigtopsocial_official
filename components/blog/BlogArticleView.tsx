@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
@@ -7,17 +8,58 @@ import type { BlogPost } from "@/lib/content/blog";
 export function BlogArticleView({ post }: { post: BlogPost }) {
   return (
     <>
-      <section className="border-b border-white/[0.06] pb-16 pt-28 sm:pt-32">
-        <Container className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
-            Blogs
-          </p>
+      <section className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-white/[0.06] pb-16 pt-28 sm:pt-32">
+        <div className="pointer-events-none absolute inset-0">
+          <video
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden
+          >
+            <source
+              src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-b from-transparent to-black" />
+        </div>
+
+        <Container className="relative -mt-[24vh] sm:-mt-[14vh]">
+          <p className="text-sm text-muted">{post.publishDate}</p>
           <BlurTextReveal
             as="h1"
             text={post.title}
-            className="mt-6 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
           />
-          <div className="mt-8 grid gap-6 border-t border-white/[0.06] pt-6 sm:grid-cols-2">
+          <div className="mt-8 flex flex-wrap gap-2">
+            <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-medium text-foreground/90">
+              {post.category}
+            </span>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative z-10 -mt-[46vh] pb-6 sm:-mt-[42vh]">
+        <Container>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-card sm:aspect-[16/9]">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-10">
+        <Container>
+          <div className="grid gap-8 border-y border-white/[0.06] py-8 sm:grid-cols-2">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                 Category
@@ -45,7 +87,7 @@ export function BlogArticleView({ post }: { post: BlogPost }) {
               <BlurTextReveal
                 as="h2"
                 text={sec.heading}
-                className="mt-10 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl"
+                className="mt-12 text-xl font-semibold text-foreground first:mt-0 sm:text-2xl"
               />
               {sec.paragraphs?.map((p, pi) => (
                 <p
@@ -64,29 +106,42 @@ export function BlogArticleView({ post }: { post: BlogPost }) {
               )}
             </Reveal>
           ))}
+        </Container>
+      </article>
 
-          <nav className="mt-14 flex flex-col gap-4 border-t border-white/[0.06] pt-10 text-sm sm:flex-row sm:justify-between">
-            {post.prev ? (
+      <section className="border-t border-white/[0.06] py-16">
+        <Container>
+          <BlurTextReveal
+            as="h2"
+            text="More articles"
+            className="text-2xl font-semibold text-foreground"
+          />
+          <Link
+            href="/blog"
+            className="mt-3 inline-block text-sm font-semibold text-foreground/80 underline-offset-4 hover:underline"
+          >
+            View all blogs
+          </Link>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {post.prev && (
               <Link
                 href={`/blog/${post.prev.slug}`}
-                className="font-semibold text-foreground/90 transition hover:text-foreground"
+                className="rounded-card bg-[#0d0d0b] px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-[#141412]"
               >
                 ‹ {post.prev.title}
               </Link>
-            ) : (
-              <span />
             )}
-            {post.next ? (
+            {post.next && (
               <Link
                 href={`/blog/${post.next.slug}`}
-                className="font-semibold text-foreground/90 transition hover:text-foreground sm:text-right"
+                className="rounded-card bg-[#0d0d0b] px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-[#141412] sm:text-right"
               >
                 {post.next.title} ›
               </Link>
-            ) : null}
-          </nav>
+            )}
+          </div>
         </Container>
-      </article>
+      </section>
     </>
   );
 }

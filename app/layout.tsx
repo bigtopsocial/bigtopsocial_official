@@ -14,17 +14,17 @@ const helveticaNeue = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://elevon.framer.media"),
+  metadataBase: new URL("https://bigtopsocial.framer.media"),
   title: {
-    default: "Home - ELEVON",
-    template: "%s | ELEVON",
+    default: "Home - BIGTOPSOCIAL",
+    template: "%s | BIGTOPSOCIAL",
   },
   description:
     "We help ambitious brands scale with performance marketing, creative strategy, and conversion-focused campaigns.",
   openGraph: {
     type: "website",
-    siteName: "ELEVON",
-    title: "Home - ELEVON",
+    siteName: "BIGTOPSOCIAL",
+    title: "Home - BIGTOPSOCIAL",
     description:
       "We help ambitious brands scale with performance marketing, creative strategy, and conversion-focused campaigns.",
   },

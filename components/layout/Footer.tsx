@@ -1,6 +1,31 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 
+const socialIcons: Record<string, React.ReactNode> = {
+  X: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  ),
+  Instagram: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  ),
+  YouTube: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.39.53A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12c1.89.53 9.39.53 9.39.53s7.5 0 9.39-.53a3 3 0 0 0 2.11-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z" />
+    </svg>
+  ),
+  Framer: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M4 2h16v6.667H12zM4 8.667h8L20 16H4zM4 16h8v6.667z" />
+    </svg>
+  ),
+};
+
 const social = [
   { href: "https://x.com/", label: "X" },
   { href: "https://www.instagram.com/", label: "Instagram" },
@@ -13,6 +38,7 @@ const navLinks = ["About", "Projects", "Blog", "Contact"];
 export function Footer() {
   return (
     <footer className="relative bg-black pt-20 pb-8 text-white overflow-hidden">
+      
 
       {/* VIDEO BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -33,6 +59,13 @@ export function Footer() {
       </div>
 
       <Container className="relative z-10">
+
+                {/* Giant Wordmark */}
+        <div className="w-full flex items-end justify-center overflow-hidden -mt-10 lg:my-16">
+          <h1 className="text-[15vw] sm:text-[clamp(2rem,13.5vw,18rem)] font-bold leading-[0.8] tracking-tight text-white/85  select-none text-center lowercase break-words mb-5">
+            bigtopsocial
+          </h1>
+        </div>
         <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 pb-16">
 
           {/* Top Left: Logo / Icon */}
@@ -87,8 +120,7 @@ export function Footer() {
                 {social.map((item) => (
                   <li key={item.href}>
                     <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
-                      {/* Simple dot for list aesthetic */}
-                      <span className="w-1 h-1 rounded-full bg-white/40"></span>
+                      <span className="text-white/50">{socialIcons[item.label]}</span>
                       {item.label}
                     </a>
                   </li>
@@ -119,12 +151,7 @@ export function Footer() {
 
         </div>
 
-        {/* Giant Wordmark */}
-        <div className="w-full flex items-end justify-center pt-8 pb-12 overflow-hidden">
-          <h1 className="text-[clamp(2rem,13.5vw,18rem)] font-bold leading-[0.8] tracking-tight text-white/85  select-none text-center lowercase break-words">
-            bigtopsocial
-          </h1>
-        </div>
+
       </Container>
     </footer>
   );

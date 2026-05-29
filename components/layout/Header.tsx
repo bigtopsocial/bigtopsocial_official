@@ -61,7 +61,7 @@ export function Header() {
             href="/contact"
             className="hidden text-sm text-foreground transition hover:text-foreground/80 lg:inline"
           >
-            Let&apos;s Connect
+            Get a Quote
           </Link>
           <button
             type="button"

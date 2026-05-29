@@ -8,20 +8,20 @@ export const clientLogos = [
 
 export const homeBlogTeasers = [
   {
-    slug: "building-a-brand-people-trust",
-    title: "Building a Brand People Trust",
+    slug: "seo-first-website-architecture-to-rank-number-one",
+    title: "SEO-First Website Architecture",
   },
   {
-    slug: "the-psychology-behind-high-converting-campaigns",
-    title: "High-Converting Campaigns",
+    slug: "performance-marketing-that-generates-qualified-leads",
+    title: "Performance Marketing for Leads",
   },
   {
-    slug: "content-that-converts-beyond-likes-and-shares",
-    title: "Beyond Likes and Shares",
+    slug: "marketing-for-real-estate-brands-in-india",
+    title: "Marketing for Real Estate",
   },
   {
-    slug: "scaling-smart-when-to-invest-in-paid-media",
-    title: "Scaling Smart Paid Media",
+    slug: "branding-and-influencer-strategy-for-hotels",
+    title: "Branding for Hotels & Resorts",
   },
 ] as const;
 
@@ -77,38 +77,7 @@ export const testimonials: readonly Testimonial[] = [
 ] as const;
 
 
-export const services = [
-  {
-    title: "Social Media Strategy",
-    body: "We turn scattered posts into a system that attracts attention and builds demand.",
-    bgImage: "/post contents/1.png",
-  },
-  {
-    title: "Story-Driven Content",
-    body: "From concept to execution, we create content people want to consume—not ignore.",
-    bgImage: "/post contents/2.png",
-  },
-  {
-    title: "Brand Identity",
-    body: "We build brands that feel intentional, cohesive, & impossible to confuse with competitors.",
-    bgImage: "/post contents/3.png",
-  },
-  {
-    title: "Influencer Marketing",
-    body: "We connect you with voices your audience already trusts, then turn trust into traction.",
-    bgImage: "/post contents/4.png",
-  },
-  {
-    title: "Paid Campaigns",
-    body: "We are engineers at ad systems designed to generate pipeline, not vanity metrics.",
-    bgImage: "/post contents/5.png",
-  },
-  {
-    title: "Analytics & Growth",
-    body: "We translate data into clear decisions so every month performs better than the last.",
-    bgImage: "/post contents/6.png",
-  },
-] as const;
+export { services } from "./services";
 
 export type ProcessStep = {
   step: string;

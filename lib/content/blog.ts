@@ -9,6 +9,7 @@ export type BlogPost = {
   title: string;
   category: string;
   publishDate: string;
+  image: string;
   sections: BlogSection[];
   prev?: { slug: string; title: string };
   next?: { slug: string; title: string };
@@ -16,139 +17,152 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "building-a-brand-people-trust",
-    title: "From Visibility to Authority: Building a Brand People Trust",
-    category: "Brand Strategy",
+    slug: "seo-first-website-architecture-to-rank-number-one",
+    title: "SEO-First Website Architecture: How to Actually Rank #1 on Google",
+    category: "SEO",
     publishDate: "Feb 2, 2026",
+    image:
+      "https://res.cloudinary.com/diqnwnz6x/image/upload/v1780037257/istockphoto-2209843701-2048x2048_rmuhci.jpg",
     prev: undefined,
     next: {
-      slug: "the-psychology-behind-high-converting-campaigns",
-      title: "The Psychology Behind High-Converting Campaigns",
+      slug: "performance-marketing-that-generates-qualified-leads",
+      title: "Performance Marketing That Generates Qualified Leads",
     },
     sections: [
       {
-        heading: "The difference between noise and leadership",
+        heading: "Ranking starts before the first blog post",
         paragraphs: [
-          "Anyone can post daily. Anyone can boost a campaign. But leadership is built when your brand becomes a reference point in your industry. Authority brands educate their audience, share insights that challenge conventional thinking, and offer perspectives competitors hesitate to voice. They don’t chase trends — they shape them.",
+          "Most websites are designed to look good and then optimised for search as an afterthought. That order is backwards. At Bigtopsocial, we build SEO into the architecture itself — site structure, URL hierarchy, internal linking, and page speed are decided before a single section is designed. When the foundation is search-ready, every piece of content you publish compounds instead of competing with itself.",
         ],
       },
       {
-        heading: "Trust is built in layers",
+        heading: "The three layers of SEO that move rankings",
         paragraphs: [
-          "Trust doesn’t happen in one campaign. It grows layer by layer.",
+          "Sustainable rankings come from getting all three layers right, not just one.",
         ],
         bullets: [
-          "Consistency builds familiarity.",
-          "Value builds credibility.",
-          "Transparency builds emotional security.",
+          "On-page SEO — intent-matched titles, headings, and content that answer the exact query.",
+          "Technical SEO — fast load times, clean crawlability, mobile-first rendering, and structured data.",
+          "Off-page SEO — authority signals from relevant, credible backlinks.",
         ],
       },
       {
-        heading: "Positioning over promotion",
+        heading: "Write for intent, not keywords",
         paragraphs: [
-          "Promotion pushes products. Positioning defines perception. When your brand clearly communicates what it stands for — and who it’s for — you stop competing on price and start competing on identity. Strong positioning transforms marketing from persuasion into alignment.",
+          "Google ranks pages that satisfy intent, not pages that repeat phrases. A search like ‘marketing agency for real estate India’ is a buyer looking for proof, not a definition. We map every target query to the stage of intent behind it, then build pages that resolve that intent completely — so visitors convert and search engines reward the relevance.",
         ],
       },
       {
         heading: "Final Thought",
         paragraphs: [
-          "Authority isn’t declared in a tagline. It’s earned through clarity, repetition, and courage. When visibility meets consistency, brands evolve into industry leaders.",
+          "Ranking #1 isn’t luck or volume — it’s architecture. When your site is engineered for search from day one, organic traffic becomes a predictable, qualified pipeline instead of a gamble.",
         ],
       },
     ],
   },
   {
-    slug: "the-psychology-behind-high-converting-campaigns",
-    title: "The Psychology Behind High-Converting Campaigns",
-    category: "Marketing Strategy",
+    slug: "performance-marketing-that-generates-qualified-leads",
+    title: "Performance Marketing That Generates Qualified Leads",
+    category: "Performance Marketing",
     publishDate: "Feb 3, 2026",
+    image:
+      "https://res.cloudinary.com/diqnwnz6x/image/upload/v1780037256/00e22989f2ba3dbf04187387034b0fca_fxemlx.jpg",
     prev: {
-      slug: "building-a-brand-people-trust",
-      title: "From Visibility to Authority: Building a Brand People Trust",
+      slug: "seo-first-website-architecture-to-rank-number-one",
+      title: "SEO-First Website Architecture: How to Actually Rank #1 on Google",
     },
     next: {
-      slug: "content-that-converts-beyond-likes-and-shares",
-      title: "Content That Converts: Beyond Likes and Shares",
+      slug: "marketing-for-real-estate-brands-in-india",
+      title: "Marketing for Real Estate Brands in India",
     },
     sections: [
       {
-        heading: "Emotion drives action",
+        heading: "Leads, not just clicks",
         paragraphs: [
-          "While customers justify decisions with logic, their choices are triggered by emotion. Whether it’s aspiration, belonging, fear of missing out, or desire for status — emotional triggers move people. Campaigns that tap into identity and self-perception outperform those that simply list features.",
+          "Plenty of agencies can spend a budget and report impressions. Performance marketing is different — every rupee is accountable to an outcome. At Bigtopsocial we optimise paid campaigns toward qualified inbound leads and measurable sales, not vanity traffic. The question is never ‘how many people saw it?’ It’s ‘how many became customers?’",
         ],
       },
       {
-        heading: "Simplicity converts",
+        heading: "Conversion happens after the click",
         paragraphs: [
-          "Complex messaging creates friction. And friction kills conversions. High-performing campaigns communicate one core idea, one promise, and one action. When audiences clearly understand what they gain, hesitation disappears.",
+          "A great ad sending traffic to a weak page wastes budget. We treat the ad, the landing page, and the offer as one system.",
         ],
-      },
-      {
-        heading: "Repetition builds belief",
-        paragraphs: [
-          "Repetition isn’t redundancy — it’s reinforcement. When people see consistent messaging across channels, trust increases. Familiar brands feel safer. And safe choices feel easier.",
-        ],
-      },
-      {
-        heading: "Final Thought",
-        paragraphs: [
-          "When you understand behavior, you design better outcomes. Marketing becomes less about guessing and more about guiding decisions strategically.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "content-that-converts-beyond-likes-and-shares",
-    title: "Content That Converts: Beyond Likes and Shares",
-    category: "Content Marketing",
-    publishDate: "Mar 25, 2026",
-    prev: {
-      slug: "the-psychology-behind-high-converting-campaigns",
-      title: "The Psychology Behind High-Converting Campaigns",
-    },
-    next: {
-      slug: "scaling-smart-when-to-invest-in-paid-media",
-      title: "Scaling Smart: When to Invest in Paid Media",
-    },
-    sections: [
-      {
-        heading: "Value before volume",
-        paragraphs: [
-          "Publishing daily without direction leads to digital clutter. Instead, focus on relevance. Content that solves specific problems, answers real objections, or educates your audience builds long-term equity. One strategic piece can outperform ten random posts.",
-        ],
-      },
-      {
-        heading: "Intent-driven structure",
-        paragraphs: ["Each piece of content should have a purpose."],
         bullets: [
-          "Educational content builds awareness.",
-          "Authority content builds trust.",
-          "Case studies reduce doubt.",
-          "Offers drive conversions.",
+          "Tight audience targeting so spend reaches real buyers.",
+          "Landing pages built to convert a single, clear action.",
+          "Offers and lead forms that reduce friction at the decision point.",
         ],
       },
       {
-        heading: "Measure what truly matters",
+        heading: "Let the data set the pace",
         paragraphs: [
-          "Vanity metrics look impressive, but business metrics drive growth. Track lead quality, saves, shares, time on page, and conversion rate. That’s where impact lives.",
+          "We start small, validate creatives and audiences, then scale what works. By tracking cost per acquisition, lifetime value, and return on ad spend, growth becomes deliberate. Strong campaigns are built on numbers, not assumptions — and that’s what makes them repeatable.",
         ],
       },
       {
         heading: "Final Thought",
         paragraphs: [
-          "Content isn’t about filling feeds. It’s about fueling growth. When strategy guides storytelling, engagement turns into revenue.",
+          "Paid media is a multiplier, not magic. When targeting, pages, and tracking align, your ad spend stops being a cost and starts being a predictable engine for qualified leads.",
         ],
       },
     ],
   },
   {
-    slug: "scaling-smart-when-to-invest-in-paid-media",
-    title: "Scaling Smart: When to Invest in Paid Media",
-    category: "Growth Marketing",
-    publishDate: "Feb 4, 2026",
+    slug: "marketing-for-real-estate-brands-in-india",
+    title: "Marketing for Real Estate Brands in India: From Listings to Leads",
+    category: "Real Estate",
+    publishDate: "Mar 25, 2026",
+    image:
+      "https://res.cloudinary.com/diqnwnz6x/image/upload/v1780037256/00e22989f2ba3dbf04187387034b0fca_fxemlx.jpg",
     prev: {
-      slug: "content-that-converts-beyond-likes-and-shares",
-      title: "Content That Converts: Beyond Likes and Shares",
+      slug: "performance-marketing-that-generates-qualified-leads",
+      title: "Performance Marketing That Generates Qualified Leads",
+    },
+    next: {
+      slug: "branding-and-influencer-strategy-for-hotels",
+      title: "Branding & Influencer Strategy for Hotels and Resorts",
+    },
+    sections: [
+      {
+        heading: "The challenge real estate brands face",
+        paragraphs: [
+          "Real estate in India is high-intent and high-competition. Buyers research for weeks, compare dozens of projects, and trust very few. Most developers either over-spend on portals that commoditise their listings, or rely on word of mouth that doesn’t scale. The gap is a brand presence that builds trust before the site visit.",
+        ],
+      },
+      {
+        heading: "How Bigtopsocial solves it",
+        paragraphs: ["We build a full funnel tailored to property buyers."],
+        bullets: [
+          "Location and project-specific landing pages that rank for buyer searches.",
+          "Performance campaigns targeting verified-intent audiences in the right cities.",
+          "Walkthrough reels, drone content, and social proof that make a project feel real.",
+          "Lead capture and follow-up systems so no enquiry goes cold.",
+        ],
+      },
+      {
+        heading: "The results that matter",
+        paragraphs: [
+          "For real estate, the metric is qualified site visits and bookings — not likes. By aligning SEO, paid media, and credibility-building content, developers get a steady pipeline of buyers who already trust the brand before the sales team picks up the phone.",
+        ],
+      },
+      {
+        heading: "Final Thought",
+        paragraphs: [
+          "Real estate marketing isn’t about more listings — it’s about earning trust at scale. When visibility, content, and conversion work together, leads become bookings.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "branding-and-influencer-strategy-for-hotels",
+    title: "Branding & Influencer Strategy for Hotels and Resorts",
+    category: "Hospitality",
+    publishDate: "Feb 4, 2026",
+    image:
+      "https://res.cloudinary.com/diqnwnz6x/image/upload/v1780037256/00e22989f2ba3dbf04187387034b0fca_fxemlx.jpg",
+    prev: {
+      slug: "marketing-for-real-estate-brands-in-india",
+      title: "Marketing for Real Estate Brands in India",
     },
     next: {
       slug: "brand-identity-more-than-just-a-logo",
@@ -156,27 +170,32 @@ export const blogPosts: BlogPost[] = [
     },
     sections: [
       {
-        heading: "Don’t amplify confusion",
+        heading: "Hospitality is sold on feeling",
         paragraphs: [
-          "If your messaging isn’t converting organically, ads won’t fix it. Paid media magnifies what already exists. Weak positioning becomes more visible. Strong positioning becomes unstoppable. Before scaling, refine your offer, landing pages, and value proposition.",
+          "Nobody books a stay because of a feature list. They book because of how a place makes them imagine feeling. For hotels, resorts, and F&B brands, the marketing job is to sell that experience — the view, the plate, the moment — long before a guest arrives. That demands strong visual identity and content that travels.",
         ],
       },
       {
-        heading: "Test before expansion",
+        heading: "Why influencers work for travel and F&B",
         paragraphs: [
-          "Start small. Validate audiences, creatives, and copy. Monitor performance metrics carefully. Once you identify winning combinations, scale gradually. Sustainable growth always beats aggressive spending.",
+          "Hospitality is one of the highest-converting categories for influencer marketing, because audiences trust a creator’s lived experience.",
+        ],
+        bullets: [
+          "Identify creators whose audience matches your guest profile.",
+          "Run experience-led campaigns, not generic shout-outs.",
+          "Track bookings and reach so spend is tied to real outcomes.",
         ],
       },
       {
-        heading: "Let data guide decisions",
+        heading: "Reviews are part of the funnel",
         paragraphs: [
-          "Successful campaigns rely on numbers — not assumptions. Monitor cost per acquisition, lifetime value, and return on ad spend. When these metrics align, scaling becomes predictable.",
+          "For hotels, reputation is revenue. We help brands manage and amplify reviews so that the social proof guests find online matches the experience you deliver. Consistent ratings and responsive review management turn browsers into bookings.",
         ],
       },
       {
         heading: "Final Thought",
         paragraphs: [
-          "Paid media isn’t magic. It’s a multiplier. When your foundation is strong, growth becomes intentional — not accidental.",
+          "In hospitality, the brand is the experience. When visual identity, the right influencers, and managed reviews align, occupancy and covers follow.",
         ],
       },
     ],
@@ -186,31 +205,33 @@ export const blogPosts: BlogPost[] = [
     title: "Brand Identity: More Than Just a Logo",
     category: "Branding",
     publishDate: "Oct 5, 2025",
+    image:
+      "https://res.cloudinary.com/diqnwnz6x/image/upload/v1780037256/file-1715651741414-859baba4300dimage_qvrekv.avif",
     prev: {
-      slug: "scaling-smart-when-to-invest-in-paid-media",
-      title: "Scaling Smart: When to Invest in Paid Media",
+      slug: "branding-and-influencer-strategy-for-hotels",
+      title: "Branding & Influencer Strategy for Hotels and Resorts",
     },
     next: {
-      slug: "turning-strategy-into-storytelling",
-      title: "Turning Strategy into Storytelling",
+      slug: "growing-educational-institutions-with-content-and-seo",
+      title: "Growing Educational Institutions with Content and SEO",
     },
     sections: [
       {
         heading: "Voice sets the tone",
         paragraphs: [
-          "Your tone defines how your brand feels. Are you bold and disruptive? Calm and minimal? Strategic and analytical? A recognizable voice builds emotional connection long before visuals appear.",
+          "Your tone defines how your brand feels. Are you bold and disruptive? Calm and minimal? Strategic and analytical? A recognizable voice builds emotional connection long before visuals appear. At Bigtopsocial, brand strategy starts here — defining who you are before deciding how you look.",
         ],
       },
       {
         heading: "Experience builds memory",
         paragraphs: [
-          "Every touchpoint — website navigation, email tone, social captions, even customer support — reinforces your identity. Strong brands create consistent experiences that leave lasting impressions.",
+          "Every touchpoint — website navigation, email tone, social captions, even customer support — reinforces your identity. Strong brands create consistent experiences that leave lasting impressions, and brand guidelines keep that consistency intact as you scale.",
         ],
       },
       {
         heading: "Consistency creates distinction",
         paragraphs: [
-          "When visuals, messaging, and values align, your brand becomes memorable. Inconsistent branding creates confusion. Consistent branding creates trust.",
+          "When visuals, messaging, and values align, your brand becomes memorable. Inconsistent branding creates confusion. Consistent branding creates trust — and trust is what lets you compete on identity instead of price.",
         ],
       },
       {
@@ -222,10 +243,11 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "turning-strategy-into-storytelling",
-    title: "Turning Strategy into Storytelling",
-    category: "Digital Strategy",
+    slug: "growing-educational-institutions-with-content-and-seo",
+    title: "Growing Educational Institutions with Content and SEO",
+    category: "Education",
     publishDate: "May 18, 2025",
+    image: "/post contents/6.png",
     prev: {
       slug: "brand-identity-more-than-just-a-logo",
       title: "Brand Identity: More Than Just a Logo",
@@ -233,27 +255,31 @@ export const blogPosts: BlogPost[] = [
     next: undefined,
     sections: [
       {
-        heading: "Stories simplify complexity",
+        heading: "Parents and students research first",
         paragraphs: [
-          "Instead of listing services, share transformations. Instead of highlighting features, highlight outcomes. People remember journeys more than statistics.",
+          "Admissions decisions start online, often months before an enquiry form is filled. Families compare reputation, outcomes, and culture across search and social. For institutions, the brands that show up — clearly and credibly — at that research stage win the shortlist. The rest are never considered.",
         ],
       },
       {
-        heading: "Human-centered marketing",
-        paragraphs: [
-          "Behind every transaction is a human decision. Show the faces, the challenges, the turning points. Authentic storytelling builds relatability and trust.",
+        heading: "A content and SEO engine for admissions",
+        paragraphs: ["We build student lead generation around genuine value."],
+        bullets: [
+          "SEO that ranks for course, campus, and ‘best institution’ searches.",
+          "Content that answers real parent and student questions.",
+          "Branding that communicates outcomes, culture, and credibility.",
+          "Lead capture tied to the admissions calendar so enquiries arrive on time.",
         ],
       },
       {
-        heading: "Clarity drives connection",
+        heading: "Brand and trust go together",
         paragraphs: [
-          "A strong narrative aligns your audience with your mission. When customers see themselves reflected in your story, loyalty deepens.",
+          "Education is a high-trust decision. Strong institution branding — consistent voice, visible results, and authentic student stories — reduces doubt and shortens the path from interest to application. Content earns the attention; brand earns the trust.",
         ],
       },
       {
         heading: "Final Thought",
         paragraphs: [
-          "When strategy meets storytelling, marketing stops feeling transactional. It becomes meaningful, memorable, and magnetic.",
+          "Filling seats isn’t about louder advertising — it’s about being found and trusted when families are deciding. When SEO, content, and branding work together, qualified student leads follow.",
         ],
       },
     ],

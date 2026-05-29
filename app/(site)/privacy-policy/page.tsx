@@ -63,7 +63,7 @@ const sections: {
     title: "Cookies & Tracking Technologies",
     level: "h4",
     paragraphs: [
-      "Elevon uses cookies and similar technologies to:",
+      "Bigtopsocial uses cookies and similar technologies to:",
     ],
     bullets: [
       "Enhance website functionality",
@@ -170,14 +170,14 @@ const sections: {
     title: "6. Third-Party Links",
     level: "h3",
     paragraphs: [
-      "Our website may contain links to third-party websites or tools. Elevon is not responsible for the privacy practices or content of those external platforms. We encourage you to review their privacy policies separately.",
+      "Our website may contain links to third-party websites or tools. Bigtopsocial is not responsible for the privacy practices or content of those external platforms. We encourage you to review their privacy policies separately.",
     ],
   },
   {
     title: "7. Children’s Privacy",
     level: "h3",
     paragraphs: [
-      "Elevon’s services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware of such data collection, we will take appropriate steps to remove it.",
+      "Bigtopsocial’s services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware of such data collection, we will take appropriate steps to remove it.",
     ],
   },
   {
@@ -208,7 +208,7 @@ export default function PrivacyPage() {
           <BlurTextReveal
             as="h1"
             text="Privacy Policy"
-            className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            className="mt-6 text-5xl font-semibold tracking-tight text-foreground sm:text-6xl"
           />
           <p className="mt-4 text-sm text-muted">
             Updated Date: Feb 2, 2026, 12:00 AM
@@ -254,17 +254,17 @@ export default function PrivacyPage() {
             <p className="text-sm leading-relaxed text-muted">
               Email:{" "}
               <a
-                href="mailto:hello@elevon.media"
+                href="mailto:hello@bigtopsocial.media"
                 className="text-foreground underline-offset-4 hover:underline"
               >
-                support@elevonagency.com
+                support@bigtopsocialagency.com
               </a>
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Company: Elevon Marketing Agency
+              Company: Bigtopsocial Marketing Agency
             </p>
             <p className="mt-6 text-sm leading-relaxed text-muted">
-              By engaging with Elevon Marketing Agency, you acknowledge and agree to
+              By engaging with Bigtopsocial Marketing Agency, you acknowledge and agree to
               this Privacy Policy.
             </p>
           </Reveal>

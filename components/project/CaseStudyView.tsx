@@ -34,7 +34,7 @@ export function CaseStudyView({ project }: { project: Project }) {
           <BlurTextReveal
             as="h1"
             text={project.title}
-            className="mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
           />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
             {project.subtitle}

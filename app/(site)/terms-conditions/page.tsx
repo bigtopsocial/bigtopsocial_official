@@ -17,7 +17,7 @@ const sections: {
     title: "1. Acceptance of Terms",
     level: "h3",
     paragraphs: [
-      "By using Elevon’s website or services, you confirm that you have read, understood, and agreed to these Terms & Conditions and our Privacy Policy.",
+      "By using Bigtopsocial’s website or services, you confirm that you have read, understood, and agreed to these Terms & Conditions and our Privacy Policy.",
       "These Terms apply to all visitors, clients, partners, and users who access or use our services.",
     ],
   },
@@ -32,7 +32,7 @@ const sections: {
     title: "Eligibility",
     level: "h4",
     paragraphs: [
-      "You must be at least 18 years old (or the legal age in your jurisdiction) to purchase or contract marketing services from Elevon.",
+      "You must be at least 18 years old (or the legal age in your jurisdiction) to purchase or contract marketing services from Bigtopsocial.",
     ],
   },
   {
@@ -55,7 +55,7 @@ const sections: {
       "Use our services for unlawful or fraudulent purposes",
       "Attempt unauthorized access to our systems or data",
       "Distribute malicious software, spam, or harmful content",
-      "Harass, defame, or harm Elevon, its team, or other users",
+      "Harass, defame, or harm Bigtopsocial, its team, or other users",
     ],
   },
   {
@@ -74,7 +74,7 @@ const sections: {
     title: "Ownership",
     level: "h4",
     paragraphs: [
-      "You retain ownership of all materials you provide to Elevon (“Client Content”). By submitting content, you grant Elevon a non-exclusive, royalty-free license to use, modify, and distribute it strictly for the purpose of delivering agreed marketing services.",
+      "You retain ownership of all materials you provide to Bigtopsocial (“Client Content”). By submitting content, you grant Bigtopsocial a non-exclusive, royalty-free license to use, modify, and distribute it strictly for the purpose of delivering agreed marketing services.",
     ],
   },
   {
@@ -93,7 +93,7 @@ const sections: {
     title: "",
     level: "h4",
     paragraphs: [
-      "Elevon reserves the right to refuse or remove content that violates these Terms.",
+      "Bigtopsocial reserves the right to refuse or remove content that violates these Terms.",
     ],
   },
   {
@@ -102,10 +102,10 @@ const sections: {
     paragraphs: [],
   },
   {
-    title: "Elevon Ownership",
+    title: "Bigtopsocial Ownership",
     level: "h4",
     paragraphs: [
-      "All website content, branding, designs, strategies, frameworks, graphics, and materials created by Elevon remain the intellectual property of Elevon unless otherwise agreed in writing.",
+      "All website content, branding, designs, strategies, frameworks, graphics, and materials created by Bigtopsocial remain the intellectual property of Bigtopsocial unless otherwise agreed in writing.",
     ],
   },
   {
@@ -113,9 +113,9 @@ const sections: {
     level: "h4",
     paragraphs: ["You may not:"],
     bullets: [
-      "Copy, reproduce, or distribute Elevon’s materials without written consent",
+      "Copy, reproduce, or distribute Bigtopsocial’s materials without written consent",
       "Reverse engineer or misuse proprietary strategies or systems",
-      "Use Elevon’s trademarks, logos, or branding without permission",
+      "Use Bigtopsocial’s trademarks, logos, or branding without permission",
     ],
   },
   {
@@ -140,7 +140,7 @@ const sections: {
   {
     title: "6. Termination",
     level: "h3",
-    paragraphs: ["Elevon reserves the right to suspend or terminate services if:"],
+    paragraphs: ["Bigtopsocial reserves the right to suspend or terminate services if:"],
     bullets: [
       "You breach these Terms",
       "Payments are overdue",
@@ -163,7 +163,7 @@ const sections: {
     title: "No Guarantee of Results",
     level: "h4",
     paragraphs: [
-      "Marketing outcomes depend on various external factors. While Elevon applies professional expertise and strategic execution, we do not guarantee specific results such as revenue growth, traffic increases, or conversion rates.",
+      "Marketing outcomes depend on various external factors. While Bigtopsocial applies professional expertise and strategic execution, we do not guarantee specific results such as revenue growth, traffic increases, or conversion rates.",
     ],
   },
   {
@@ -177,7 +177,7 @@ const sections: {
     title: "8. Limitation of Liability",
     level: "h3",
     paragraphs: [
-      "To the fullest extent permitted by law, Elevon Marketing Agency and its team shall not be liable for any indirect, incidental, consequential, or special damages, including loss of profits, business interruption, or data loss arising from the use of our services.",
+      "To the fullest extent permitted by law, Bigtopsocial Marketing Agency and its team shall not be liable for any indirect, incidental, consequential, or special damages, including loss of profits, business interruption, or data loss arising from the use of our services.",
       "Our total liability shall not exceed the amount paid for the specific service giving rise to the claim.",
     ],
   },
@@ -193,7 +193,7 @@ const sections: {
     title: "10. Governing Law",
     level: "h3",
     paragraphs: [
-      "These Terms shall be governed by and interpreted in accordance with the laws applicable in the jurisdiction where Elevon Marketing Agency operates, without regard to conflict of law principles.",
+      "These Terms shall be governed by and interpreted in accordance with the laws applicable in the jurisdiction where Bigtopsocial Marketing Agency operates, without regard to conflict of law principles.",
     ],
   },
   {
@@ -201,9 +201,9 @@ const sections: {
     level: "h3",
     paragraphs: [
       "If you have questions regarding these Terms & Conditions, please contact:",
-      "Email: support@elevonagency.com",
-      "Company: Elevon Marketing Agency",
-      "By engaging with Elevon Marketing Agency, you acknowledge and agree to these Terms & Conditions.",
+      "Email: support@bigtopsocialagency.com",
+      "Company: Bigtopsocial Marketing Agency",
+      "By engaging with Bigtopsocial Marketing Agency, you acknowledge and agree to these Terms & Conditions.",
     ],
   },
 ];
@@ -219,7 +219,7 @@ export default function TermsPage() {
           <BlurTextReveal
             as="h1"
             text="Terms & Conditions"
-            className="mt-6 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            className="mt-6 text-5xl font-semibold tracking-tight text-foreground sm:text-6xl"
           />
           <p className="mt-4 text-sm text-muted">
             Last Updated: Feb 2, 2026, 12:00 AM
@@ -253,10 +253,10 @@ export default function TermsPage() {
                       <>
                         Email:{" "}
                         <a
-                          href="mailto:hello@elevon.media"
+                          href="mailto:hello@bigtopsocial.media"
                           className="text-foreground underline-offset-4 hover:underline"
                         >
-                          support@elevonagency.com
+                          support@bigtopsocialagency.com
                         </a>
                       </>
                     ) : (
