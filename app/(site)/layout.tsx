@@ -11,6 +11,8 @@ export default function SiteLayout({
     <>
       <Header />
       <main className="min-h-screen">{children}</main>
+      {/* Consistent fade from page content into the footer across all pages */}
+      <div className="pointer-events-none h-40 bg-gradient-to-b from-transparent to-black" />
       <Footer />
     </>
   );

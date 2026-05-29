@@ -1,35 +1,57 @@
-export const aboutTeam = [
+export type TeamMember = {
+  name: string;
+  role: string;
+  image: string | null;
+};
+
+export const aboutTeam: TeamMember[] = [
   {
-    name: "Alex Morgan",
-    role: "Creative Director",
-    image: "/testimonials/15M4kvkfOTEm4Aa0gaOHpjxbsg.png",
+    name: "Sarang Thakre",
+    role: "Founder & CEO",
+    image: "/Team images/Sarang Thakre.jpeg",
   },
   {
-    name: "Arlo Bennett",
-    role: "Brand Strategist",
-    image: "/testimonials/36gqztWcToPPHd22gfZKy1MeKM.png",
+    name: "Mayur FulBandhe",
+    role: "Head of Operations",
+    image: "/Team images/Mayur.jpeg",
   },
   {
-    name: "Leo Carter",
-    role: "UI/UX Designer",
-    image: "/testimonials/Ebp2K5DM3ZsZe2Xv074Wxgjo.png",
+    name: "Vedansh Mamilwar",
+    role: "Head of Marketing",
+    image: null,
+  },
+
+  {
+    name: "Shobhit Bawangarh",
+    role: "Web Developer",
+    image: "/Team images/Shobhit bawangarh.jpeg",
   },
   {
-    name: "Liam Parker",
-    role: "Motion & Interaction Designer",
-    image: "/testimonials/RnNDQCdRzWFSlr5xHMtOdaCwv0A.png",
+    name: "Bhavesh Chawre",
+    role: "Web Developer/Designer",
+    image: "/Team images/Bhavesh.png",
   },
   {
-    name: "Daniel Foster",
-    role: "Developer",
-    image: "/testimonials/wCeVqDNsespfMwpEZDJh9bvoe0.png",
+    name: "Vrundita Jamkar",
+    role: "CRM",
+    image: "/Team images/vj.jpeg",
   },
   {
-    name: "Olivia Bennett",
-    role: "Client Success Manager",
-    image: "/testimonials/15M4kvkfOTEm4Aa0gaOHpjxbsg.png",
+    name: "Harsh Tandulwar",
+    role: "Web Developer",
+    image: "/Team images/Harsh.jpeg",
   },
-] as const;
+  {
+    name: "Aditya Jadhav",
+    role: "Visual Editor",
+    image: "/Team images/Aditiya.jpeg",
+  },
+  {
+    name: "Sumit Kumbhalkar",
+    role: "Visual Editor",
+    image: "/Team images/Sumit.png",
+  },
+];
 
 export const awards = [
   { year: "2025", title: "Site of the Day", category: "CSS Design Awards", brand: "Bigtopsocial X" },

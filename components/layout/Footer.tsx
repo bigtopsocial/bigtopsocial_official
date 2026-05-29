@@ -61,7 +61,7 @@ export function Footer() {
       <Container className="relative z-10">
 
                 {/* Giant Wordmark */}
-        <div className="w-full flex items-end justify-center overflow-hidden -mt-10 lg:my-16">
+        <div className="w-full flex items-end justify-center overflow-hidden -mt-10 lg:mt-32 lg:mb-16">
           <h1 className="text-[15vw] sm:text-[clamp(2rem,13.5vw,18rem)] font-bold leading-[0.8] tracking-tight text-white/85  select-none text-center lowercase break-words mb-5">
             bigtopsocial
           </h1>

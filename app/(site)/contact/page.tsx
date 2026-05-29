@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
@@ -21,6 +21,29 @@ export default function ContactPage() {
     country: "", category: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  // Prefill from the "How We Can Help" chatbot redirect.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const industry = params.get("industry");
+    const problem = params.get("problem");
+    const budget = params.get("budget");
+    const timeline = params.get("timeline");
+    const pkg = params.get("package");
+    const services = params.get("services");
+
+    if (!industry && !problem && !pkg) return;
+
+    const lines = [
+      pkg && `I'm interested in the ${pkg}${services ? ` (${services})` : ""}.`,
+      industry && `Industry: ${industry}`,
+      problem && `Main goal: ${problem}`,
+      budget && `Budget: ${budget}`,
+      timeline && `Timeline: ${timeline}`,
+    ].filter(Boolean);
+
+    setForm((f) => ({ ...f, message: lines.join("\n") }));
+  }, []);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -204,12 +227,6 @@ export default function ContactPage() {
           <Reveal>{formCard}</Reveal>
         </Container>
       </section>
-
-      {/* Trailing blend into footer */}
-      <div className="relative bg-background">
-        <div className="h-16" />
-        <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-full bg-gradient-to-b from-transparent to-[#000]" />
-      </div>
     </>
   );
 }

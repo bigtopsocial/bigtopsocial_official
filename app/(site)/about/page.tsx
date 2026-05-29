@@ -309,15 +309,21 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {aboutTeam.map((m, idx) => (
               <Reveal key={`${m.name}-${idx}`} delay={idx * 0.04}>
-                <div className="group overflow-hidden rounded-[18px] bg-card">
+                <div className="group flex h-full flex-col overflow-hidden rounded-[18px] bg-card">
                   <div className="relative aspect-square overflow-hidden">
-                    <Image
-                      src={m.image}
-                      alt={m.name}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    />
+                    {m.image ? (
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-white/[0.04] text-5xl font-semibold text-foreground/40">
+                        {m.name.charAt(0)}
+                      </div>
+                    )}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
                   <div className="p-5">
@@ -330,9 +336,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-
-      {/* fades last section into footer */}
-      <div className="pointer-events-none h-64 bg-gradient-to-b from-transparent to-[#000]" />
     </>
   );
 }
