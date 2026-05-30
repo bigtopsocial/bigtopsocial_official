@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { getAllServices } from "@/lib/content/services";
+import { getAllIndustries } from "@/lib/content/industries";
 
 const socialIcons: Record<string, React.ReactNode> = {
   X: (
@@ -33,9 +35,10 @@ const social = [
   { href: "https://framer.link/clariv-studio", label: "Framer" },
 ];
 
-const navLinks = ["About", "Projects", "Blog", "Contact"];
-
 export function Footer() {
+  const services = getAllServices();
+  const industries = getAllIndustries();
+
   return (
     <footer className="relative bg-black pt-20 pb-8 text-white overflow-hidden">
       
@@ -79,7 +82,7 @@ export function Footer() {
           </div>
 
           {/* Links Section */}
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-8 lg:pl-12">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-5 gap-8 lg:pl-12">
 
             {/* Navigate */}
             <div>
@@ -87,9 +90,10 @@ export function Footer() {
               <ul className="space-y-3 text-[13px] text-white/60">
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                 <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-                <li><Link href="/projects" className="hover:text-white transition-colors">Projects</Link></li>
+                <li><Link href="/how-we-can-help" className="hover:text-white transition-colors">How We Help</Link></li>
+                <li><Link href="/project" className="hover:text-white transition-colors">Projects</Link></li>
                 <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Get a Quote</Link></li>
               </ul>
             </div>
 
@@ -97,10 +101,37 @@ export function Footer() {
             <div>
               <h4 className="text-[13px] font-semibold mb-5 text-white">Services</h4>
               <ul className="space-y-3 text-[13px] text-white/60">
-                <li><Link href="#" className="hover:text-white transition-colors">Social Strategy</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Story-Driven Content</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Brand Identity</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Paid Campaigns</Link></li>
+                {services.map((s) => (
+                  <li key={s.slug}>
+                    <Link href={`/services/${s.slug}`} className="hover:text-white transition-colors">
+                      {s.title}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/services" className="text-white/80 hover:text-white transition-colors">
+                    All services →
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Industries */}
+            <div>
+              <h4 className="text-[13px] font-semibold mb-5 text-white">Industries</h4>
+              <ul className="space-y-3 text-[13px] text-white/60">
+                {industries.map((i) => (
+                  <li key={i.slug}>
+                    <Link href={`/industries/${i.slug}`} className="hover:text-white transition-colors">
+                      {i.title}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/industries" className="text-white/80 hover:text-white transition-colors">
+                    All industries →
+                  </Link>
+                </li>
               </ul>
             </div>
 
