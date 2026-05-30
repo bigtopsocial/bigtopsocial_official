@@ -2,10 +2,11 @@ import Link from "next/link";
 
 const links = [
   { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
   { href: "/how-we-can-help", label: "How We Help" },
   { href: "/project", label: "Projects" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function NavLinks({
