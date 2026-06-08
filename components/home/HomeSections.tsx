@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import BorderGlow from "@/components/BorderGlow";
 import { Container } from "@/components/layout/Container";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { Reveal } from "@/components/motion/Reveal";
@@ -14,11 +13,7 @@ import dynamic from "next/dynamic";
 const MobileContentReel = dynamic(
   () => import("@/components/home/MobileContentReel").then((m) => m.MobileContentReel)
 );
-import { WobbleCard } from "@/components/ui/wobble-card";
-import { blogListing } from "@/lib/content/blog";
 import {
-  homeBlogTeasers,
-  pricingPlans,
   services,
   testimonials,
 } from "@/lib/content/home";
@@ -90,18 +85,6 @@ const clientLogos = [
   "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/38_ls8kmf.png",
 ];
 
-const homeCardGlow = {
-  backgroundColor: "#BFB6A40D",
-  borderRadius: 12,
-  glowRadius: 34,
-  edgeSensitivity: 18,
-  glowColor: "220 85 48",
-  glowIntensity: 0.9,
-  coneSpread: 22,
-  fillOpacity: 0.16,
-  colors: ["#071a3d", "#12ced6", "#ffffff"],
-};
-
 const partnerLogoSizes = [
   // Phone (< sm) renders these in a 4-col grid whose rows stretch to fill the
   // viewport, so the base height is `h-full` (logo fills its row, capped by the
@@ -119,7 +102,7 @@ const partnerLogoSizes = [
 function seededShuffle<T>(array: readonly T[]): T[] {
   const arr = [...array];
   const seed = Math.floor(Date.now() / (1000 * 60 * 60 * 24)); // New seed each day
-  let random = (index: number) => {
+  const random = (index: number) => {
     const x = Math.sin(seed + index) * 10000;
     return x - Math.floor(x);
   };

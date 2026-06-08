@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, type ElementType } from "react";
+import { Fragment } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 type AsTag = "span" | "div" | "p" | "h1" | "h2" | "h3" | "h4";
@@ -47,6 +47,7 @@ export function BlurTextReveal({
     return <Tag className={className}>{text}</Tag>;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- framer-motion's indexed component types don't narrow cleanly to a JSX-usable element type
   const MotionTag = motion[as] as any;
   const words = text.split(" ");
 
