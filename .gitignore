@@ -30,3 +30,13 @@ SPEC.md
 UI-SPEC.md
 AI-SPEC.md
 EVAL-REVIEW.md
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+!.env.example
