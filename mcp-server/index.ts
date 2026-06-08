@@ -1,22 +1,19 @@
-import { Server } from "@modelcontextprotocol/sdk/server/index.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from "@modelcontextprotocol/sdk/types.js";
-import fs from "fs/promises";
-import path from "path";
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
+import fs from 'fs/promises';
+import path from 'path';
 
 const server = new Server(
   {
-    name: "bigtopsocial-mcp-server",
-    version: "1.0.0",
+    name: 'bigtopsocial-mcp-server',
+    version: '1.0.0',
   },
   {
     capabilities: {
       tools: {},
     },
-  }
+  },
 );
 
 // Define a tool to get project statistics
@@ -24,10 +21,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        name: "get_project_stats",
-        description: "Returns statistics about the Bigtopsocial project components and pages",
+        name: 'get_project_stats',
+        description: 'Returns statistics about the Bigtopsocial project components and pages',
         inputSchema: {
-          type: "object",
+          type: 'object',
           properties: {},
           required: [],
         },
@@ -36,18 +33,20 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   };
 });
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  if (request.params.name === "get_project_stats") {
+server.setRequestHandler(CallToolRequestSchema, async request => {
+  if (request.params.name === 'get_project_stats') {
     try {
-      const componentsDir = path.resolve(process.cwd(), "components");
-      const appDir = path.resolve(process.cwd(), "app");
-      
+      const componentsDir = path.resolve(process.cwd(), 'components');
+      const appDir = path.resolve(process.cwd(), 'app');
+
       let componentCount = 0;
       let pageCount = 0;
 
       try {
         const components = await fs.readdir(componentsDir, { recursive: true });
-        componentCount = components.filter(f => typeof f === 'string' && (f.endsWith('.tsx') || f.endsWith('.jsx'))).length;
+        componentCount = components.filter(
+          f => typeof f === 'string' && (f.endsWith('.tsx') || f.endsWith('.jsx')),
+        ).length;
       } catch (e) {
         // Directory might not exist or be accessible
       }
@@ -62,7 +61,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [
           {
-            type: "text",
+            type: 'text',
             text: `Project Stats:\n- Components: ${componentCount}\n- Pages: ${pageCount}`,
           },
         ],
@@ -71,7 +70,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return {
         content: [
           {
-            type: "text",
+            type: 'text',
             text: `Error getting project stats: ${error.message}`,
           },
         ],
@@ -80,16 +79,16 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
   }
 
-  throw new Error("Tool not found");
+  throw new Error('Tool not found');
 });
 
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Bigtopsocial MCP Server running on stdio");
+  console.error('Bigtopsocial MCP Server running on stdio');
 }
 
-main().catch((error) => {
-  console.error("Fatal error running MCP server:", error);
+main().catch(error => {
+  console.error('Fatal error running MCP server:', error);
   process.exit(1);
 });

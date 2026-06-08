@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Container } from "@/components/layout/Container";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
+import { useState } from 'react';
+import { Container } from '@/components/layout/Container';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
 
 function Slider({
   label,
@@ -36,7 +36,7 @@ function Slider({
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={e => onChange(Number(e.target.value))}
         className="w-full accent-accent"
       />
     </label>
@@ -44,7 +44,7 @@ function Slider({
 }
 
 export default function BlurDemoPage() {
-  const [text, setText] = useState("Elevating brands Forward, Faster");
+  const [text, setText] = useState('Elevating brands Forward, Faster');
   const [stagger, setStagger] = useState(0.08);
   const [duration, setDuration] = useState(0.8);
   const [blur, setBlur] = useState(12);
@@ -60,12 +60,10 @@ export default function BlurDemoPage() {
     <main className="min-h-screen bg-background py-28 text-foreground sm:py-32">
       <Container>
         <p className="text-xs uppercase tracking-[0.2em] text-accent">Motion lab</p>
-        <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
-          Word-by-word blur reveal
-        </h1>
+        <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">Word-by-word blur reveal</h1>
         <p className="mt-2 max-w-xl text-sm text-foreground/70">
-          Each word fades and slides up while a blur sharpens to focus. Tune the
-          knobs below — the preview replays on every change.
+          Each word fades and slides up while a blur sharpens to focus. Tune the knobs below — the
+          preview replays on every change.
         </p>
 
         {/* Preview stage */}
@@ -90,21 +88,61 @@ export default function BlurDemoPage() {
             <input
               type="text"
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={e => setText(e.target.value)}
               className="w-full rounded-lg border border-border-subtle bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
             />
           </label>
 
-          <Slider label="Stagger (per word)" value={stagger} min={0} max={0.4} step={0.01} unit="s" onChange={setStagger} />
-          <Slider label="Duration (per word)" value={duration} min={0.2} max={2} step={0.05} unit="s" onChange={setDuration} />
-          <Slider label="Start blur" value={blur} min={0} max={40} step={1} unit="px" onChange={setBlur} />
-          <Slider label="Start offset (y)" value={y} min={0} max={80} step={1} unit="px" onChange={setY} />
-          <Slider label="Initial delay" value={delay} min={0} max={1.5} step={0.05} unit="s" onChange={setDelay} />
+          <Slider
+            label="Stagger (per word)"
+            value={stagger}
+            min={0}
+            max={0.4}
+            step={0.01}
+            unit="s"
+            onChange={setStagger}
+          />
+          <Slider
+            label="Duration (per word)"
+            value={duration}
+            min={0.2}
+            max={2}
+            step={0.05}
+            unit="s"
+            onChange={setDuration}
+          />
+          <Slider
+            label="Start blur"
+            value={blur}
+            min={0}
+            max={40}
+            step={1}
+            unit="px"
+            onChange={setBlur}
+          />
+          <Slider
+            label="Start offset (y)"
+            value={y}
+            min={0}
+            max={80}
+            step={1}
+            unit="px"
+            onChange={setY}
+          />
+          <Slider
+            label="Initial delay"
+            value={delay}
+            min={0}
+            max={1.5}
+            step={0.05}
+            unit="s"
+            onChange={setDelay}
+          />
 
           <div className="flex items-end">
             <button
               type="button"
-              onClick={() => setNonce((n) => n + 1)}
+              onClick={() => setNonce(n => n + 1)}
               className="inline-flex h-10 items-center justify-center rounded-full bg-foreground px-6 text-sm font-medium text-background transition hover:bg-foreground/90"
             >
               Replay
@@ -122,7 +160,7 @@ export default function BlurDemoPage() {
             {/* Replace the src below with your Cloudinary .mp4 URL */}
             <video
               src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779956593/Bored_of_the_same_old_weekend_routines_in_Nagpur_Leave_the_city_noise_behind_Just_a_1-hour_sc_ljs15v.mp4"
-              style={{ width: 320, height: 569, objectFit: "cover" }}
+              style={{ width: 320, height: 569, objectFit: 'cover' }}
               className="rounded-2xl bg-black"
               autoPlay
               muted

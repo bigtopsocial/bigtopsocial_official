@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import type { CaseBlock, Project } from "@/lib/content/projects";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import type { CaseBlock, Project } from '@/lib/content/projects';
 
 function renderBlock(block: CaseBlock, sectionIdx: number, blockIdx: number) {
-  if (block.type === "paragraphs") {
+  if (block.type === 'paragraphs') {
     return block.paragraphs.map((p, idx) => (
       <p
         key={`${sectionIdx}-${blockIdx}-p-${idx}`}
@@ -122,25 +122,19 @@ export function CaseStudyView({ project }: { project: Project }) {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                   {project.servicesLabel}
                 </p>
-                <p className="mt-2 text-sm font-medium text-foreground">
-                  {project.servicesValue}
-                </p>
+                <p className="mt-2 text-sm font-medium text-foreground">{project.servicesValue}</p>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                   {project.categoryLabel}
                 </p>
-                <p className="mt-2 text-sm font-medium text-foreground">
-                  {project.categoryValue}
-                </p>
+                <p className="mt-2 text-sm font-medium text-foreground">{project.categoryValue}</p>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                   {project.clientLabel}
                 </p>
-                <p className="mt-2 text-sm font-medium text-foreground">
-                  {project.clientValue}
-                </p>
+                <p className="mt-2 text-sm font-medium text-foreground">{project.clientValue}</p>
               </div>
             </div>
           </Reveal>
@@ -219,7 +213,7 @@ export function CaseStudyView({ project }: { project: Project }) {
             </Link>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {project.moreCases.map((c) => (
+            {project.moreCases.map(c => (
               <Link
                 key={c.slug}
                 href={`/project/${c.slug}`}

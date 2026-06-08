@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Container } from "@/components/layout/Container";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Container } from '@/components/layout/Container';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
 
-type StepKey = "industry" | "problem" | "budget" | "timeline";
+type StepKey = 'industry' | 'problem' | 'budget' | 'timeline';
 
 type Option = { label: string; value: string };
 
@@ -18,44 +18,44 @@ type Step = {
 
 const steps: Step[] = [
   {
-    key: "industry",
-    question: "First up — which world do you operate in?",
+    key: 'industry',
+    question: 'First up — which world do you operate in?',
     options: [
-      { label: "Real Estate", value: "Real Estate" },
-      { label: "Hospitality", value: "Hospitality" },
-      { label: "Education", value: "Education" },
-      { label: "Other", value: "Other" },
+      { label: 'Real Estate', value: 'Real Estate' },
+      { label: 'Hospitality', value: 'Hospitality' },
+      { label: 'Education', value: 'Education' },
+      { label: 'Other', value: 'Other' },
     ],
   },
   {
-    key: "problem",
+    key: 'problem',
     question: "Got it. What's the biggest thing holding you back right now?",
     options: [
-      { label: "Brand Awareness", value: "Brand Awareness" },
-      { label: "Lead Generation", value: "Lead Generation" },
-      { label: "Content", value: "Content" },
-      { label: "Website", value: "Website" },
-      { label: "Sales", value: "Sales" },
-      { label: "Other", value: "Other" },
+      { label: 'Brand Awareness', value: 'Brand Awareness' },
+      { label: 'Lead Generation', value: 'Lead Generation' },
+      { label: 'Content', value: 'Content' },
+      { label: 'Website', value: 'Website' },
+      { label: 'Sales', value: 'Sales' },
+      { label: 'Other', value: 'Other' },
     ],
   },
   {
-    key: "budget",
-    question: "Makes sense. What kind of monthly budget are you working with?",
+    key: 'budget',
+    question: 'Makes sense. What kind of monthly budget are you working with?',
     options: [
-      { label: "Under $1k", value: "Under $1,000 / mo" },
-      { label: "$1k – $5k", value: "$1,000 – $5,000 / mo" },
-      { label: "$5k – $15k", value: "$5,000 – $15,000 / mo" },
-      { label: "$15k+", value: "$15,000+ / mo" },
+      { label: 'Under $1k', value: 'Under $1,000 / mo' },
+      { label: '$1k – $5k', value: '$1,000 – $5,000 / mo' },
+      { label: '$5k – $15k', value: '$5,000 – $15,000 / mo' },
+      { label: '$15k+', value: '$15,000+ / mo' },
     ],
   },
   {
-    key: "timeline",
-    question: "Last one — how soon are you looking to get moving?",
+    key: 'timeline',
+    question: 'Last one — how soon are you looking to get moving?',
     options: [
-      { label: "Immediate", value: "Immediate" },
-      { label: "1 – 3 months", value: "1 – 3 months" },
-      { label: "Flexible", value: "Flexible" },
+      { label: 'Immediate', value: 'Immediate' },
+      { label: '1 – 3 months', value: '1 – 3 months' },
+      { label: 'Flexible', value: 'Flexible' },
     ],
   },
 ];
@@ -70,49 +70,49 @@ type Recommendation = {
 
 // Maps the identified problem to a recommended service mix.
 function recommend(answers: Answers): Recommendation {
-  const problem = answers.problem ?? "Other";
-  const industry = answers.industry ?? "your industry";
+  const problem = answers.problem ?? 'Other';
+  const industry = answers.industry ?? 'your industry';
 
   const byProblem: Record<string, Recommendation> = {
-    "Brand Awareness": {
-      headline: "The Visibility Package",
-      services: ["Branding", "Digital Marketing", "Influencer Marketing"],
+    'Brand Awareness': {
+      headline: 'The Visibility Package',
+      services: ['Branding', 'Digital Marketing', 'Influencer Marketing'],
       pitch:
         "We'll sharpen your identity and put it in front of the right audience consistently, so people in " +
         industry +
-        " actually remember you.",
+        ' actually remember you.',
     },
-    "Lead Generation": {
-      headline: "The Growth Engine Package",
-      services: ["Performance Marketing", "SEO"],
+    'Lead Generation': {
+      headline: 'The Growth Engine Package',
+      services: ['Performance Marketing', 'SEO'],
       pitch:
-        "A paid + organic funnel built to turn attention into qualified leads — tuned for the " +
+        'A paid + organic funnel built to turn attention into qualified leads — tuned for the ' +
         industry +
-        " buyer.",
+        ' buyer.',
     },
     Content: {
-      headline: "The Content Studio Package",
-      services: ["Digital Marketing", "Branding"],
+      headline: 'The Content Studio Package',
+      services: ['Digital Marketing', 'Branding'],
       pitch:
-        "A steady stream of on-brand content and a system to publish it, so your channels never go quiet.",
+        'A steady stream of on-brand content and a system to publish it, so your channels never go quiet.',
     },
     Website: {
-      headline: "The Digital Presence Package",
-      services: ["Web Development", "SEO"],
+      headline: 'The Digital Presence Package',
+      services: ['Web Development', 'SEO'],
       pitch:
-        "A fast, conversion-focused site that ranks — built to make a strong first impression for " +
+        'A fast, conversion-focused site that ranks — built to make a strong first impression for ' +
         industry +
-        " clients.",
+        ' clients.',
     },
     Sales: {
-      headline: "The Revenue Package",
-      services: ["Performance Marketing", "Web Development"],
+      headline: 'The Revenue Package',
+      services: ['Performance Marketing', 'Web Development'],
       pitch:
-        "We connect a high-converting site to paid campaigns engineered around your sales goals.",
+        'We connect a high-converting site to paid campaigns engineered around your sales goals.',
     },
     Other: {
-      headline: "The Custom Strategy Package",
-      services: ["Digital Marketing", "Branding"],
+      headline: 'The Custom Strategy Package',
+      services: ['Digital Marketing', 'Branding'],
       pitch:
         "Not a one-size problem — so we'll start with a tailored mix and refine it with you on the call.",
     },
@@ -136,14 +136,14 @@ export default function HowWeCanHelpPage() {
   useEffect(() => {
     scrollRef.current?.scrollTo({
       top: scrollRef.current.scrollHeight,
-      behavior: reduce ? "auto" : "smooth",
+      behavior: reduce ? 'auto' : 'smooth',
     });
   }, [stepIndex, typing, finished, reduce]);
 
   function handleSelect(value: string) {
     if (typing || finished) return;
     const key = currentStep.key;
-    setAnswers((a) => ({ ...a, [key]: value }));
+    setAnswers(a => ({ ...a, [key]: value }));
 
     const isLast = stepIndex === steps.length - 1;
     setTyping(true);
@@ -153,22 +153,22 @@ export default function HowWeCanHelpPage() {
         if (isLast) {
           setFinished(true);
         } else {
-          setStepIndex((i) => i + 1);
+          setStepIndex(i => i + 1);
         }
       },
-      reduce ? 0 : 850
+      reduce ? 0 : 850,
     );
   }
 
   function goToQuote() {
     const rec = recommend(answers);
     const params = new URLSearchParams({
-      industry: answers.industry ?? "",
-      problem: answers.problem ?? "",
-      budget: answers.budget ?? "",
-      timeline: answers.timeline ?? "",
+      industry: answers.industry ?? '',
+      problem: answers.problem ?? '',
+      budget: answers.budget ?? '',
+      timeline: answers.timeline ?? '',
       package: rec.headline,
-      services: rec.services.join(", "),
+      services: rec.services.join(', '),
     });
     router.push(`/contact?${params.toString()}`);
   }
@@ -185,8 +185,8 @@ export default function HowWeCanHelpPage() {
   const bubbleIn = reduce
     ? {}
     : {
-        initial: { opacity: 0, y: 12, filter: "blur(6px)" },
-        animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+        initial: { opacity: 0, y: 12, filter: 'blur(6px)' },
+        animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
         transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
       };
 
@@ -222,8 +222,8 @@ export default function HowWeCanHelpPage() {
             className="mt-6 text-[clamp(2.25rem,7vw,4rem)] font-medium leading-[1.1] tracking-tight text-foreground"
           />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-            Answer a few quick questions and we&apos;ll point you to the right
-            service mix — then take you straight to a quote.
+            Answer a few quick questions and we&apos;ll point you to the right service mix — then
+            take you straight to a quote.
           </p>
         </Container>
       </div>
@@ -237,22 +237,17 @@ export default function HowWeCanHelpPage() {
               className="h-full bg-gradient-to-r from-[#12ced6] to-white/80"
               initial={false}
               animate={{
-                width: `${
-                  ((finished ? steps.length : stepIndex) / steps.length) * 100
-                }%`,
+                width: `${((finished ? steps.length : stepIndex) / steps.length) * 100}%`,
               }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             />
           </div>
 
-          <div
-            ref={scrollRef}
-            className="max-h-[60vh] space-y-5 overflow-y-auto px-4 py-6 sm:px-7"
-          >
+          <div ref={scrollRef} className="max-h-[60vh] space-y-5 overflow-y-auto px-4 py-6 sm:px-7">
             {/* Intro bot bubble */}
             <BotBubble {...bubbleIn}>
-              Hey 👋 I&apos;m here to figure out exactly how we can help you grow.
-              Let&apos;s keep it quick.
+              Hey 👋 I&apos;m here to figure out exactly how we can help you grow. Let&apos;s keep
+              it quick.
             </BotBubble>
 
             {/* Conversation history */}
@@ -262,12 +257,8 @@ export default function HowWeCanHelpPage() {
               const showQuestion = i < stepIndex || (i === stepIndex && !finished) || finished;
               return (
                 <div key={step.key} className="space-y-5">
-                  {showQuestion && (
-                    <BotBubble {...bubbleIn}>{step.question}</BotBubble>
-                  )}
-                  {answered && (
-                    <UserBubble reduce={reduce}>{answered}</UserBubble>
-                  )}
+                  {showQuestion && <BotBubble {...bubbleIn}>{step.question}</BotBubble>}
+                  {answered && <UserBubble reduce={reduce}>{answered}</UserBubble>}
                 </div>
               );
             })}
@@ -295,11 +286,9 @@ export default function HowWeCanHelpPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#12ced6]">
                     Recommended
                   </p>
-                  <p className="mt-1.5 text-lg font-semibold text-foreground">
-                    {rec.headline}
-                  </p>
+                  <p className="mt-1.5 text-lg font-semibold text-foreground">{rec.headline}</p>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {rec.services.map((s) => (
+                    {rec.services.map(s => (
                       <span
                         key={s}
                         className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-foreground"
@@ -308,9 +297,7 @@ export default function HowWeCanHelpPage() {
                       </span>
                     ))}
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {rec.pitch}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{rec.pitch}</p>
                 </div>
               </BotBubble>
             )}
@@ -330,7 +317,7 @@ export default function HowWeCanHelpPage() {
                       transition={{ duration: 0.3 }}
                       className="flex flex-wrap gap-2.5"
                     >
-                      {currentStep.options.map((opt) => (
+                      {currentStep.options.map(opt => (
                         <button
                           key={opt.value}
                           onClick={() => handleSelect(opt.value)}
@@ -384,13 +371,7 @@ function BotBubble({
   );
 }
 
-function UserBubble({
-  children,
-  reduce,
-}: {
-  children: React.ReactNode;
-  reduce: boolean | null;
-}) {
+function UserBubble({ children, reduce }: { children: React.ReactNode; reduce: boolean | null }) {
   return (
     <motion.div
       initial={reduce ? false : { opacity: 0, y: 10, x: 10 }}
@@ -412,7 +393,7 @@ function TypingBubble() {
         BT
       </div>
       <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-sm bg-white/[0.08] px-4 py-4">
-        {[0, 1, 2].map((i) => (
+        {[0, 1, 2].map(i => (
           <motion.span
             key={i}
             className="h-1.5 w-1.5 rounded-full bg-foreground/60"

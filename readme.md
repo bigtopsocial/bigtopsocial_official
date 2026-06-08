@@ -6,7 +6,7 @@ A full technical audit and blueprint of the **BigTopSocial** Next.js production 
 
 ## 1. Executive Technology Stack
 
-The application is structured as a modern **Next.js (App Router)** site, utilising TypeScript and compiled with strict configuration standards. 
+The application is structured as a modern **Next.js (App Router)** site, utilising TypeScript and compiled with strict configuration standards.
 
 ```mermaid
 graph TD
@@ -21,13 +21,14 @@ graph TD
 ```
 
 ### Core Technologies
-*   **Framework:** Next.js (App Router) with React 19 Support
-*   **Language:** TypeScript (Strict Typing Engine)
-*   **Styling:** Tailwind CSS (Custom visual utilities, custom glassmorphic overrides)
-*   **Animation Physics:** Framer Motion (v11/12) & GSAP (v3) with ScrollTrigger integration
-*   **Momentum Scrolling:** Lenis (v1.3)
-*   **3D / WebGL:** Three.js with React Three Fiber (`@react-three/fiber`)
-*   **Media Hosting & Processing:** Cloudinary (Dynamic video/image transformation API)
+
+- **Framework:** Next.js (App Router) with React 19 Support
+- **Language:** TypeScript (Strict Typing Engine)
+- **Styling:** Tailwind CSS (Custom visual utilities, custom glassmorphic overrides)
+- **Animation Physics:** Framer Motion (v11/12) & GSAP (v3) with ScrollTrigger integration
+- **Momentum Scrolling:** Lenis (v1.3)
+- **3D / WebGL:** Three.js with React Three Fiber (`@react-three/fiber`)
+- **Media Hosting & Processing:** Cloudinary (Dynamic video/image transformation API)
 
 ---
 
@@ -107,19 +108,19 @@ The application establishes a total of **11 public client routes** and **1 API e
 
 ### Client Routes Breakdown
 
-| Route Path | Associated Code Entry | Static Gen (`SSG`) | Key Design Modules & Interactivity |
-| :--- | :--- | :--- | :--- |
-| `/` | `app/(site)/page.tsx` | Yes | Custom 9x4 Organically Scattered Client Logo Grid, Video Hero Intro, Bento Portfolio Grid, Infinite Testimonial Marquees. |
-| `/about` | `app/(site)/about/page.tsx` | Yes | Background looping video, fluid layout, Team Grid, Awards Accolades timeline, and Industry categories display. |
-| `/blog` | `app/(site)/blog/page.tsx` | Yes | Header video backdrop, high-contrast dynamic Category Tag filters, grid of editorial blog listing cards. |
-| `/blog/[slug]` | `app/(site)/blog/[slug]/page.tsx` | Dynamic SSG | Dynamic path generation via `blogPosts` parameters. Connects to `BlogArticleView` displaying styled read times, tags, and articles. |
-| `/blur-demo` | `app/(site)/blur-demo/page.tsx` | Client Lab | Interactive **Motion Lab** that exposes controls (stagger, duration, blur, Y-axis offset) to let designers preview `BlurTextReveal` live. Includes a Cloudinary video preview. |
-| `/contact` | `app/(site)/contact/page.tsx` | Yes | Multi-step interactive consultation booking system, glassmorphic inputs, inline error handlers. |
-| `/privacy-policy`| `app/(site)/privacy-policy/page.tsx` | Yes | High-legibility typography layout using styled lists and containers. |
-| `/project` | `app/(site)/project/page.tsx` | Yes | Complete grid list of brand case studies showcasing cover images, categories, and delivery years. |
-| `/project/[slug]`| `app/(site)/project/[slug]/page.tsx` | Dynamic SSG | Dynamically pre-compiled. Mounts `CaseStudyView` with dynamic meta, statistics blocks (Services, Client, Year), and narrative content blocks. |
-| `/services/[slug]`| `app/(site)/services/[slug]/page.tsx`| Dynamic SSG | Dynamically builds dedicated features for 6 services. Details specific methodologies, features, and links dynamic case studies. |
-| `/terms-conditions`| `app/(site)/terms-conditions/page.tsx`| Yes | Core service agreement text utilizing uniform styling guides. |
+| Route Path          | Associated Code Entry                  | Static Gen (`SSG`) | Key Design Modules & Interactivity                                                                                                                                             |
+| :------------------ | :------------------------------------- | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                 | `app/(site)/page.tsx`                  | Yes                | Custom 9x4 Organically Scattered Client Logo Grid, Video Hero Intro, Bento Portfolio Grid, Infinite Testimonial Marquees.                                                      |
+| `/about`            | `app/(site)/about/page.tsx`            | Yes                | Background looping video, fluid layout, Team Grid, Awards Accolades timeline, and Industry categories display.                                                                 |
+| `/blog`             | `app/(site)/blog/page.tsx`             | Yes                | Header video backdrop, high-contrast dynamic Category Tag filters, grid of editorial blog listing cards.                                                                       |
+| `/blog/[slug]`      | `app/(site)/blog/[slug]/page.tsx`      | Dynamic SSG        | Dynamic path generation via `blogPosts` parameters. Connects to `BlogArticleView` displaying styled read times, tags, and articles.                                            |
+| `/blur-demo`        | `app/(site)/blur-demo/page.tsx`        | Client Lab         | Interactive **Motion Lab** that exposes controls (stagger, duration, blur, Y-axis offset) to let designers preview `BlurTextReveal` live. Includes a Cloudinary video preview. |
+| `/contact`          | `app/(site)/contact/page.tsx`          | Yes                | Multi-step interactive consultation booking system, glassmorphic inputs, inline error handlers.                                                                                |
+| `/privacy-policy`   | `app/(site)/privacy-policy/page.tsx`   | Yes                | High-legibility typography layout using styled lists and containers.                                                                                                           |
+| `/project`          | `app/(site)/project/page.tsx`          | Yes                | Complete grid list of brand case studies showcasing cover images, categories, and delivery years.                                                                              |
+| `/project/[slug]`   | `app/(site)/project/[slug]/page.tsx`   | Dynamic SSG        | Dynamically pre-compiled. Mounts `CaseStudyView` with dynamic meta, statistics blocks (Services, Client, Year), and narrative content blocks.                                  |
+| `/services/[slug]`  | `app/(site)/services/[slug]/page.tsx`  | Dynamic SSG        | Dynamically builds dedicated features for 6 services. Details specific methodologies, features, and links dynamic case studies.                                                |
+| `/terms-conditions` | `app/(site)/terms-conditions/page.tsx` | Yes                | Core service agreement text utilizing uniform styling guides.                                                                                                                  |
 
 ---
 
@@ -128,26 +129,32 @@ The application establishes a total of **11 public client routes** and **1 API e
 The wow factor of BigTopSocial is built on several custom-engineered interactive elements that combine math, viewport scrolling, and CSS filters:
 
 ### 1. BorderGlow Component (`components/BorderGlow.jsx`)
+
 An advanced hover component that tracks client cursor coordinates inside the component's boundaries.
-*   **The Mathematics:**
-    1.  Calculates **Edge Proximity** ($0.0 \rightarrow 1.0$) by dividing mouse distance from center by half-dimensions ($dx / cx$).
-    2.  Calculates **Cursor Angle** ($0^\circ \rightarrow 360^\circ$) relative to center using `Math.atan2(dy, dx)` mapped to degrees.
-*   **The Render:** Updates CSS custom properties (`--edge-proximity` and `--cursor-angle`) dynamically on the DOM element in real-time. The matching `BorderGlow.css` uses these values inside conic and radial gradients, drawing a fluid neon border that revolves and lights up exactly where the mouse is close to the card edge.
-*   **Automated Sweep:** Triggers a mathematical easing automation (`easeInCubic`, `easeOutCubic`) on initial load to spin the glowing border $360^\circ$ as a premium loading cue.
+
+- **The Mathematics:**
+  1.  Calculates **Edge Proximity** ($0.0 \rightarrow 1.0$) by dividing mouse distance from center by half-dimensions ($dx / cx$).
+  2.  Calculates **Cursor Angle** ($0^\circ \rightarrow 360^\circ$) relative to center using `Math.atan2(dy, dx)` mapped to degrees.
+- **The Render:** Updates CSS custom properties (`--edge-proximity` and `--cursor-angle`) dynamically on the DOM element in real-time. The matching `BorderGlow.css` uses these values inside conic and radial gradients, drawing a fluid neon border that revolves and lights up exactly where the mouse is close to the card edge.
+- **Automated Sweep:** Triggers a mathematical easing automation (`easeInCubic`, `easeOutCubic`) on initial load to spin the glowing border $360^\circ$ as a premium loading cue.
 
 ### 2. MobileContentReel (`components/home/MobileContentReel.tsx`)
+
 A mobile-specific, high-performance visual experience that solves standard boring layout constraints on small viewports.
-*   **The Mechanism:** Uses Framer Motion's `useMotionValue` and `useTransform` to map raw drag coordinates to a virtual **3D spatial cylinder**.
-*   **Visual Physics:** As the user drags horizontally, cards rotate along the Z-axis (`rotateZ: [-8deg -> 8deg]`), scale down dynamically, shift horizontally using a custom lateral array (`TX`), and dim automatically using a stacked black overlay opacity formula.
-*   **Immersive Playback:** Includes an Intersection handler. If the active slide contains a video, it triggers `.play()` only when resting near the center (`Math.abs(offset) < 0.45`), keeping other background videos paused to preserve mobile system resources.
-*   **Dynamic Lightbox:** Uses React Portals (`createPortal`) to lift media elements out of structural parents directly to `body` upon clicking, animating scaling entries alongside strict body scroll locks.
+
+- **The Mechanism:** Uses Framer Motion's `useMotionValue` and `useTransform` to map raw drag coordinates to a virtual **3D spatial cylinder**.
+- **Visual Physics:** As the user drags horizontally, cards rotate along the Z-axis (`rotateZ: [-8deg -> 8deg]`), scale down dynamically, shift horizontally using a custom lateral array (`TX`), and dim automatically using a stacked black overlay opacity formula.
+- **Immersive Playback:** Includes an Intersection handler. If the active slide contains a video, it triggers `.play()` only when resting near the center (`Math.abs(offset) < 0.45`), keeping other background videos paused to preserve mobile system resources.
+- **Dynamic Lightbox:** Uses React Portals (`createPortal`) to lift media elements out of structural parents directly to `body` upon clicking, animating scaling entries alongside strict body scroll locks.
 
 ### 3. ProgressiveBlur (`components/layout/ProgressiveBlur.tsx`)
+
 A luxury overlay bar pinned to the bottom of the viewport that dissolves scrolling page content into a progressive backdrop blur.
-*   **The Solution:** Standard single-layer backdrop blurs create ugly, harsh seams where the blur starts. ProgressiveBlur overcomes this via **Cumulative Masking**.
-*   **The Stack:** Stacks 7 absolute layers of `backdropFilter: blur(Npx)`.
-*   **The Math:** Each layer is fully solid at the bottom of the screen and fades to transparent at different vertical intervals (`stop: 25% -> 100%`) using overlapping CSS `linear-gradient` mask values. 
-*   **Result:** A perfectly continuous, seam-free backdrop blur transition that reacts dynamically as elements slide underneath.
+
+- **The Solution:** Standard single-layer backdrop blurs create ugly, harsh seams where the blur starts. ProgressiveBlur overcomes this via **Cumulative Masking**.
+- **The Stack:** Stacks 7 absolute layers of `backdropFilter: blur(Npx)`.
+- **The Math:** Each layer is fully solid at the bottom of the screen and fades to transparent at different vertical intervals (`stop: 25% -> 100%`) using overlapping CSS `linear-gradient` mask values.
+- **Result:** A perfectly continuous, seam-free backdrop blur transition that reacts dynamically as elements slide underneath.
 
 ```
 [Viewport Bottom]
@@ -162,10 +169,12 @@ A luxury overlay bar pinned to the bottom of the viewport that dissolves scrolli
 ```
 
 ### 4. HowWeWorkTimeline (`components/home/HowWeWorkTimeline.tsx`)
+
 A sticky interactive layout that acts as a visual timeline:
-*   **Visual Split:** Grid is divided into a left content column and a right graphic container.
-*   **Scroll Sync:** As the user scrolls vertically, an `IntersectionObserver` tracks which phase description is occupying the viewport center (threshold `0.55`).
-*   **Interactive Response:** Sets `activeIndex` which triggers absolute transitions on the right sticky container, changing opacity and scale (`scale(1.04) -> scale(1.0)`) on high-resolution mock screens to map to the user's reading position.
+
+- **Visual Split:** Grid is divided into a left content column and a right graphic container.
+- **Scroll Sync:** As the user scrolls vertically, an `IntersectionObserver` tracks which phase description is occupying the viewport center (threshold `0.55`).
+- **Interactive Response:** Sets `activeIndex` which triggers absolute transitions on the right sticky container, changing opacity and scale (`scale(1.04) -> scale(1.0)`) on high-resolution mock screens to map to the user's reading position.
 
 ---
 
@@ -173,10 +182,10 @@ A sticky interactive layout that acts as a visual timeline:
 
 The application strictly aligns with a high-end, dark-mode-first editorial style guidelines outlined in the codebase standards:
 
-*   **Color Palette:** Rich dark backdrops (`#000000`, custom dark-card greys) illuminated by a highly specific primary accent glow of **Teal / Sky** (`#12ced6` / `#38bdf8`) and an alternate green accent (`#40ffbb`).
-*   **Responsive Rhythm:** Major sections enforce a responsive spacing rhythm (`py-16 sm:py-20 lg:py-24`). Sections leading directly into full-bleed interactives use `pb-0` to eliminate visual gaps.
-*   **Glassmorphism:** Standardised via `border border-white/10`, background opacities ranging between `bg-white/[0.03]` and `bg-white/[0.045]`, and deep backdrop blur classes (`backdrop-blur-xl`).
-*   **Seeded Shuffle Logo Scatter:** The floating partner logo cloud on the home page uses a custom **Seeded Random Shuffle** algorithm based on the current calendar date (`Date.now() / 86400000`). This ensures that the layout rearranges itself dynamically once a day, but remains strictly identical and overlap-free during active user sessions.
+- **Color Palette:** Rich dark backdrops (`#000000`, custom dark-card greys) illuminated by a highly specific primary accent glow of **Teal / Sky** (`#12ced6` / `#38bdf8`) and an alternate green accent (`#40ffbb`).
+- **Responsive Rhythm:** Major sections enforce a responsive spacing rhythm (`py-16 sm:py-20 lg:py-24`). Sections leading directly into full-bleed interactives use `pb-0` to eliminate visual gaps.
+- **Glassmorphism:** Standardised via `border border-white/10`, background opacities ranging between `bg-white/[0.03]` and `bg-white/[0.045]`, and deep backdrop blur classes (`backdrop-blur-xl`).
+- **Seeded Shuffle Logo Scatter:** The floating partner logo cloud on the home page uses a custom **Seeded Random Shuffle** algorithm based on the current calendar date (`Date.now() / 86400000`). This ensures that the layout rearranges itself dynamically once a day, but remains strictly identical and overlap-free during active user sessions.
 
 ---
 
@@ -187,8 +196,8 @@ All content copy is strictly isolated from presentation layers in `lib/content/`
 ```typescript
 // Example: The unified Project case study structure in lib/content/projects.ts
 export type CaseBlock =
-  | { type: "paragraphs"; paragraphs: string[] }
-  | { type: "bullets"; title?: string; items: string[] };
+  | { type: 'paragraphs'; paragraphs: string[] }
+  | { type: 'bullets'; title?: string; items: string[] };
 
 export type Project = {
   slug: string;

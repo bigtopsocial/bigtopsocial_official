@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import { testimonials } from "@/lib/content/home";
+import { useState } from 'react';
+import Image from 'next/image';
+import { testimonials } from '@/lib/content/home';
 
 export function MobileTestimonials() {
   const [showAll, setShowAll] = useState(false);
@@ -11,7 +11,7 @@ export function MobileTestimonials() {
   return (
     <div className="lg:hidden mt-10 px-4 sm:px-6">
       <div className="flex flex-col gap-4">
-        {visible.map((t) => (
+        {visible.map(t => (
           <div
             key={t.name}
             className="relative overflow-hidden rounded-[24px] bg-white/[0.03] p-6 backdrop-blur-xl"
@@ -26,9 +26,7 @@ export function MobileTestimonials() {
             </div>
 
             {/* quote */}
-            <p className="mt-4 text-[14px] leading-[1.8] text-white/80">
-              &ldquo;{t.quote}&rdquo;
-            </p>
+            <p className="mt-4 text-[14px] leading-[1.8] text-white/80">&ldquo;{t.quote}&rdquo;</p>
 
             {/* author */}
             <div className="mt-5 flex items-center gap-3">
@@ -59,10 +57,10 @@ export function MobileTestimonials() {
         <div className="mt-6 flex justify-center">
           <button
             type="button"
-            onClick={() => setShowAll((v) => !v)}
+            onClick={() => setShowAll(v => !v)}
             className="rounded-full border border-white/10 bg-white/[0.04] px-6 py-2.5 text-sm font-medium text-white/80 backdrop-blur-md transition hover:border-white/20 hover:bg-white/[0.08]"
           >
-            {showAll ? "Show less" : `Show more (${testimonials.length - 2})`}
+            {showAll ? 'Show less' : `Show more (${testimonials.length - 2})`}
           </button>
         </div>
       )}

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import type { BlogPost } from "@/lib/content/blog";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import type { BlogPost } from '@/lib/content/blog';
 
 export function BlogArticleView({ post }: { post: BlogPost }) {
   return (
@@ -64,17 +64,13 @@ export function BlogArticleView({ post }: { post: BlogPost }) {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                 Category
               </p>
-              <p className="mt-2 text-sm font-medium text-foreground">
-                {post.category}
-              </p>
+              <p className="mt-2 text-sm font-medium text-foreground">{post.category}</p>
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                 Publish date
               </p>
-              <p className="mt-2 text-sm font-medium text-foreground">
-                {post.publishDate}
-              </p>
+              <p className="mt-2 text-sm font-medium text-foreground">{post.publishDate}</p>
             </div>
           </div>
         </Container>

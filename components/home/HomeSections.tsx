@@ -1,37 +1,121 @@
-import { Fragment } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { FaqAccordion } from "@/components/faq/FaqAccordion";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { HowWeWorkTimeline } from "@/components/home/HowWeWorkTimeline";
-import { ReelsCarousel } from "@/components/home/ReelsCarousel";
-import { PostStageSlider } from "@/components/home/PostStageSlider";
-import { MobileTestimonials } from "@/components/home/MobileTestimonials";
-import dynamic from "next/dynamic";
-const MobileContentReel = dynamic(
-  () => import("@/components/home/MobileContentReel").then((m) => m.MobileContentReel)
+import { Fragment } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { FaqAccordion } from '@/components/faq/FaqAccordion';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { HowWeWorkTimeline } from '@/components/home/HowWeWorkTimeline';
+import { ReelsCarousel } from '@/components/home/ReelsCarousel';
+import { PostStageSlider } from '@/components/home/PostStageSlider';
+import { MobileTestimonials } from '@/components/home/MobileTestimonials';
+import dynamic from 'next/dynamic';
+const MobileContentReel = dynamic(() =>
+  import('@/components/home/MobileContentReel').then(m => m.MobileContentReel),
 );
-import {
-  services,
-  testimonials,
-} from "@/lib/content/home";
-import { projectTeasers } from "@/lib/content/projects";
+import { services, testimonials } from '@/lib/content/home';
+import { projectTeasers } from '@/lib/content/projects';
 
 const serviceIcons = [
   // Megaphone — Digital Marketing
-  <svg key="megaphone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg>,
+  <svg
+    key="megaphone"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <path d="m3 11 18-5v12L3 14v-3z" />
+    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+  </svg>,
   // Target — Performance Marketing
-  <svg key="target" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
+  <svg
+    key="target"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>,
   // Search — SEO
-  <svg key="search" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>,
+  <svg
+    key="search"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>,
   // Code — Web Development
-  <svg key="code" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
+  <svg
+    key="code"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>,
   // Layers — Branding
-  <svg key="layers" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="m12 2 10 6.5-10 6.5L2 8.5z" /><path d="m2 15.5 10 6.5 10-6.5" /><path d="m2 12 10 6.5 10-6.5" /></svg>,
+  <svg
+    key="layers"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <path d="m12 2 10 6.5-10 6.5L2 8.5z" />
+    <path d="m2 15.5 10 6.5 10-6.5" />
+    <path d="m2 12 10 6.5 10-6.5" />
+  </svg>,
   // Users — Influencer Marketing
-  <svg key="users" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-sky-400"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
+  <svg
+    key="users"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-sky-400"
+  >
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>,
 ];
 
 function Stars() {
@@ -47,52 +131,52 @@ function Stars() {
 }
 
 const clientLogos = [
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/1_claxp2.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/2_n5jpvb.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/3_qgybwn.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/4_vihtww.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/6_muawws.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/8_r9bkuq.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/9_zjbseh.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/10_z7zxuj.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/11_kbneh1.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/12_gtfklr.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/13_lth947.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/14_bsijjz.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/15_eawuml.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/16_qlk2vt.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/17_f0qmp1.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/18_bfjgxt.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/19_ifbz26.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/20_udeca1.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/21_t0wqhv.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/22_hliljw.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/23_sxftjt.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/24_etow4b.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/25_apzjox.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/26_hxz6jr.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/27_xnjpma.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/28_prbv3g.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/29_x4vgqu.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/30_nt8eq1.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/31_mpmi8o.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/32_rmsgac.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/33_hvswe7.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/34_abrwom.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/35_wpvgrh.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/36_s8mr2t.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/37_bmocca.png",
-  "https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/38_ls8kmf.png",
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/1_claxp2.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958429/2_n5jpvb.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/3_qgybwn.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/4_vihtww.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958430/6_muawws.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/8_r9bkuq.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/9_zjbseh.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/10_z7zxuj.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/11_kbneh1.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/12_gtfklr.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958431/13_lth947.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/14_bsijjz.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/15_eawuml.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/16_qlk2vt.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/17_f0qmp1.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958432/18_bfjgxt.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/19_ifbz26.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/20_udeca1.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/21_t0wqhv.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/22_hliljw.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958433/23_sxftjt.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/24_etow4b.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958434/25_apzjox.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/26_hxz6jr.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/27_xnjpma.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/28_prbv3g.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958435/29_x4vgqu.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/30_nt8eq1.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958436/31_mpmi8o.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/32_rmsgac.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/33_hvswe7.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/34_abrwom.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/35_wpvgrh.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958437/36_s8mr2t.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/37_bmocca.png',
+  'https://res.cloudinary.com/diqnwnz6x/image/upload/v1779958438/38_ls8kmf.png',
 ];
 
 const partnerLogoSizes = [
   // Phone (< sm) renders these in a 4-col grid whose rows stretch to fill the
   // viewport, so the base height is `h-full` (logo fills its row, capped by the
   // cell width). The sm:/lg: values drive the scattered floating layout unchanged.
-  "h-full sm:h-36 lg:h-44",
-  "h-full sm:h-40 lg:h-48",
-  "h-full sm:h-44 lg:h-52",
-  "h-full sm:h-48 lg:h-56",
+  'h-full sm:h-36 lg:h-44',
+  'h-full sm:h-40 lg:h-48',
+  'h-full sm:h-44 lg:h-52',
+  'h-full sm:h-48 lg:h-56',
 ] as const;
 
 /**
@@ -157,16 +241,16 @@ function buildPartnerPlacements(count: number) {
 const partnerPlacements = buildPartnerPlacements(clientLogos.length);
 
 const partnerPlacementCss =
-  "@media (min-width:640px){" +
+  '@media (min-width:640px){' +
   partnerPlacements
     .map(
       (p, i) =>
-        `.partner-cell-${i}{left:${p.left}%;top:${p.top}%;width:${p.wSm}px;transform:translate(-50%,-50%);}`
+        `.partner-cell-${i}{left:${p.left}%;top:${p.top}%;width:${p.wSm}px;transform:translate(-50%,-50%);}`,
     )
-    .join("") +
-  "}@media (min-width:1024px){" +
-  partnerPlacements.map((p, i) => `.partner-cell-${i}{width:${p.wLg}px;}`).join("") +
-  "}";
+    .join('') +
+  '}@media (min-width:1024px){' +
+  partnerPlacements.map((p, i) => `.partner-cell-${i}{width:${p.wLg}px;}`).join('') +
+  '}';
 
 export function HomeSections() {
   return (
@@ -182,7 +266,10 @@ export function HomeSections() {
             preload="metadata"
             aria-hidden
           >
-            <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
+            <source
+              src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4"
+              type="video/mp4"
+            />
           </video>
           {/* Mobile-only legibility scrim: darkens the top/middle so the white
               headline reads cleanly over the video. Desktop (sm+) is unchanged. */}
@@ -208,8 +295,8 @@ export function HomeSections() {
                 className="mt-1 text-[clamp(3rem,8vw,5.5rem)] leading-[1.05] tracking-tight text-foreground"
               />
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-                We help ambitious brands scale with performance marketing, creative
-                strategy, and conversion-focused campaigns.
+                We help ambitious brands scale with performance marketing, creative strategy, and
+                conversion-focused campaigns.
               </p>
               <Link
                 href="/contact"
@@ -223,15 +310,21 @@ export function HomeSections() {
               <div className="mx-auto inline-flex items-stretch divide-x divide-white/15 px-1.5 py-1.5">
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
                   <span className="text-sm font-semibold text-white sm:text-base">2+</span>
-                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">Experience</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">
+                    Experience
+                  </span>
                 </div>
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
                   <span className="text-sm font-semibold text-white sm:text-base">50+</span>
-                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">Clients</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">
+                    Clients
+                  </span>
                 </div>
                 <div className="flex w-20 flex-col items-center px-2 sm:w-24">
                   <span className="text-sm font-semibold text-white sm:text-base">8x</span>
-                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">ROI</span>
+                  <span className="mt-0.5 text-[8px] tracking-[0.18em] uppercase text-white/60 sm:text-[10px]">
+                    ROI
+                  </span>
                 </div>
               </div>
               <div className="mt-6 overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
@@ -284,8 +377,8 @@ export function HomeSections() {
               className="mt-8 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl"
             />
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              We blend strategy & creativity to help brands grow, connect, & stand
-              out with content that drives real engagement.
+              We blend strategy & creativity to help brands grow, connect, & stand out with content
+              that drives real engagement.
             </p>
           </Reveal>
 
@@ -308,9 +401,8 @@ export function HomeSections() {
               {/* Text */}
               <div className="order-2 text-center lg:col-span-6 lg:order-1 lg:text-left">
                 <h3 className="text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2.5rem]">
-                  Our team of creatives, strategists, and growth experts is
-                  dedicated to crafting content that not only looks stunning but
-                  also delivers{" "}
+                  Our team of creatives, strategists, and growth experts is dedicated to crafting
+                  content that not only looks stunning but also delivers{' '}
                   <span className="bg-gradient-to-r from-sky-400 to-[#12ced6] bg-clip-text text-transparent">
                     measurable results
                   </span>
@@ -322,7 +414,17 @@ export function HomeSections() {
                   className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground/90 transition hover:text-sky-400"
                 >
                   Learn more about us
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </Link>
@@ -344,8 +446,8 @@ export function HomeSections() {
               className="mt-10 max-w-3xl text-4xl tracking-tight text-foreground sm:text-5xl mx-auto"
             />
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              We empower brands to grow, engage, and succeed with clever social
-              tactics and captivating visuals.
+              We empower brands to grow, engage, and succeed with clever social tactics and
+              captivating visuals.
             </p>
           </Reveal>
 
@@ -357,18 +459,27 @@ export function HomeSections() {
                     {serviceIcons[idx]}
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-foreground">
-                      {svc.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {svc.body}
-                    </p>
+                    <h3 className="text-lg font-medium text-foreground">{svc.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{svc.body}</p>
                     <Link
                       href={`/services/${svc.slug}`}
                       className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-foreground/90 transition hover:text-foreground"
                     >
                       Learn more
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
                     </Link>
                   </div>
                 </div>
@@ -426,8 +537,8 @@ export function HomeSections() {
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              A curated pair of motion sections featuring cinematic reels and
-              high-converting social content built to capture attention instantly.
+              A curated pair of motion sections featuring cinematic reels and high-converting social
+              content built to capture attention instantly.
             </p>
           </Reveal>
         </Container>
@@ -458,8 +569,8 @@ export function HomeSections() {
               />
 
               <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-relaxed text-white/60">
-                Discover our selected projects, highlighting partnerships with
-                forward-thinking clients in various sectors.
+                Discover our selected projects, highlighting partnerships with forward-thinking
+                clients in various sectors.
               </p>
             </Reveal>
           </div>
@@ -469,19 +580,15 @@ export function HomeSections() {
             {projectTeasers.slice(0, 5).map((p, idx) => {
               // Bento Layout Pattern
               const layouts = [
-                "col-span-2 min-h-[180px] sm:min-h-[220px] lg:col-span-8 lg:row-span-2", // hero — full width
-                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4", // mobile: square / desktop: small
-                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4 lg:row-span-2", // mobile: square / desktop: tall
-                "col-span-1 aspect-square lg:aspect-auto lg:col-span-4", // mobile: square / desktop: small
-                "col-span-1 aspect-square lg:aspect-auto lg:col-span-8", // mobile: square / desktop: wide
+                'col-span-2 min-h-[180px] sm:min-h-[220px] lg:col-span-8 lg:row-span-2', // hero — full width
+                'col-span-1 aspect-square lg:aspect-auto lg:col-span-4', // mobile: square / desktop: small
+                'col-span-1 aspect-square lg:aspect-auto lg:col-span-4 lg:row-span-2', // mobile: square / desktop: tall
+                'col-span-1 aspect-square lg:aspect-auto lg:col-span-4', // mobile: square / desktop: small
+                'col-span-1 aspect-square lg:aspect-auto lg:col-span-8', // mobile: square / desktop: wide
               ];
 
               return (
-                <Reveal
-                  key={p.slug}
-                  delay={idx * 0.05}
-                  className={layouts[idx]}
-                >
+                <Reveal key={p.slug} delay={idx * 0.05} className={layouts[idx]}>
                   <Link
                     href={`/project/${p.slug}`}
                     className="
@@ -546,8 +653,8 @@ export function HomeSections() {
                             </h3>
 
                             <p className="mt-3 hidden max-w-md text-sm leading-relaxed text-white/70 lg:block">
-                              Building immersive digital experiences with scalable
-                              modern architecture and refined visual systems.
+                              Building immersive digital experiences with scalable modern
+                              architecture and refined visual systems.
                             </p>
                           </div>
 
@@ -608,10 +715,11 @@ export function HomeSections() {
                   preload="metadata"
                   aria-hidden
                 >
-                  <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
+                  <source
+                    src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4"
+                    type="video/mp4"
+                  />
                 </video>
-
-             
 
                 <div className="relative z-10">
                   <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50">
@@ -635,7 +743,6 @@ export function HomeSections() {
         </Container>
       </section>
 
-
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
           <Reveal className="mb-14 flex flex-col items-center text-center">
@@ -653,8 +760,8 @@ export function HomeSections() {
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              Trusted by founders, creators, and growing brands to deliver
-              high-performing creative systems and scalable marketing results.
+              Trusted by founders, creators, and growing brands to deliver high-performing creative
+              systems and scalable marketing results.
             </p>
           </Reveal>
         </Container>
@@ -669,9 +776,9 @@ export function HomeSections() {
             className="pointer-events-none absolute inset-y-0 left-0 z-30 w-24 bg-gradient-to-r from-black via-black/90 to-transparent sm:w-48 lg:w-72"
             style={{
               WebkitMaskImage:
-                "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)",
+                'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)',
               maskImage:
-                "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)",
+                'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)',
             }}
             aria-hidden
           />
@@ -681,9 +788,9 @@ export function HomeSections() {
             className="pointer-events-none absolute inset-y-0 right-0 z-30 w-24 bg-gradient-to-l from-black via-black/90 to-transparent sm:w-48 lg:w-72"
             style={{
               WebkitMaskImage:
-                "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)",
+                'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)',
               maskImage:
-                "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)",
+                'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 100%)',
             }}
             aria-hidden
           />
@@ -692,15 +799,11 @@ export function HomeSections() {
           <div
             className="flex w-max"
             style={{
-              animation: "reels-marquee 170s linear infinite",
+              animation: 'reels-marquee 170s linear infinite',
             }}
           >
             <div className="flex gap-8 px-4">
-              {[
-                ...testimonials,
-                ...testimonials,
-                ...testimonials,
-              ].map((t, idx) => (
+              {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
                 <div
                   key={`testimonial-${idx}`}
                   className="
@@ -729,13 +832,7 @@ export function HomeSections() {
                   {/* Stars */}
                   <div className="relative z-10 flex gap-1 text-yellow-400">
                     {[...Array(5)].map((_, i) => (
-                      <svg
-                        key={i}
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
@@ -766,13 +863,9 @@ export function HomeSections() {
 
                     {/* Meta */}
                     <div className="flex flex-col">
-                      <span className="text-[15px] font-medium text-white">
-                        {t.name}
-                      </span>
+                      <span className="text-[15px] font-medium text-white">{t.name}</span>
 
-                      <span className="mt-1 text-sm text-white/45">
-                        {t.role}
-                      </span>
+                      <span className="mt-1 text-sm text-white/45">{t.role}</span>
                     </div>
                   </div>
                 </div>
@@ -788,12 +881,11 @@ export function HomeSections() {
           className="pointer-events-none absolute inset-0 opacity-50"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)",
-            backgroundSize: "26px 26px",
-            maskImage:
-              "linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)",
+              'linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)',
+            backgroundSize: '26px 26px',
+            maskImage: 'linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)',
             WebkitMaskImage:
-              "linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)",
+              'linear-gradient(to bottom, transparent, black 16%, black 84%, transparent)',
           }}
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.46)_72%,rgba(0,0,0,0.82)_100%)]" />
@@ -808,7 +900,8 @@ export function HomeSections() {
               className="max-w-3xl text-2xl tracking-tight text-foreground sm:text-4xl lg:text-5xl mx-auto"
             />
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
-              We collaborate with industry leaders and fast-growing startups to build digital authorities and high-converting channels.
+              We collaborate with industry leaders and fast-growing startups to build digital
+              authorities and high-converting channels.
             </p>
           </Reveal>
 
@@ -817,7 +910,7 @@ export function HomeSections() {
           <style>{partnerPlacementCss}</style>
           <div className="relative grid flex-1 grid-cols-4 content-center items-stretch gap-x-2 gap-y-2 [grid-auto-rows:minmax(0,1fr)] sm:mt-10 sm:block sm:h-[600px] sm:flex-none sm:gap-x-4 sm:gap-y-8 lg:h-[660px] xl:h-[720px]">
             {clientLogos.map((logoPath, idx) => {
-              const name = logoPath.split("/").pop()?.replace(".png", "") || `Client ${idx}`;
+              const name = logoPath.split('/').pop()?.replace('.png', '') || `Client ${idx}`;
               const size = shuffledSizes[idx % shuffledSizes.length];
 
               return (
@@ -862,8 +955,7 @@ export function HomeSections() {
                 className="mt-1 text-4xl tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               />
               <p className="mt-6 max-w-xs text-sm leading-relaxed text-muted">
-                Have questions? Find clear, concise answers to the most common
-                inquiries below.
+                Have questions? Find clear, concise answers to the most common inquiries below.
               </p>
             </Reveal>
 
@@ -877,8 +969,6 @@ export function HomeSections() {
         {/* Bottom fade */}
         <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-full bg-gradient-to-b from-transparent to-[#000]" />
       </section>
-
-
     </>
   );
 }

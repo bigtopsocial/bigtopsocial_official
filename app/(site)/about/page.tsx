@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { aboutTeam, awards, industries } from "@/lib/content/about";
-import { stats, testimonials } from "@/lib/content/home";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { aboutTeam, awards, industries } from '@/lib/content/about';
+import { stats, testimonials } from '@/lib/content/home';
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: 'About Us',
 };
 
 function Badge({ children }: { children: React.ReactNode }) {
@@ -66,8 +66,7 @@ export default function AboutPage() {
               className="mt-0 text-[clamp(3rem,8vw,5.5rem)] leading-[0.9] tracking-tight text-foreground"
             />
             <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              A team of creators and marketers elevating brands with powerful content
-              and campaigns.
+              A team of creators and marketers elevating brands with powerful content and campaigns.
             </p>
           </Reveal>
 
@@ -123,9 +122,7 @@ export default function AboutPage() {
                       <span className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
                         {s.value}
                       </span>
-                      <span className="pb-1 text-lg font-semibold text-muted">
-                        {s.suffix}
-                      </span>
+                      <span className="pb-1 text-lg font-semibold text-muted">{s.suffix}</span>
                     </div>
                   </div>
                 </div>
@@ -135,9 +132,9 @@ export default function AboutPage() {
 
           <Reveal className="mt-16">
             <p className="max-w-2xl text-lg font-medium leading-relaxed text-foreground/90">
-              At Bigtopsocial, we believe powerful marketing blends strategy, creativity,
-              and performance. We craft campaigns that look great, connect deeply,
-              and drive real growth.
+              At Bigtopsocial, we believe powerful marketing blends strategy, creativity, and
+              performance. We craft campaigns that look great, connect deeply, and drive real
+              growth.
             </p>
           </Reveal>
         </Container>
@@ -154,14 +151,14 @@ export default function AboutPage() {
               className="mt-8 max-w-3xl text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              We&rsquo;re honored to be recognized for our creativity, performance, and
-              commitment to delivering outstanding marketing results.
+              We&rsquo;re honored to be recognized for our creativity, performance, and commitment
+              to delivering outstanding marketing results.
             </p>
           </Reveal>
 
           <Reveal className="mt-12 overflow-hidden rounded-[18px]">
             <div className="divide-y divide-white/[0.06]">
-              {awards.map((a) => (
+              {awards.map(a => (
                 <div
                   key={`${a.year}-${a.title}`}
                   className="grid grid-cols-12 gap-4 px-5 py-5 text-sm transition-colors hover:bg-white/[0.02] sm:px-8 sm:py-6"
@@ -173,9 +170,7 @@ export default function AboutPage() {
                   <span className="col-span-7 col-start-4 text-muted sm:col-span-4 sm:col-start-auto">
                     {a.category}
                   </span>
-                  <span className="col-span-5 text-right text-muted sm:col-span-2">
-                    {a.brand}
-                  </span>
+                  <span className="col-span-5 text-right text-muted sm:col-span-2">{a.brand}</span>
                 </div>
               ))}
             </div>
@@ -194,9 +189,8 @@ export default function AboutPage() {
               className="mt-8 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Discover success stories from satisfied clients. Learn how we assisted
-              them in reaching their objectives and generating significant, enduring
-              results.
+              Discover success stories from satisfied clients. Learn how we assisted them in
+              reaching their objectives and generating significant, enduring results.
             </p>
           </Reveal>
 
@@ -216,7 +210,10 @@ export default function AboutPage() {
                         preload="metadata"
                         aria-hidden
                       >
-                        <source src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4" type="video/mp4" />
+                        <source
+                          src="https://res.cloudinary.com/diqnwnz6x/video/upload/v1779957986/herovideo2_qdgibs.mp4"
+                          type="video/mp4"
+                        />
                       </video>
                       <div className="relative z-10 flex flex-col justify-between h-full gap-6">
                         <div>
@@ -277,7 +274,7 @@ export default function AboutPage() {
               className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
             />
             <div className="mt-8 flex flex-wrap gap-3">
-              {industries.map((industry) => (
+              {industries.map(industry => (
                 <span
                   key={industry}
                   className="rounded-full bg-white/[0.03] px-5 py-2 text-sm text-foreground/80 transition-colors hover:text-foreground"
@@ -301,8 +298,8 @@ export default function AboutPage() {
               className="mt-8 text-3xl font-medium tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             />
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Our team blends strategy, creativity, and performance to build marketing
-              that drives real growth.
+              Our team blends strategy, creativity, and performance to build marketing that drives
+              real growth.
             </p>
           </Reveal>
 

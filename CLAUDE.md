@@ -62,5 +62,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Component files: PascalCase (e.g., HomeSections.tsx, Wobble-card.jsx)
 - Style files: .css or .jsx with styling (BorderGlow.css/.jsx)
-- Content files: TypeScript const exports (lib/content/*.ts)
+- Content files: TypeScript const exports (lib/content/\*.ts)
 - Configuration: .ts, .js, .mjs, .json files in root

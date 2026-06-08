@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { blogPosts } from "@/lib/content/blog";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { blogPosts } from '@/lib/content/blog';
 
 export const metadata: Metadata = {
-  title: "Blogs",
+  title: 'Blogs',
 };
 
 export default function BlogIndexPage() {
@@ -49,8 +49,7 @@ export default function BlogIndexPage() {
               className="mt-1 max-w-4xl text-5xl font-semibold tracking-tight text-foreground sm:text-7xl lg:mx-auto"
             />
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg lg:mx-auto">
-              Strategic insights, marketing clarity, and growth-focused thinking from
-              Bigtopsocial.
+              Strategic insights, marketing clarity, and growth-focused thinking from Bigtopsocial.
             </p>
           </Reveal>
         </Container>
@@ -58,32 +57,32 @@ export default function BlogIndexPage() {
 
       <Container className="relative z-10 -mt-[48vh] sm:-mt-[34vh]">
         <div className="grid gap-5 sm:grid-cols-2">
-            {blogPosts.map((post, idx) => (
-              <Reveal key={post.slug} delay={idx * 0.05}>
-                <Link href={`/blog/${post.slug}`} className="group block">
-                  <div className="relative overflow-hidden rounded-[18px] bg-card">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                        sizes="(min-width: 640px) 50vw, 100vw"
-                      />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-3 p-5">
-                        <h2 className="text-base font-semibold leading-snug text-white">
-                          {post.title}
-                        </h2>
-                        <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60">
-                          {post.category}
-                        </span>
-                      </div>
+          {blogPosts.map((post, idx) => (
+            <Reveal key={post.slug} delay={idx * 0.05}>
+              <Link href={`/blog/${post.slug}`} className="group block">
+                <div className="relative overflow-hidden rounded-[18px] bg-card">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-3 p-5">
+                      <h2 className="text-base font-semibold leading-snug text-white">
+                        {post.title}
+                      </h2>
+                      <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60">
+                        {post.category}
+                      </span>
                     </div>
                   </div>
-                </Link>
-              </Reveal>
-            ))}
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </Container>
     </section>

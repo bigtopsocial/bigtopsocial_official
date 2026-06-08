@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { projectTeasers } from "@/lib/content/projects";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { projectTeasers } from '@/lib/content/projects';
 
 export const metadata: Metadata = {
-  title: "Explore Our Portfolio",
+  title: 'Explore Our Portfolio',
 };
 
 export default function ProjectIndexPage() {
@@ -49,8 +49,8 @@ export default function ProjectIndexPage() {
               className="mt-1 max-w-4xl text-5xl font-semibold tracking-tight text-foreground sm:text-7xl lg:mx-auto"
             />
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg lg:mx-auto">
-              From ambitious startups to established brands, we build powerful digital
-              experiences that elevate presence and drive measurable results.
+              From ambitious startups to established brands, we build powerful digital experiences
+              that elevate presence and drive measurable results.
             </p>
           </Reveal>
         </Container>
@@ -75,9 +75,7 @@ export default function ProjectIndexPage() {
                   />
                 </div>
                 <div className="flex items-center justify-between gap-3 px-5 py-4">
-                  <span className="text-lg font-semibold text-foreground">
-                    {p.title}
-                  </span>
+                  <span className="text-lg font-semibold text-foreground">{p.title}</span>
                   <span className="text-sm text-foreground/70">{p.year}</span>
                 </div>
               </Link>

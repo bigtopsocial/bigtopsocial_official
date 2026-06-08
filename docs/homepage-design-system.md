@@ -7,11 +7,14 @@ This document outlines the visual system, alignment, typography, and spacing rul
 To maintain a consistent flow and breathing room across the entire homepage, section spacing strictly adheres to a responsive vertical scale.
 
 ### Section Wrappers
+
 All major sections use consistent responsive vertical padding:
+
 - **Default:** `py-16 sm:py-20 lg:py-24`
 - **Exceptions:** When a section immediately precedes a full-bleed visual element (like the Reels Slider), the bottom padding is removed (`pb-0`) to bring the visual closer to the heading rhythm.
 
 ### Content Gaps
+
 - **Section Intros (Badge to Heading to Description):**
   - Margin below section intro container: `mb-16` (or `mb-14` / `mb-8` when tightly coupled to visuals).
   - Margin below badge: `mb-6`
@@ -23,24 +26,31 @@ All major sections use consistent responsive vertical padding:
 Typography scaling relies on fluid breakpoints to prevent oversized or clamped text on smaller devices while retaining cinematic impact on desktop.
 
 ### Section Intros
+
 Every major section (About, Services, Creations, Portfolio, Testimonials, Partners, FAQ) utilizes a unified Intro block:
 
 - **Badge:**
+
   ```html
-  <div className="mb-6 relative inline-flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.03] px-5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur-md transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] hover:text-white before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#40ffbb]/40 before:to-transparent">
+  <div
+    className="mb-6 relative inline-flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.03] px-5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur-md transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] hover:text-white before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#40ffbb]/40 before:to-transparent"
+  >
     Badge Text
   </div>
   ```
+
   - **Scale:** `text-[11px]`
   - **Tracking:** `tracking-[0.24em]`
   - **Accent:** Custom `#40ffbb` (teal/sky) top glow line.
 
 - **Heading:**
+
   ```html
   <h2 className="max-w-3xl text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
     Heading Text
   </h2>
   ```
+
   - **Scale:** `text-3xl` (Mobile) -> `sm:text-4xl` (Tablet) -> `md:text-5xl` (Desktop).
   - **Tracking:** `tracking-tight`
 
@@ -65,10 +75,10 @@ All cards share a unified glassmorphism aesthetic that prioritizes subtle border
 
 ## 4. Hover System & Transition Timing
 
-Transitions are kept smooth and extended to create a premium, cinematic feel. 
+Transitions are kept smooth and extended to create a premium, cinematic feel.
 
 - **Timing Function:** `ease-out`
-- **Duration:** 
+- **Duration:**
   - Structural/Scale transitions: `duration-300` or `duration-500`
   - Subtle color/border shifts: `duration-300`
   - Image zooms inside cards: `duration-700`
@@ -91,15 +101,18 @@ Transitions are kept smooth and extended to create a premium, cinematic feel.
 The footer is designed to be a cinematic crescendo, seamlessly blending from the final black section into a motion background.
 
 ### Footer Background
+
 - Contains a full-bleed `video` element with `object-cover`.
 - A `bg-black/60` mask ensures contrast.
 - A seamless top blend (`bg-gradient-to-b from-black via-black/80 to-transparent`) spans `h-64` to melt the previous section directly into the footer without a harsh layout shift.
 
 ### Footer Typography Scaling
+
 - **Giant Wordmark:** Utilizes absolute viewport width (`text-[14.5vw]`) to stretch perfectly edge-to-edge across all devices. Uses `tracking-tight` and `leading-[0.8]` to condense negative space, alongside `pb-12` padding to comfortably distance it from the bottom edge.
 - **Links & Metadata:** Unified at `text-[13px] text-white/60`, with column headers matching at `text-[13px] text-white font-semibold`.
 
 ### Footer Responsive Behavior
+
 - Reorders from a stacked single column on mobile (`flex-col`) to a distributed 12-column grid on desktop (`lg:flex-row`).
 - Max-widths on the newsletter column (`lg:max-w-[260px]`) prevent the input field from distorting layout bounds on ultrawide displays.
 

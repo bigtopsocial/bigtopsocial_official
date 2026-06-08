@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { ServiceDetailView } from "@/components/services/ServiceDetailView";
-import { getAllServices, getServiceBySlug } from "@/lib/content/services";
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { ServiceDetailView } from '@/components/services/ServiceDetailView';
+import { getAllServices, getServiceBySlug } from '@/lib/content/services';
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getAllServices().map((s) => ({ slug: s.slug }));
+  return getAllServices().map(s => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -22,8 +22,8 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   const others = getAllServices()
-    .filter((s) => s.slug !== service.slug)
-    .map((s) => ({ slug: s.slug, title: s.title }));
+    .filter(s => s.slug !== service.slug)
+    .map(s => ({ slug: s.slug, title: s.title }));
 
   return <ServiceDetailView service={service} others={others} />;
 }

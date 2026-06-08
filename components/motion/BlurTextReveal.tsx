@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Fragment } from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { Fragment } from 'react';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 
-type AsTag = "span" | "div" | "p" | "h1" | "h2" | "h3" | "h4";
+type AsTag = 'span' | 'div' | 'p' | 'h1' | 'h2' | 'h3' | 'h4';
 
 type BlurTextRevealProps = {
   text: string;
@@ -33,7 +33,7 @@ type BlurTextRevealProps = {
 export function BlurTextReveal({
   text,
   className,
-  as = "span",
+  as = 'span',
   stagger = 0.2,
   delay = 0,
   duration = 2,
@@ -49,7 +49,7 @@ export function BlurTextReveal({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- framer-motion's indexed component types don't narrow cleanly to a JSX-usable element type
   const MotionTag = motion[as] as any;
-  const words = text.split(" ");
+  const words = text.split(' ');
 
   const container: Variants = {
     hidden: {},
@@ -63,7 +63,7 @@ export function BlurTextReveal({
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
+      filter: 'blur(0px)',
       transition: { duration, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -71,21 +71,21 @@ export function BlurTextReveal({
   return (
     <MotionTag
       className={className}
-      style={as === "span" ? { display: "inline-block" } : undefined}
+      style={as === 'span' ? { display: 'inline-block' } : undefined}
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-10% 0px" }}
+      viewport={{ once, margin: '-10% 0px' }}
     >
       {words.map((w, i) => (
         <Fragment key={`${w}-${i}`}>
           <motion.span
             variants={word}
-            style={{ display: "inline-block", willChange: "transform, filter, opacity" }}
+            style={{ display: 'inline-block', willChange: 'transform, filter, opacity' }}
           >
             {w}
           </motion.span>
-          {i < words.length - 1 ? " " : null}
+          {i < words.length - 1 ? ' ' : null}
         </Fragment>
       ))}
     </MotionTag>

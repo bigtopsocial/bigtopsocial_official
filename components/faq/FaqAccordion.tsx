@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { faqItems } from "@/lib/content/faq";
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { faqItems } from '@/lib/content/faq';
 
 export function FaqAccordion() {
   const [open, setOpen] = useState<number | null>(null);
@@ -35,7 +35,7 @@ export function FaqAccordion() {
               </span>
               <span
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-muted transition-all duration-300 group-hover:border-white/20 group-hover:text-foreground ${
-                  isOpen ? "rotate-45 bg-white/[0.06] text-foreground" : ""
+                  isOpen ? 'rotate-45 bg-white/[0.06] text-foreground' : ''
                 }`}
                 aria-hidden="true"
               >
@@ -58,9 +58,7 @@ export function FaqAccordion() {
                       : undefined
                   }
                 >
-                  <p className="pt-3 text-sm leading-relaxed text-muted">
-                    {item.answer}
-                  </p>
+                  <p className="pt-3 text-sm leading-relaxed text-muted">{item.answer}</p>
                 </motion.div>
               )}
             </AnimatePresence>

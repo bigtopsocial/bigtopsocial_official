@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { IndustryDetailView } from "@/components/industries/IndustryDetailView";
-import { getAllIndustries, getIndustryBySlug } from "@/lib/content/industries";
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { IndustryDetailView } from '@/components/industries/IndustryDetailView';
+import { getAllIndustries, getIndustryBySlug } from '@/lib/content/industries';
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getAllIndustries().map((i) => ({ slug: i.slug }));
+  return getAllIndustries().map(i => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -31,8 +31,8 @@ export default async function IndustryDetailPage({ params }: Props) {
   if (!industry) notFound();
 
   const others = getAllIndustries()
-    .filter((i) => i.slug !== industry.slug)
-    .map((i) => ({ slug: i.slug, title: i.title }));
+    .filter(i => i.slug !== industry.slug)
+    .map(i => ({ slug: i.slug, title: i.title }));
 
   return <IndustryDetailView industry={industry} others={others} />;
 }

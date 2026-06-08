@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { getAllServices } from "@/lib/content/services";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { getAllServices } from '@/lib/content/services';
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: 'Our Services',
 };
 
 export default function ServicesIndexPage() {
@@ -51,9 +51,8 @@ export default function ServicesIndexPage() {
               className="mt-1 max-w-4xl text-5xl font-semibold tracking-tight text-foreground sm:text-7xl lg:mx-auto"
             />
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg lg:mx-auto">
-              A full-service offering — strategy, design, content, and paid
-              media — engineered to make your brand visible, credible, and
-              profitable.
+              A full-service offering — strategy, design, content, and paid media — engineered to
+              make your brand visible, credible, and profitable.
             </p>
           </Reveal>
         </Container>
@@ -79,12 +78,8 @@ export default function ServicesIndexPage() {
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 <div className="flex flex-col gap-2 px-5 py-5">
-                  <span className="text-lg font-semibold text-foreground">
-                    {s.title}
-                  </span>
-                  <p className="text-sm leading-relaxed text-muted">
-                    {s.body}
-                  </p>
+                  <span className="text-lg font-semibold text-foreground">{s.title}</span>
+                  <p className="text-sm leading-relaxed text-muted">{s.body}</p>
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#12ced6]">
                     Learn more →
                   </span>

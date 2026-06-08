@@ -88,28 +88,21 @@ body {
   overflow: hidden;
   border-radius: 20px;
 
-  background: #BFB6A40D;
+  background: #bfb6a40d;
 
-
- box-shadow:
-    0 0 3px rgba(0, 245, 255, 0.10),
-    0 0 7px rgba(0, 245, 255, 0.08),
+  box-shadow: 0 0 3px rgba(0, 245, 255, 0.1), 0 0 7px rgba(0, 245, 255, 0.08),
     0 0 12px rgba(176, 38, 255, 0.08);
 
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .neon-card:hover {
-  box-shadow:
-    0 0 4px rgba(0, 245, 255, 0.55),
-    0 0 7px rgba(0, 245, 255, 0.35),
+  box-shadow: 0 0 4px rgba(0, 245, 255, 0.55), 0 0 7px rgba(0, 245, 255, 0.35),
     0 0 15px rgba(176, 38, 255, 0.25);
 }
 
 .neon-card::before {
-  content: "";
+  content: '';
 
   position: absolute;
   inset: 0;
@@ -119,22 +112,18 @@ body {
 
   background: linear-gradient(
     90deg,
- rgba(0, 245, 255, 0.50),
-  rgba(176, 38, 255, 0.50),
-  rgba(1, 132, 197, 0.50),
-  rgba(106, 92, 255, 0.50),
-  rgba(0, 245, 255, 0.50)
+    rgba(0, 245, 255, 0.5),
+    rgba(176, 38, 255, 0.5),
+    rgba(1, 132, 197, 0.5),
+    rgba(106, 92, 255, 0.5),
+    rgba(0, 245, 255, 0.5)
   );
 
   background-size: 300% 300%;
 
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 
   mask-composite: exclude;
   -webkit-mask-composite: destination-out;
@@ -168,10 +157,15 @@ body {
   left: 0;
   right: 0;
   height: 120px;
-  background: linear-gradient(to top, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 40%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    transparent 100%
+  );
   backdrop-filter: blur(15px) saturate(150%);
   -webkit-backdrop-filter: blur(15px) saturate(150%);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   pointer-events: none;
   z-index: 5;
 }
@@ -182,10 +176,15 @@ body {
   left: 0;
   right: 0;
   height: 150px;
-  background: linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.06) 40%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    transparent 100%
+  );
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   pointer-events: none;
   z-index: 10;
 }
@@ -196,10 +195,15 @@ body {
   left: 0;
   right: 0;
   height: 180px;
-  background: linear-gradient(to top, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 40%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 100%
+  );
   backdrop-filter: blur(35px) saturate(220%);
   -webkit-backdrop-filter: blur(35px) saturate(220%);
-  border-top: 1px solid rgba(255,255,255,0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   pointer-events: none;
   z-index: 10;
 }
@@ -222,7 +226,7 @@ body {
 }
 a,
 button,
-[role="button"],
+[role='button'],
 input,
 label,
 select,
@@ -243,7 +247,7 @@ textarea {
    on phones only so inputs no longer trigger an accidental zoom; desktop keeps
    its original sizing. */
 @media (max-width: 639px) {
-  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  input:not([type='checkbox']):not([type='radio']):not([type='range']),
   textarea,
   select {
     font-size: 16px !important;

@@ -1,27 +1,47 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Container } from "@/components/layout/Container";
-import { useMatchMedia } from "@/lib/useMatchMedia";
+import Image from 'next/image';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Container } from '@/components/layout/Container';
+import { useMatchMedia } from '@/lib/useMatchMedia';
 
 type PostCard = {
   title: string;
   meta: string;
-  type: "Image" | "Video";
+  type: 'Image' | 'Video';
   src: string;
 };
 
 const cards: PostCard[] = [
-  { title: "Brand reveal post",    meta: "Feed post • 01",  type: "Image", src: "/post contents/1.png" },
-  { title: "Campaign highlight",   meta: "Carousel • 02",   type: "Image", src: "/post contents/2.png" },
-  { title: "Product teaser",       meta: "Feed post • 03",  type: "Image", src: "/post contents/3.png" },
-  { title: "Social proof card",    meta: "Feed post • 04",  type: "Image", src: "/post contents/4.png" },
-  { title: "Behind the scenes",    meta: "Carousel • 05",   type: "Image", src: "/post contents/5.png" },
-  { title: "Founder vision",       meta: "Feed post • 06",  type: "Image", src: "/post contents/6.png" },
-  { title: "Feature showcase",     meta: "Feed post • 07",  type: "Image", src: "/post contents/7.png" },
-  { title: "Community highlight",  meta: "Carousel • 08",   type: "Image", src: "/post contents/8.png" },
+  {
+    title: 'Brand reveal post',
+    meta: 'Feed post • 01',
+    type: 'Image',
+    src: '/post contents/1.png',
+  },
+  {
+    title: 'Campaign highlight',
+    meta: 'Carousel • 02',
+    type: 'Image',
+    src: '/post contents/2.png',
+  },
+  { title: 'Product teaser', meta: 'Feed post • 03', type: 'Image', src: '/post contents/3.png' },
+  {
+    title: 'Social proof card',
+    meta: 'Feed post • 04',
+    type: 'Image',
+    src: '/post contents/4.png',
+  },
+  { title: 'Behind the scenes', meta: 'Carousel • 05', type: 'Image', src: '/post contents/5.png' },
+  { title: 'Founder vision', meta: 'Feed post • 06', type: 'Image', src: '/post contents/6.png' },
+  { title: 'Feature showcase', meta: 'Feed post • 07', type: 'Image', src: '/post contents/7.png' },
+  {
+    title: 'Community highlight',
+    meta: 'Carousel • 08',
+    type: 'Image',
+    src: '/post contents/8.png',
+  },
 ] as const;
 
 function StageCard({
@@ -42,35 +62,35 @@ function StageCard({
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (card.type !== "Video" || !videoRef.current) return;
+    if (card.type !== 'Video' || !videoRef.current) return;
     if (isActive) videoRef.current.play().catch(() => {});
     else videoRef.current.pause();
   }, [isActive, card.type]);
 
-  const scale      = isActive ? 1    : distance === 1 ? 0.90 : distance === 2 ? 0.80 : 0.70;
-  const opacity    = isActive ? 1    : distance === 1 ? 0.50 : distance === 2 ? 0.25 : 0.10;
-  const translateY = isActive ? 0    : distance === 1 ? -12  : distance === 2 ? -22  : -32;
-  const blur       = distance >= 3   ? 1.5 : distance === 2   ? 0.8 : 0;
-  const brightness = isActive ? 1    : distance === 1 ? 0.65 : 0.40;
+  const scale = isActive ? 1 : distance === 1 ? 0.9 : distance === 2 ? 0.8 : 0.7;
+  const opacity = isActive ? 1 : distance === 1 ? 0.5 : distance === 2 ? 0.25 : 0.1;
+  const translateY = isActive ? 0 : distance === 1 ? -12 : distance === 2 ? -22 : -32;
+  const blur = distance >= 3 ? 1.5 : distance === 2 ? 0.8 : 0;
+  const brightness = isActive ? 1 : distance === 1 ? 0.65 : 0.4;
 
   return (
     <motion.div
       className="absolute cursor-pointer select-none"
       style={{ zIndex: 100 - distance, filter: `blur(${blur}px) brightness(${brightness})` }}
       animate={{ x: offset * spacing, scale, opacity, y: translateY }}
-      transition={{ type: "spring", stiffness: 200, damping: 26, mass: 0.8 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 26, mass: 0.8 }}
       onClick={onClick}
     >
       <div className="w-[72vw] max-w-[17rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[24rem] overflow-hidden rounded-[24px] bg-card shadow-[0_24px_64px_rgba(0,0,0,0.5)] pointer-events-none">
         <div className="relative aspect-[4/5]">
-          {card.type === "Image" ? (
+          {card.type === 'Image' ? (
             <Image
               src={card.src}
               alt={card.title}
               fill
               className="object-cover"
               sizes="(max-width: 640px) 72vw, (max-width: 1024px) 22rem, 24rem"
-              loading={isActive ? "eager" : "lazy"}
+              loading={isActive ? 'eager' : 'lazy'}
             />
           ) : (
             <video
@@ -79,7 +99,7 @@ function StageCard({
               muted
               loop
               playsInline
-              preload={isActive ? "metadata" : "none"}
+              preload={isActive ? 'metadata' : 'none'}
             >
               <source src={card.src} type="video/mp4" />
             </video>
@@ -91,9 +111,7 @@ function StageCard({
             <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/50">
               {card.meta}
             </p>
-            <h3 className="mt-1.5 text-base font-medium tracking-tight text-white">
-              {card.title}
-            </h3>
+            <h3 className="mt-1.5 text-base font-medium tracking-tight text-white">{card.title}</h3>
           </div>
         </div>
       </div>
@@ -105,7 +123,7 @@ export function PostStageSlider() {
   const reduceMotion = useReducedMotion();
   // Desktop-only section (parent uses `hidden lg:block`). Avoid mounting it on
   // mobile so its videos and autoplay timer stay idle there.
-  const isDesktop = useMatchMedia("(min-width: 1024px)");
+  const isDesktop = useMatchMedia('(min-width: 1024px)');
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const [spacing, setSpacing] = useState(260);
@@ -120,8 +138,8 @@ export function PostStageSlider() {
       setSpacing(w < 480 ? 210 : w < 768 ? 240 : w < 1024 ? 270 : 300);
     };
     update();
-    window.addEventListener("resize", update, { passive: true });
-    return () => window.removeEventListener("resize", update);
+    window.addEventListener('resize', update, { passive: true });
+    return () => window.removeEventListener('resize', update);
   }, [isDesktop]);
 
   const goTo = useCallback((next: number) => {
@@ -133,9 +151,11 @@ export function PostStageSlider() {
   useEffect(() => {
     if (reduceMotion || isInteracting || !isDesktop) return;
     timerRef.current = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % cards.length);
+      setActiveIndex(i => (i + 1) % cards.length);
     }, 3800);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [reduceMotion, isInteracting, isDesktop]);
 
   if (!isDesktop) return null;
@@ -149,12 +169,14 @@ export function PostStageSlider() {
           onMouseEnter={() => setIsInteracting(true)}
           onMouseLeave={() => setIsInteracting(false)}
           onTouchStart={() => setIsInteracting(true)}
-          onTouchEnd={() => { setTimeout(() => setIsInteracting(false), 1200); }}
+          onTouchEnd={() => {
+            setTimeout(() => setIsInteracting(false), 1200);
+          }}
         >
           {/* Card stage */}
           <motion.div
             className="relative flex items-center justify-center"
-            style={{ height: "clamp(22rem, 55vw, 38rem)" }}
+            style={{ height: 'clamp(22rem, 55vw, 38rem)' }}
             onPanEnd={(_e, info) => {
               if (Math.abs(info.offset.x) > 35) {
                 goTo(activeIndex + (info.offset.x < 0 ? 1 : -1));
@@ -164,7 +186,7 @@ export function PostStageSlider() {
             {cards.map((card, index) => {
               const total = cards.length;
               let offset = index - activeIndex;
-              if (offset >  total / 2) offset -= total;
+              if (offset > total / 2) offset -= total;
               if (offset < -total / 2) offset += total;
               const distance = Math.abs(offset);
 
@@ -191,7 +213,7 @@ export function PostStageSlider() {
               onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === activeIndex ? "w-6 bg-white" : "w-1.5 bg-white/25"
+                i === activeIndex ? 'w-6 bg-white' : 'w-1.5 bg-white/25'
               }`}
             />
           ))}

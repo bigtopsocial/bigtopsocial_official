@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -9,21 +9,23 @@ cloudinary.config({
 export async function GET(): Promise<Response> {
   try {
     const result = await cloudinary.api.resources({
-      resource_type: "video",
-      type: "upload",
+      resource_type: 'video',
+      type: 'upload',
       max_results: 50,
     });
 
-    const urls: string[] = result.resources.map(
-      (r: { secure_url: string }) =>
-        r.secure_url.replace("/upload/", "/upload/q_auto,f_auto/")
+    const urls: string[] = result.resources.map((r: { secure_url: string }) =>
+      r.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
     );
 
-    return Response.json({ urls }, {
-      headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
-    });
+    return Response.json(
+      { urls },
+      {
+        headers: { 'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400' },
+      },
+    );
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Unknown error";
+    const message = err instanceof Error ? err.message : 'Unknown error';
     return Response.json({ error: message }, { status: 500 });
   }
 }

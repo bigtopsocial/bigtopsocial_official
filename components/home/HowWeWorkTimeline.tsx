@@ -1,45 +1,69 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import Image from 'next/image';
+import { useRef, useState, useEffect } from 'react';
 
-import { Container } from "@/components/layout/Container";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import { processSteps } from "@/lib/content/home";
+import { Container } from '@/components/layout/Container';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import { processSteps } from '@/lib/content/home';
 
 const stepImages = [
-  "/testimonials/15M4kvkfOTEm4Aa0gaOHpjxbsg.png",
-  "/testimonials/36gqztWcToPPHd22gfZKy1MeKM.png",
-  "/testimonials/RnNDQCdRzWFSlr5xHMtOdaCwv0A.png",
-  "/testimonials/wCeVqDNsespfMwpEZDJh9bvoe0.png",
+  '/testimonials/15M4kvkfOTEm4Aa0gaOHpjxbsg.png',
+  '/testimonials/36gqztWcToPPHd22gfZKy1MeKM.png',
+  '/testimonials/RnNDQCdRzWFSlr5xHMtOdaCwv0A.png',
+  '/testimonials/wCeVqDNsespfMwpEZDJh9bvoe0.png',
 ];
 
 function CardIcon({ index }: { index: number }) {
-  const cls = "h-6 w-6 text-sky-400";
+  const cls = 'h-6 w-6 text-sky-400';
   switch (index) {
     case 0:
       return (
-        <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <svg
+          className={cls}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
           <circle cx="11" cy="11" r="6" />
           <path d="M16 16l5 5" strokeLinecap="round" />
         </svg>
       );
     case 1:
       return (
-        <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <svg
+          className={cls}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
           <path d="M4 7h16M4 12h16M4 17h10" strokeLinecap="round" />
         </svg>
       );
     case 2:
       return (
-        <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <svg
+          className={cls}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
           <path d="M12 4l8 4-8 4-8-4 8-4z" strokeLinejoin="round" />
           <path d="M4 12l8 4 8-4M4 16l8 4 8-4" strokeLinejoin="round" />
         </svg>
       );
     default:
       return (
-        <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <svg
+          className={cls}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+        >
           <path d="M4 18V8M9 18V5M14 18v-7M19 18V10" strokeLinecap="round" />
         </svg>
       );
@@ -53,26 +77,28 @@ export function HowWeWorkTimeline() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const idx = cardRefs.current.indexOf(entry.target as HTMLElement);
             if (idx !== -1) setActiveIndex(idx);
           }
         });
       },
-      { threshold: 0.55 }
+      { threshold: 0.55 },
     );
 
-    cardRefs.current.forEach((card) => { if (card) observer.observe(card); });
+    cardRefs.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     imageRefs.current.forEach((el, i) => {
       if (!el) return;
-      el.style.opacity = i === activeIndex ? "1" : "0";
-      el.style.transform = i === activeIndex ? "scale(1)" : "scale(1.04)";
+      el.style.opacity = i === activeIndex ? '1' : '0';
+      el.style.transform = i === activeIndex ? 'scale(1)' : 'scale(1.04)';
     });
   }, [activeIndex]);
 
@@ -80,7 +106,6 @@ export function HowWeWorkTimeline() {
     <section className="py-16 sm:py-20 lg:py-24">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
-
           {/* LEFT — heading + cards */}
           <div>
             {/* Pill */}
@@ -95,8 +120,8 @@ export function HowWeWorkTimeline() {
             />
 
             <p className="mt-5 max-w-[30rem] text-sm leading-relaxed text-muted sm:text-base">
-              We blend strategy, creativity, and data to design campaigns that
-              grab attention, foster engagement, and drive tangible results.
+              We blend strategy, creativity, and data to design campaigns that grab attention,
+              foster engagement, and drive tangible results.
             </p>
 
             {/* Cards */}
@@ -104,7 +129,9 @@ export function HowWeWorkTimeline() {
               {processSteps.map((step, index) => (
                 <article
                   key={step.step}
-                  ref={(el) => { cardRefs.current[index] = el; }}
+                  ref={el => {
+                    cardRefs.current[index] = el;
+                  }}
                   className="flex min-h-[280px] flex-col justify-between rounded-[18px] bg-card p-6 sm:min-h-[360px] sm:rounded-[20px] sm:p-10"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/[0.06]">
@@ -122,23 +149,25 @@ export function HowWeWorkTimeline() {
                   </div>
                 </article>
               ))}
-
             </div>
           </div>
 
           {/* RIGHT — sticky image panel */}
           <div className="hidden lg:block">
             <div className="sticky top-24">
-                <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-card">
+              <div className="relative aspect-square w-full overflow-hidden rounded-[24px] bg-card">
                 {processSteps.map((step, index) => (
                   <div
                     key={step.step}
-                    ref={(el) => { imageRefs.current[index] = el; }}
+                    ref={el => {
+                      imageRefs.current[index] = el;
+                    }}
                     className="absolute inset-0"
                     style={{
                       opacity: index === 0 ? 1 : 0,
-                      transform: index === 0 ? "scale(1)" : "scale(1.04)",
-                      transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1)",
+                      transform: index === 0 ? 'scale(1)' : 'scale(1.04)',
+                      transition:
+                        'opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1)',
                     }}
                   >
                     <Image
@@ -164,7 +193,6 @@ export function HowWeWorkTimeline() {
               </div>
             </div>
           </div>
-
         </div>
       </Container>
     </section>

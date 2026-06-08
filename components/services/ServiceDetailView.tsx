@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurTextReveal } from "@/components/motion/BlurTextReveal";
-import type { Service } from "@/lib/content/services";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Container } from '@/components/layout/Container';
+import { Reveal } from '@/components/motion/Reveal';
+import { BlurTextReveal } from '@/components/motion/BlurTextReveal';
+import type { Service } from '@/lib/content/services';
 
 export function ServiceDetailView({
   service,
@@ -46,7 +46,7 @@ export function ServiceDetailView({
               {service.tagline}
             </p>
             <div className="mt-8 flex flex-wrap gap-2 lg:justify-center">
-              {service.subServices.map((s) => (
+              {service.subServices.map(s => (
                 <span
                   key={s}
                   className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs font-medium text-foreground/90 backdrop-blur-sm"
@@ -94,15 +94,11 @@ export function ServiceDetailView({
                 <div className="h-full transform-gpu rounded-[18px] bg-card transition-transform duration-500 ease-out motion-safe:hover:scale-[1.02]">
                   <div className="flex min-h-[280px] flex-col justify-between p-6 sm:p-7">
                     <span className="text-sm font-semibold text-foreground/50">
-                      {String(idx + 1).padStart(2, "0")}
+                      {String(idx + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <h3 className="text-base font-medium text-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">
-                        {step.description}
-                      </p>
+                      <h3 className="text-base font-medium text-foreground">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
                     </div>
                   </div>
                 </div>
@@ -120,10 +116,7 @@ export function ServiceDetailView({
               className="text-xl font-semibold text-foreground sm:text-2xl"
             />
             {service.overview.map((p, idx) => (
-              <p
-                key={idx}
-                className="mt-4 text-sm leading-relaxed text-muted sm:text-base"
-              >
+              <p key={idx} className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
                 {p}
               </p>
             ))}
@@ -141,7 +134,7 @@ export function ServiceDetailView({
               className="mt-12 text-xl font-semibold text-foreground sm:text-2xl"
             />
             <div className="mt-4 flex flex-wrap gap-2">
-              {service.tools.map((t) => (
+              {service.tools.map(t => (
                 <span
                   key={t}
                   className="rounded-full bg-card px-4 py-2 text-sm font-medium text-foreground/90"
@@ -160,12 +153,25 @@ export function ServiceDetailView({
               className="mt-12 text-xl font-semibold text-foreground sm:text-2xl"
             />
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-              {service.industries.map((ind) => (
+              {service.industries.map(ind => (
                 <li
                   key={ind}
                   className="flex items-center gap-2 text-sm leading-relaxed text-muted sm:text-base"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-foreground/60" aria-hidden><path d="M20 6 9 17l-5-5" /></svg>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="shrink-0 text-foreground/60"
+                    aria-hidden
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
                   {ind}
                 </li>
               ))}
@@ -205,7 +211,7 @@ export function ServiceDetailView({
             className="text-2xl font-semibold text-foreground"
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((s) => (
+            {others.map(s => (
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}

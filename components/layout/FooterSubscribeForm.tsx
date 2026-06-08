@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export function FooterSubscribeForm() {
   return (
@@ -6,10 +6,7 @@ export function FooterSubscribeForm() {
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80">
         Subscribe Us
       </p>
-      <form
-        className="mt-4 flex flex-col gap-3 sm:flex-row"
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <form className="mt-4 flex flex-col gap-3 sm:flex-row" onSubmit={e => e.preventDefault()}>
         <input
           name="email"
           type="email"
